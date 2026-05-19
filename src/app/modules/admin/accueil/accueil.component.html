@@ -1,0 +1,150 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto h-full">
+  <div class="flex flex-col flex-auto min-w-0 " >
+    <header>
+    <div class="bg-card">
+        
+      <div class="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-8 sm:my-2">
+        <div class="flex flex-col items-center sm:items-center text-center w-full">
+          <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
+                 <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 " style="color: #0a1396;"></mat-icon>
+          </div> 
+          <span style="color: #0a1396;" class="text-7xl scale-y-150 sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
+            <p>TripCampus</p>
+          </span>
+        
+       
+          <div class="mt-2 text-blue-800 text-sm sm:text-base font-medium max-w-2xl text-center">
+          <p>La voix des étudiants,</p>
+          le mirroir des universités !
+          </div>
+        </div>
+      </div>
+    </div>       
+    </header>          
+    
+    <main class="max-w-full p-5  shadow-[0_0_10px]" style="background-color: #0a1396;">
+    <div class="flex-col flex_auto min-w-0 p-0 sm:p-6 md:p-8" style="background-color: #0a1396;">   
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4" style="display: flex; flex-direction: column; gap: 16px;">  
+     
+        <!--Premier card-->
+      <div class=" card bg-white rounded-xl shadow p-4">
+                                <div class="flex flex-col sm:flex-row items-center justify-center">
+                                    <div style="color: #0a1396;" class="text-7xl  sm:text-4xl md:text-5xl font-extrabold scale-y-150 font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">Découvrir des universités</div>                              
+                                </div>
+                                <div class="flex flex-col flex-auto mt-6">
+                                     <button matButton="elevated" class="rounded-full  py-3 text-2xl text-white" style="background-color: #0a1396;">Découvrir</button>
+                                </div>
+                                <div class="text-primary text-xl mt-8 ">
+                    <b style="color:gray">Classement</b>
+                </div>
+                <div class="flex flex-col mt-4">
+                   <div *ngFor="let ecole of ecoles" class="flex items-center my-2">
+                      <div class="max-w-24 w-full">{{ ecole.nom }}</div>
+                         <mat-progress-bar [value]="ecole.note * 10"></mat-progress-bar>
+                         <div class="max-w-10 text-right">{{ ecole.note }}</div>
+                    </div>
+                </div>
+                         
+      </div>
+      <!--second card-->
+      <div class="card bg-white rounded-xl shadow p-4">
+                                <div class="flex flex-col sm:flex-row items-center justify-center">
+                                    <div style="color: #0a1396;" class="text-7xl  sm:text-4xl md:text-5xl font-extrabold scale-y-150 font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">PIGIER</div>   
+                                </div>
+                                <div class="text-xl  sm:text-xl md:text-xl  font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">Abidjan</div>
+                                <div class="flex flex-col flex-auto mt-6">
+                                    <div class="flex items-center justify-center">
+                            <mat-icon
+                                class="text-orange-500 icon-size-5"
+                                [svgIcon]="'mat_outline:star'"></mat-icon>
+                            <mat-icon
+                                class="text-orange-500 icon-size-5"
+                                [svgIcon]="'mat_outline:star'"></mat-icon>
+                            <mat-icon
+                                class="text-orange-500 icon-size-5"
+                                [svgIcon]="'mat_outline:star'"></mat-icon>
+                            <mat-icon
+                                class="text-orange-500 icon-size-5"
+                                [svgIcon]="'mat_outline:star'"></mat-icon>
+                            <mat-icon
+                                class="text-orange-500 icon-size-5"
+                                [svgIcon]="'mat_outline:star_border'"></mat-icon>
+                        </div> 
+                                </div>
+                                
+                                <mat-list>
+                                  <mat-list-item>
+                                    <mat-icon svgIcon="heroicons_outline:users"></mat-icon>
+                                   <span class="px-6 font-medium"> Professeurs</span>
+                                   <span class="px-100 font-extrabold"> 7.0</span>
+                                  </mat-list-item>
+                                  <mat-divider></mat-divider>
+
+                                  <mat-list-item>
+                                    <mat-icon svgIcon="heroicons_outline:office-building"></mat-icon>
+                                    <span class="px-6 font-medium"> Infrastructures</span>
+                                    <span class="px-90 font-extrabold"> 8.0</span>
+                                  </mat-list-item>
+                                  <mat-divider></mat-divider>
+
+                                  <mat-list-item>
+                                    <mat-icon svgIcon="heroicons_outline:emoji-happy"></mat-icon>
+                                    <span class="px-6 font-medium"> Ambiance</span>
+                                    <span class="px-100 font-extrabold"> 6.0</span>
+                                  </mat-list-item>
+                                </mat-list>
+                                <div class="flex flex-col flex-auto mt-6">
+                                     <button matButton="elevated" class="bg-orange-500 rounded-full  py-3 text-2xl text-white">Donner mon avis</button>
+                                </div>
+                                
+
+                                
+                         
+      </div>
+      <!--third card-->
+      <div class="card bg-white rounded-xl shadow p-4">
+                                <div class="flex flex-col sm:flex-row items-center justify-center">
+                                    <div style="color: #0a1396;" class="text-7xl  sm:text-4xl md:text-5xl font-extrabold scale-y-150 font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">CampusDoc</div>                          
+                                </div>
+                                <div class="flex flex-col flex-auto mt-6 justify-center items-center">
+                                   <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-gray/30 shadow-lg justify-center items-center flex">
+                                     <mat-icon svgIcon="heroicons_outline:collection" class="icon-size-10 relative bottom-0 "></mat-icon>
+                                    </div>
+                                   <div class="text-2xl font-semibold leading-tight text-center mt-6">Filières Industrielles/Tertiaires</div>
+                                   <div class="text-center text-secondary mt-3">Consultez la bibliothèque pour avoir accès aux ressources(cours, documents, sujets corrigés, etc.)</div>
+                                <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #0a1396;" [routerLink]="['./']">
+                                   Consulter
+                                </button>
+                                </div>
+      </div>  
+      <!--fourth card-->                        
+       <div class="card bg-white rounded-xl shadow p-4">
+                                <div class="flex flex-col sm:flex-row items-center justify-center">
+                                    <div style="color: #0a1396;" class="text-7xl  sm:text-4xl md:text-5xl font-extrabold scale-y-150 font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">CampusChat</div>
+                                </div>
+                                <div class="flex flex-col flex-auto mt-6">
+                                     <mat-tab-group class="items-center justify-center">
+                                       <mat-tab label="Tous">
+                                        all messages
+                                       </mat-tab>
+                                       <mat-tab label="Ecoles"> some messages </mat-tab>
+                                       
+                                    </mat-tab-group>
+
+                                </div>
+      </div>          
+     
+    
+     </div>
+    </div>  
+    </main>
+    
+      
+     
+  
+    
+  
+  </div>
+</div>
+
+

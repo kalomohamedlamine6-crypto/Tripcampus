@@ -1,0 +1,100 @@
+  <div class="flex flex-col flex-auto min-w-0"  >
+    <header>
+       <div class="bg-card" >
+        
+         <div class="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-8 sm:my-2" style="background-color: #0a1396;">
+           <div class="flex flex-col items-center sm:items-center text-center w-full">
+             <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
+                 <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 " style="color: white"></mat-icon>
+             </div> 
+               <span class="text-white text-7xl scale-y-150 sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
+               <p>TripCampus</p>
+             </span>
+        
+       
+             <div class="mt-2 text-white text-sm sm:text-base font-medium max-w-2xl text-center">
+               <p>La voix des étudiants,</p>
+               le mirroir des universités !
+             </div>
+            </div>
+           </div>
+         </div>       
+    </header>
+
+
+    <div class="flex-col flex_auto min-w-0 p-0 sm:p-6 md:p-8" style="background-color: white">   
+     
+        <!-- User info -->
+        <div class="flex flex-col flex-0 lg:flex-row items-start max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
+
+            <!-- Avatar -->
+            <div class="-mt-1 lg:-mt-22 rounded-full">
+              
+              <div class="flex items-center  gap-2">  
+                <img
+                    class="w-22 h-22 rounded-full ring-4 ring-bg-card relative right-5"
+                    src="assets/images/avatars/male-04.jpg"
+                    alt="User avatar">
+                <div class="flex flex-col gap-0">
+                   <span class="font-bold text-lg">Brian Hughes</span>
+                   <span class="text-gray-500">London, UK</span>
+                   <span class="text-gray-500">brian@email.com</span>
+                   <span class="text-gray-500">+30 00 00 00 00</span>
+                </div>  
+              </div>
+            </div>
+
+            <!-- Details -->
+            <div class="flex flex-col">
+                
+            </div> 
+
+            <!-- Separator -->
+            <div class="hidden lg:flex h-8 mx-8 border-l-2"></div>
+
+            <!-- Stats -->
+            <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button matIconButton disabled></button>
+    {{node.name}}
+  </mat-tree-node>
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle
+    [cdkTreeNodeTypeaheadLabel]="node.name" (expandedChange)="onNodeExpanded(node, $event)">
+    <button matIconButton [attr.aria-label]="'Toggle ' + node.name" matTreeNodeToggle>
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.name}}
+    @if (node.isLoading()) {
+    <mat-progress-bar mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
+    }
+  </mat-tree-node>
+</mat-tree>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
