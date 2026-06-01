@@ -1,94 +1,382 @@
-  <div class="flex flex-col flex-auto min-w-0"  >
-    <header>
-       <div class="bg-card" >
-        
-         <div class="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-8 sm:my-2" style="background-color: #0a1396;">
-           <div class="flex flex-col items-center sm:items-center text-center w-full">
-             <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
-                 <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 " style="color: white"></mat-icon>
-             </div> 
-               <span class="text-white text-7xl scale-y-150 sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
-               <p>TripCampus</p>
-             </span>
-        
-       
-             <div class="mt-2 text-white text-sm sm:text-base font-medium max-w-2xl text-center">
-               <p>La voix des étudiants,</p>
-               le mirroir des universités !
-             </div>
-            </div>
-           </div>
-         </div>       
-    </header>
+<div class="flex flex-col flex-auto min-w-0">
+  <header>
 
 
-    <div class="flex-col flex_auto min-w-0 p-0 sm:p-6 md:p-8" style="background-color: white">   
-     
-        <!-- User info -->
-        <div class="flex flex-col flex-0 lg:flex-row items-start max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
+    <div class=" max-w-full-xl mx-auto min-w-0 shadow-[0_0_10px] border-[#0a1396]" style="background-color: #0a1396;">
 
-            <!-- Avatar -->
-            <div class="-mt-1 lg:-mt-22 rounded-full">
-              
-              <div class="flex items-center  gap-2">  
-                <img
-                    class="w-22 h-22 rounded-full ring-4 ring-bg-card relative right-5"
-                    src="assets/images/avatars/male-04.jpg"
-                    alt="User avatar">
-                <div class="flex flex-col gap-0">
-                   <span class="font-bold text-lg">Brian Hughes</span>
-                   <span class="text-gray-500">London, UK</span>
-                   <span class="text-gray-500">brian@email.com</span>
-                   <span class="text-gray-500">+30 00 00 00 00</span>
-                </div>  
-              </div>
-            </div>
 
-            <!-- Details -->
-            <div class="flex flex-col">
-                
-            </div> 
+      <div class="flex flex-col items-center sm:items-center text-center w-full">
+        <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
+          <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 "
+            style="color: white"></mat-icon>
+        </div>
+        <span
+          class="text-white text-7xl scale-y-150 sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
+          <p>TripCampus</p>
+        </span>
 
-            <!-- Separator -->
-            <div class="hidden lg:flex h-8 mx-8 border-l-2"></div>
 
-            <!-- Stats -->
-            <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-    <button matIconButton disabled></button>
-    {{node.name}}
-  </mat-tree-node>
-  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle
-    [cdkTreeNodeTypeaheadLabel]="node.name" (expandedChange)="onNodeExpanded(node, $event)">
-    <button matIconButton [attr.aria-label]="'Toggle ' + node.name" matTreeNodeToggle>
-      <mat-icon class="mat-icon-rtl-mirror">
-        {{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-      </mat-icon>
+        <div class="mt-2 text-white text-sm sm:text-base font-medium max-w-2xl text-center">
+          <p>La voix des étudiants,</p>
+          le mirroir des universités !
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div class="flex-auto border-t -mt-px pt-4 sm:pt-6 bg-transparent shadow-[0_0_10px]">
+    <div class=" max-w-screen-xl mx-auto">
+      <!-- Avatar and name and button -->
+      <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center min-w-0 w-full gap-4">
+
+  <!-- Photo -->
+  <div class="w-22 h-22  ring-4" style="ring-color: #0a1396;">
+    <img class="w-full h-full object-cover " src="assets/images/avatars/male-04.jpg" alt="User avatar">
+  </div>
+
+  <!-- Nom / Contact -->
+  <div class="flex flex-col min-w-0">
+    <span class="font-bold text-lg">Brian Hughes</span>
+    <span class="text-gray-500">London, UK</span>
+    <span class="text-gray-500">brian@email.com</span>
+    <span class="text-gray-500">+30 00 00 00 00</span>
+  </div>
+
+  <!-- Séparateur visible seulement en grand écran -->
+  <div class="hidden lg:flex h-8 mx-4 border-l-2"></div>
+
+  <!-- Infos perso -->
+  <div class="flex flex-col gap-0">
+    <p class="text-gray-500">23 ans</p>
+    <p class="text-gray-500">Ivoirien</p>
+    <p class="text-gray-500">Célibataire sans enfant</p>
+  </div>
+
+  <!-- Université + Bouton → poussé à droite en grand écran, normal en mobile -->
+  <div class="flex items-center space-x-3 mt-2 sm:mt-0 sm:ml-auto">
+    <div class="flex flex-col">
+      <span class="font-bold text-lg">PIGIER.CI</span>
+      <span class="text-gray-500 text-sm">(Abidjan, Plateau)</span>
+    </div>
+    <button class="fuse-mat-button-rounded bg-[#0a1396] text-white" mat-flat-button [color]="'primary'">
+      <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:clipboard-list'"></mat-icon>
+      <span class="ml-2">Noter</span>
     </button>
-    {{node.name}}
-    @if (node.isLoading()) {
-    <mat-progress-bar mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
-    }
-  </mat-tree-node>
-</mat-tree>
+  </div>
+
+</div>
+  <div class="sm:col-span-2 md:col-span-4 flex flex-wrap flex-auto p-6 mt-8 bg-card shadow-lg rounded-2xl overflow-hidden bg-gray-200 ">
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 p-6">
+
+
+  <!-- 1ère carte : À propos -->
+  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
+    <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">À propos de moi</div>
+    <div class="mt-6 text-secondary">
+      Étudiant en Génie Logiciel passionné par le développement web et les réseaux.
+      Actuellement en Licence à PIGIER.CI, je cherche à acquérir des compétences solides.
+    </div>
+    <hr class="w-full border-t my-6">
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center">
+        <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+        <span class="leading-none">Abidjan, Côte d'Ivoire</span>
+      </div>
+      <div class="flex items-center">
+        <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+        <span class="leading-none">PIGIER.CI — Licence GL</span>
+      </div>
+      <div class="flex items-center">
+        <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:cake'"></mat-icon>
+        <span class="leading-none">24 Avril 2003</span>
+      </div>
+    </div>
+    <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #0a1396;">
+      Voir la biographie complète
+    </button>
+  </fuse-card>
+
+  <!-- 2ème carte : Ma Formation -->
+  <fuse-card class="flex flex-col w-full max-w-xl p-8 shadow-2xl">
+    <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Ma Formation</div>
+    <div class="flex flex-col mt-4 gap-4">
+
+      <div class="flex items-start gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-3 h-3 rounded-full bg-[#0a1396] mt-1"></div>
+          <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+        </div>
+        <div>
+          <div class="font-bold">Baccalauréat</div>
+          <div class="text-secondary text-sm">2023 — Lycée Municipal</div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-3 h-3 rounded-full bg-[#0a1396] mt-1"></div>
+          <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+        </div>
+        <div>
+          <div class="font-bold">Certification MOS Excel</div>
+          <div class="text-secondary text-sm">2023-2024 — PIGIER.CI</div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-3 h-3 rounded-full bg-[#0a1396] mt-1"></div>
+          <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+        </div>
+        <div>
+          <div class="font-bold">Brevet de Technicien Supérieur</div>
+          <div class="text-secondary text-sm">2023-2025 — PIGIER.CI</div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-3 h-3 rounded-full bg-green-500 mt-1 ring-2 ring-green-200"></div>
+        </div>
+        <div>
+          <div class="font-bold">Licence en Réseaux, Génie Logiciel</div>
+          <div class="text-secondary text-sm">2023-2026 — PIGIER.CI</div>
+          <span class="text-xs text-green-600 font-semibold bg-green-100 px-2 py-0.5 rounded-full">En cours</span>
+        </div>
+      </div>
+
+    </div>
+  </fuse-card>
+
+  
+<!-- Carte Camarades -->
+   <fuse-card class="flex flex-col w-full max-w-xl p-8 shadow-2xl">
+      <div class="flex items-center justify-between">
+      <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Mes Camarades</div>
+      <span class="text-xs text-[#0a1396] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">12 contacts</span>
+    </div>
+    <div class="flex flex-col mt-4 gap-3">
+
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
+        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/female-01.jpg" alt="">
+        <div class="flex flex-col flex-auto min-w-0">
+          <span class="font-semibold truncate">Aminata Koné</span>
+          <span class="text-secondary text-sm">Licence GL — même promo</span>
+        </div>
+        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+      </div>
+
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
+        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/male-01.jpg" alt="">
+        <div class="flex flex-col flex-auto min-w-0">
+          <span class="font-semibold truncate">Kouassi Yao</span>
+          <span class="text-secondary text-sm">BTS Informatique</span>
+        </div>
+        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+      </div>
+
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
+        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/female-02.jpg" alt="">
+        <div class="flex flex-col flex-auto min-w-0">
+          <span class="font-semibold truncate">Fatoumata Bamba</span>
+          <span class="text-secondary text-sm">Licence GL — même promo</span>
+        </div>
+        <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+      </div>
+
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
+        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/male-02.jpg" alt="">
+        <div class="flex flex-col flex-auto min-w-0">
+          <span class="font-semibold truncate">Ismaël Traoré</span>
+          <span class="text-secondary text-sm">Master Réseaux</span>
+        </div>
+        <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+      </div>
+
+    </div>
+    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/chat']" style="background-color: #0a1396;">
+      Voir tous les contacts
+    </button>
+  </fuse-card>
+
+
+ <!-- 3ème carte : Mes Compétences -->
+  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
+    <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Mes Compétences</div>
+    <div class="flex flex-col mt-6 gap-4">
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">HTML / CSS</span>
+          <span class="text-sm text-secondary">80%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 80%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Angular</span>
+          <span class="text-sm text-secondary">60%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 60%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Excel</span>
+          <span class="text-sm text-secondary">60%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 60%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Réseaux</span>
+          <span class="text-sm text-secondary">70%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 70%"></div>
+        </div>
+      </div>
+
+    </div>
+    <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #0a1396;">
+      Voir mes projets
+    </button>
+  </fuse-card>
+
+</div>
 
 
 
+             <!-- Carte Activités & Événements -->
+  <fuse-card class="flex flex-col flex-1 min-w-72 p-8 shadow-2xl">
+    <div class="flex items-center justify-between">
+      <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Activités & Événements</div>
+      <span class="text-xs text-[#0a1396] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">3 à venir</span>
+    </div>
+    <div class="flex flex-col mt-4 gap-4">
+
+      <div class="flex items-start gap-4 p-3 rounded-xl bg-blue-50">
+        <div class="flex flex-col items-center bg-[#0a1396] text-white rounded-lg px-3 py-1 min-w-12 text-center">
+          <span class="text-xs font-bold">JUN</span>
+          <span class="text-xl font-extrabold leading-none">05</span>
+        </div>
+        <div>
+          <div class="font-bold">Hackathon PIGIER 2026</div>
+          <div class="text-secondary text-sm">09h00 — Amphithéâtre A</div>
+          <span class="text-xs text-blue-600 font-semibold">Inscrit ✓</span>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4 p-3 rounded-xl bg-gray-50">
+        <div class="flex flex-col items-center bg-gray-400 text-white rounded-lg px-3 py-1 min-w-12 text-center">
+          <span class="text-xs font-bold">JUN</span>
+          <span class="text-xl font-extrabold leading-none">12</span>
+        </div>
+        <div>
+          <div class="font-bold">Conférence Réseaux & Cybersécurité</div>
+          <div class="text-secondary text-sm">14h00 — Salle B2</div>
+          <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4 p-3 rounded-xl bg-gray-50">
+        <div class="flex flex-col items-center bg-gray-400 text-white rounded-lg px-3 py-1 min-w-12 text-center">
+          <span class="text-xs font-bold">JUN</span>
+          <span class="text-xl font-extrabold leading-none">20</span>
+        </div>
+        <div>
+          <div class="font-bold">Remise des diplômes BTS</div>
+          <div class="text-secondary text-sm">10h00 — Hall principal</div>
+          <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
+        </div>
+      </div>
+
+    </div>
+    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/activite']" style="background-color: #0a1396;">
+      Voir tous les événements
+    </button>
+  </fuse-card>
+
+  
+
+<!-- Ligne 3 : Ma Bibliothèque -->
+<fuse-card class="flex flex-col flex-1 min-w-64 p-8 shadow-2xl">
+    <div class="flex items-center justify-between">
+      <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Ma Bibliothèque</div>
+      <button mat-stroked-button [routerLink]="['/bibliotheque']" style="color: #0a1396; border-color: #0a1396;">
+        Tout voir →
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-4 mt-6">
+
+      <div class="flex items-center gap-4 p-4 rounded-2xl bg-blue-50 cursor-pointer hover:shadow-md transition-shadow"
+           [routerLink]="['/bibliotheque/cours']">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-[#0a1396]">
+          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+        </div>
+        <div class="flex flex-col flex-auto">
+          <span class="font-extrabold text-[#0a1396]">Cours</span>
+          <span class="text-secondary text-sm">14 fichiers disponibles</span>
+        </div>
+        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-2xl bg-orange-50 cursor-pointer hover:shadow-md transition-shadow"
+           [routerLink]="['/bibliotheque/sujets']">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-orange-400">
+          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:clipboard-list'"></mat-icon>
+        </div>
+        <div class="flex flex-col flex-auto">
+          <span class="font-extrabold text-orange-500">Sujets</span>
+          <span class="text-secondary text-sm">8 fichiers disponibles</span>
+        </div>
+        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-2xl bg-green-50 cursor-pointer hover:shadow-md transition-shadow"
+           [routerLink]="['/bibliotheque/corriges']">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-green-500">
+          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+        </div>
+        <div class="flex flex-col flex-auto">
+          <span class="font-extrabold text-green-600">Corrigés</span>
+          <span class="text-secondary text-sm">6 fichiers disponibles</span>
+        </div>
+        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-2xl bg-purple-50 cursor-pointer hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-500">
+          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:download'"></mat-icon>
+        </div>
+        <div class="flex flex-col flex-auto">
+          <span class="font-extrabold text-purple-600">Téléchargés</span>
+          <span class="text-secondary text-sm">5 fichiers récents</span>
+        </div>
+        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+      </div>
+
+    </div>
+  </fuse-card>
+
+</div>
+    </div>
+  </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
 
 
 
@@ -97,4 +385,6 @@
 
     
 
-    
+
+
+<!-- User info -->

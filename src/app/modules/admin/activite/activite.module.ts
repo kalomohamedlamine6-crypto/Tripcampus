@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { ActiviteComponent } from 'app/modules/admin/activite/activite.component';
+import { MatIcon } from '@angular/material/icon';
 
 const activiteRoutes: Route[] = [
     {
         path     : '',
-        component: ActiviteComponent
+         
     }
 ];
 
 @NgModule({
     declarations: [
-        ActiviteComponent
+        
     ],
     imports     : [
         RouterModule.forChild(activiteRoutes)

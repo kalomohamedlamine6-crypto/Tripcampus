@@ -10,7 +10,7 @@ import { FuseCardModule } from '@fuse/components/card/card.module';
 import { FuseFindByKeyPipeModule } from '@fuse/pipes/find-by-key/find-by-key.module';
 import { AccueilComponent } from 'app/modules/admin/accueil/accueil.component';
 import { SharedModule } from 'app/shared/shared.module';
-import {MatCardModule} from '@angular/material/card';
+import {MatCardModule} from '@angular/material/card'; 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';

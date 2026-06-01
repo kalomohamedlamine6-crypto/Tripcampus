@@ -1,9 +1,9 @@
-<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto h-full">
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden h-full">
   <div class="flex flex-col flex-auto min-w-0 " >
     <header>
-    <div class="bg-card">
+    <div class=" max-w-full-xl mx-auto min-w-0 shadow-[0_0_10px] " style="background-color:transparent;">
         
-      <div class="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-8 sm:my-2">
+      
         <div class="flex flex-col items-center sm:items-center text-center w-full">
           <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
                  <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 " style="color: #0a1396;"></mat-icon>
@@ -18,7 +18,7 @@
           le mirroir des universités !
           </div>
         </div>
-      </div>
+      
     </div>       
     </header>          
     
@@ -35,8 +35,8 @@
                                      <button matButton="elevated" class="rounded-full  py-3 text-2xl text-white" style="background-color: #0a1396;">Découvrir</button>
                                 </div>
                                 <div class="text-primary text-xl mt-8 ">
-                    <b style="color:gray">Classement</b>
-                </div>
+                                  <b style="color:gray">Classement</b>
+                                </div>
                 <div class="flex flex-col mt-4">
                    <div *ngFor="let ecole of ecoles" class="flex items-center my-2">
                       <div class="max-w-24 w-full">{{ ecole.nom }}</div>
@@ -49,9 +49,9 @@
       <!--second card-->
       <div class="card bg-white rounded-xl shadow p-4">
                                 <div class="flex flex-col sm:flex-row items-center justify-center">
-                                    <div style="color: #0a1396;" class="text-7xl  sm:text-4xl md:text-5xl font-extrabold scale-y-150 font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">PIGIER</div>   
+                                    <div style="color: #0a1396;" class="text-7xl  sm:text-4xl md:text-5xl font-extrabold scale-y-150 font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">{{ ecoleSelectionnee.nom }}</div>   
                                 </div>
-                                <div class="text-xl  sm:text-xl md:text-xl  font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">Abidjan</div>
+                                <div class="text-xl  sm:text-xl md:text-xl  font-optical-sizing: auto; font-weight: 800; font-style: normal;font-variation-settings:GRAD 0; tracking-tight leading-tight text-center">{{ ecoleSelectionnee.ville }}</div>
                                 <div class="flex flex-col flex-auto mt-6">
                                     <div class="flex items-center justify-center">
                             <mat-icon
