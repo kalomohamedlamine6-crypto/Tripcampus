@@ -9,6 +9,7 @@ import { NavigationService } from 'app/core/navigation/navigation.service';
 @Component({
     selector     : 'modern-layout',
     templateUrl  : './modern.component.html',
+    styleUrls    : ['./modern.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class ModernLayoutComponent implements OnInit, OnDestroy
@@ -97,5 +98,21 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
             // Toggle the opened status
             navigation.toggle();
         }
+    }
+
+    /**
+     * Navigate to sign up page
+     */
+    goToSignUp(): void
+    {
+        this._router.navigate(['/sign-up']);
+    }
+
+    /**
+     * Navigate to sign in page
+     */
+    goToSignIn(): void
+    {
+        this._router.navigate(['/sign-in']);
     }
 }

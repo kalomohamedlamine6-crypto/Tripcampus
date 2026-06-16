@@ -49,6 +49,7 @@ export class AuthSignInComponent implements OnInit
             password  : ['admin', Validators.required],
             rememberMe: ['']
         });
+              this._router.navigateByUrl('accueil');
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -73,9 +74,10 @@ export class AuthSignInComponent implements OnInit
         this.showAlert = false;
 
         // Sign in
-        this._authService.signIn(this.signInForm.value)
-            .subscribe(
+        console.log('this.signInForm.value',this.signInForm.value);
+        this._authService.signIn(this.signInForm.value).subscribe(
                 () => {
+                    
 
                     // Set the redirect url.
                     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user

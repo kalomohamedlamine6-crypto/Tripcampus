@@ -1,0 +1,86 @@
+// fuse-horizontal-navigation.modern-horizontal-navigation {
+//     .fuse-horizontal-navigation-wrapper {
+//         .fuse-horizontal-navigation-basic-item,
+//         .fuse-horizontal-navigation-branch-item {
+//             .fuse-horizontal-navigation-item-wrapper {
+//                 transition: background-color 0.2s ease, color 0.2s ease;
+//                 border-radius: 4px;
+
+//                 .fuse-horizontal-navigation-item {
+//                     .fuse-horizontal-navigation-item-title,
+//                     .fuse-horizontal-navigation-item-subtitle,
+//                     .fuse-horizontal-navigation-item-icon {
+//                         color: #1a237e !important;
+//                     }
+//                 }
+
+//                 &:hover {
+//                     background-color: #1a237e;
+//                     .fuse-horizontal-navigation-item-title,
+//                     .fuse-horizontal-navigation-item-subtitle,
+//                     .fuse-horizontal-navigation-item-icon {
+//                         color: #ffffff !important;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+/* Styles  */
+fuse-horizontal-navigation.modern-horizontal-navigation {
+    .fuse-horizontal-navigation-wrapper {
+        /* Cible les éléments de menu directement */
+        .fuse-horizontal-navigation-menu-item {
+            .fuse-horizontal-navigation-item-wrapper {
+                /* couleur par défaut */
+                .fuse-horizontal-navigation-item-title,
+                .fuse-horizontal-navigation-item-subtitle,
+                .fuse-horizontal-navigation-item-icon {
+                    color: #1a237e !important;
+                }
+
+                /* Survol */
+                &:hover {
+                    background-color: #7986cb !important;
+                    .fuse-horizontal-navigation-item-title,
+                    .fuse-horizontal-navigation-item-subtitle,
+                    .fuse-horizontal-navigation-item-icon {
+                        color: #ffffff !important;
+                    }
+                }
+            }
+        }
+
+        /* Rendre l'effet permanent pour l'onglet actif */
+        .fuse-horizontal-navigation-menu-item {
+            /* pour l'onglet active  */
+            .fuse-horizontal-navigation-item-wrapper.fuse-horizontal-navigation-item-active,
+            .fuse-horizontal-navigation-item-wrapper.fuse-horizontal-navigation-item-active-forced {
+                background-color: #1a237e !important;
+                .fuse-horizontal-navigation-item-title,
+                .fuse-horizontal-navigation-item-subtitle,
+                .fuse-horizontal-navigation-item-icon {
+                    color: #ffffff !important;
+                }
+
+                
+            }
+
+            /* pour les onglets fils de l'onglet actif (branch/menu) */
+            .fuse-horizontal-navigation-item-active,
+            .fuse-horizontal-navigation-item-active-forced,
+            .fuse-horizontal-navigation-menu-active,
+            .fuse-horizontal-navigation-menu-active-forced {
+                background-color: #1a237e !important;
+                .fuse-horizontal-navigation-item-title,
+                .fuse-horizontal-navigation-item-subtitle,
+                .fuse-horizontal-navigation-item-icon {
+                    color: #ffffff !important;
+                }
+
+                
+            }
+        }
+    }
+}

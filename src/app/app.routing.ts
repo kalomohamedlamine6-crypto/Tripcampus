@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
+import { AuthRedirectGuard } from 'app/core/auth/guards/auth-redirect.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 
@@ -9,14 +10,14 @@ import { InitialDataResolver } from 'app/app.resolvers';
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 export const appRoutes: Route[] = [
 
-    // Redirect empty path to '/espace'
-    {path: '', pathMatch : 'full', redirectTo: 'accueil'},
+    // Redirect empty path based on authentication status
+    {path: '', pathMatch : 'full', canActivate: [AuthRedirectGuard], children: []},
 
-    // Redirect signed in user to the '/espace'
+    // Redirect signed in user to '/accueil'
     //
     // After the user signs in, the sign in page will redirect the user to the 'signed-in-redirect'
     // path. Below is another redirection for that path to redirect the user to the desired
-    // location. This is a small convenience to keep all main routes together here on this file.
+    // location. This is a small convenience to keep all main routes together here on this  communautee.
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'accueil'},
 
     // Auth routes for guests
@@ -75,11 +76,10 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
-            {path: 'activite', loadChildren: () => import('app/modules/admin/activite/activite.module').then(m => m.ActiviteModule)},
-            {path: 'espace', loadChildren: () => import('app/modules/admin/espace/espace.module').then((m: any) => m.EspaceModule || m.default)},
+            {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
+            {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},
             {path: 'bibliotheque', loadChildren: () => import('app/modules/admin/bibliotheque/bibliotheque.module').then(m => m.BibliothequeModule)},
-            {path: 'fil', loadChildren: () => import('app/modules/admin/fil actu/fil.module').then(m => m.FilModule)},
-            {path: 'chat', loadChildren: () => import('app/modules/admin/chat/chat.module').then(m => m.chatModule)},
+            {path: 'communaute', loadChildren: () => import('app/modules/admin/communaute/communaute.module').then(m => m. CommunauteModule)},
 
         ]
     }

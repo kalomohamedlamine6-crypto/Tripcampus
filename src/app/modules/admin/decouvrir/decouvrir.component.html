@@ -1,39 +1,14 @@
-<div class="flex flex-col flex-auto min-w-0">
-  <header>
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden h-full">
+  <div class="flex flex-col flex-auto min-w-0 ">
 
 
-    <div class=" max-w-full-xl mx-auto min-w-0 shadow-[0_0_10px] border-[#0a1396]" style="background-color: #0a1396;">
-
-
-      <div class="flex flex-col items-center sm:items-center text-center w-full">
-        <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
-          <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 "
-            style="color: white"></mat-icon>
-        </div>
-        <span
-          class="text-white text-7xl scale-y-150 sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
-          <p>TripCampus</p>
-        </span>
-
-
-        <div class="mt-2 text-white text-sm sm:text-base font-medium max-w-2xl text-center">
-          <p>La voix des étudiants,</p>
-          le mirroir des universités !
-        </div>
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <div class="flex-auto border-t -mt-px pt-4 sm:pt-6 bg-transparent shadow-[0_0_10px]">
+  <div class="flex-auto pt-4 sm:pt-6 bg-transparent ">
     <div class=" max-w-screen-xl mx-auto">
       <!-- Avatar and name and button -->
       <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center min-w-0 w-full gap-4">
 
   <!-- Photo -->
-  <div class="w-22 h-22  ring-4" style="ring-color: #0a1396;">
+  <div class="w-22 h-22  ring-4" style="ring-color: #1a237e;">
     <img class="w-full h-full object-cover " src="assets/images/avatars/male-04.jpg" alt="User avatar">
   </div>
 
@@ -61,22 +36,21 @@
       <span class="font-bold text-lg">PIGIER.CI</span>
       <span class="text-gray-500 text-sm">(Abidjan, Plateau)</span>
     </div>
-    <button class="fuse-mat-button-rounded bg-[#0a1396] text-white" mat-flat-button [color]="'primary'">
+    <button class="fuse-mat-button-rounded bg-[#1a237e] text-white" mat-flat-button [color]="'primary'">
       <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:clipboard-list'"></mat-icon>
       <span class="ml-2">Noter</span>
     </button>
   </div>
 
-</div>
-  <div class="sm:col-span-2 md:col-span-4 flex flex-wrap flex-auto p-6 mt-8 bg-card shadow-lg rounded-2xl overflow-hidden bg-gray-200 ">
+    </div>
+  <div class="sm:col-span-2 md:col-span-4 flex flex-wrap p-6 mt-8 bg-card shadow-lg rounded-2xl overflow-hidden bg-gray-200 ">
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 p-6">
 
-
-  <!-- 1ère carte : À propos -->
+  <!-- carte À propos -->
   <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
-    <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">À propos de moi</div>
+    <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">À propos de </div>
     <div class="mt-6 text-secondary">
-      Étudiant en Génie Logiciel passionné par le développement web et les réseaux.
+      Étudiant en Génie Logiciel passionné par le développement d'applications et les réseaux.
       Actuellement en Licence à PIGIER.CI, je cherche à acquérir des compétences solides.
     </div>
     <hr class="w-full border-t my-6">
@@ -94,19 +68,20 @@
         <span class="leading-none">24 Avril 2003</span>
       </div>
     </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #0a1396;">
+    <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #1a237e;">
       Voir la biographie complète
     </button>
   </fuse-card>
 
-  <!-- 2ème carte : Ma Formation -->
-  <fuse-card class="flex flex-col w-full max-w-xl p-8 shadow-2xl">
-    <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Ma Formation</div>
+
+  <!-- carte Ma Formation -->
+  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
+    <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Ma Formation</div>
     <div class="flex flex-col mt-4 gap-4">
 
       <div class="flex items-start gap-3">
         <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-[#0a1396] mt-1"></div>
+          <div class="w-3 h-3 rounded-full bg-[#1a237e] mt-1"></div>
           <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
         </div>
         <div>
@@ -117,7 +92,7 @@
 
       <div class="flex items-start gap-3">
         <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-[#0a1396] mt-1"></div>
+          <div class="w-3 h-3 rounded-full bg-[#1a237e] mt-1"></div>
           <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
         </div>
         <div>
@@ -128,7 +103,7 @@
 
       <div class="flex items-start gap-3">
         <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-[#0a1396] mt-1"></div>
+          <div class="w-3 h-3 rounded-full bg-[#1a237e] mt-1"></div>
           <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
         </div>
         <div>
@@ -151,12 +126,64 @@
     </div>
   </fuse-card>
 
+
+  <!-- carte Mes Compétences -->
+  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
+    <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Mes Compétences</div>
+    <div class="flex flex-col mt-6 gap-4">
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">HTML / CSS</span>
+          <span class="text-sm text-secondary">80%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 80%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Angular</span>
+          <span class="text-sm text-secondary">60%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 60%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Excel</span>
+          <span class="text-sm text-secondary">60%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 60%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Réseaux</span>
+          <span class="text-sm text-secondary">70%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 70%"></div>
+        </div>
+      </div>
+
+    </div>
+    <button class="px-6 mt-8 text-white top-20" mat-flat-button style="background-color: #1a237e;">
+      Voir mes projets
+    </button>
+  </fuse-card>
   
-<!-- Carte Camarades -->
-   <fuse-card class="flex flex-col w-full max-w-xl p-8 shadow-2xl">
+
+  <!-- Carte Camarades -->
+  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
       <div class="flex items-center justify-between">
-      <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Mes Camarades</div>
-      <span class="text-xs text-[#0a1396] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">12 contacts</span>
+      <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Mes Camarades</div>
+      <span class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">12 contacts</span>
     </div>
     <div class="flex flex-col mt-4 gap-3">
 
@@ -197,77 +224,26 @@
       </div>
 
     </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/chat']" style="background-color: #0a1396;">
+    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/chat']" style="background-color: #1a237e;">
       Voir tous les contacts
     </button>
   </fuse-card>
 
-
- <!-- 3ème carte : Mes Compétences -->
-  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
-    <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Mes Compétences</div>
-    <div class="flex flex-col mt-6 gap-4">
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">HTML / CSS</span>
-          <span class="text-sm text-secondary">80%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 80%"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">Angular</span>
-          <span class="text-sm text-secondary">60%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 60%"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">Excel</span>
-          <span class="text-sm text-secondary">60%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 60%"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">Réseaux</span>
-          <span class="text-sm text-secondary">70%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#0a1396] h-2 rounded-full" style="width: 70%"></div>
-        </div>
-      </div>
-
     </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #0a1396;">
-      Voir mes projets
-    </button>
-  </fuse-card>
-
-</div>
 
 
+  <div class="flex flex-col sm:flex-row w-full gap-2">
 
-             <!-- Carte Activités & Événements -->
-  <fuse-card class="flex flex-col flex-1 min-w-72 p-8 shadow-2xl">
+ <!-- Carte Activités & Événements -->
+  <fuse-card class="flex flex-col flex-1 min-w-64 p-8 shadow-2xl">
     <div class="flex items-center justify-between">
-      <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Activités & Événements</div>
-      <span class="text-xs text-[#0a1396] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">3 à venir</span>
+      <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Activités & Événements</div>
+      <span class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">3 à venir</span>
     </div>
     <div class="flex flex-col mt-4 gap-4">
 
       <div class="flex items-start gap-4 p-3 rounded-xl bg-blue-50">
-        <div class="flex flex-col items-center bg-[#0a1396] text-white rounded-lg px-3 py-1 min-w-12 text-center">
+        <div class="flex flex-col items-center bg-[#1a237e] text-white rounded-lg px-3 py-1 min-w-12 text-center">
           <span class="text-xs font-bold">JUN</span>
           <span class="text-xl font-extrabold leading-none">05</span>
         </div>
@@ -297,24 +273,21 @@
         </div>
         <div>
           <div class="font-bold">Remise des diplômes BTS</div>
-          <div class="text-secondary text-sm">10h00 — Hall principal</div>
+          <div class="text-secondary text-sm">10h00 —Au Préau</div>
           <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
         </div>
       </div>
 
     </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/activite']" style="background-color: #0a1396;">
+    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/actualites']" style="background-color: #1a237e;">
       Voir tous les événements
     </button>
   </fuse-card>
-
-  
-
-<!-- Ligne 3 : Ma Bibliothèque -->
-<fuse-card class="flex flex-col flex-1 min-w-64 p-8 shadow-2xl">
+ <!-- Ma Bibliothèque -->
+  <fuse-card class="flex flex-col flex-1 min-w-64 p-8 shadow-2xl">
     <div class="flex items-center justify-between">
-      <div class="text-2xl text-[#0a1396] font-extrabold leading-tight">Ma Bibliothèque</div>
-      <button mat-stroked-button [routerLink]="['/bibliotheque']" style="color: #0a1396; border-color: #0a1396;">
+      <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Ma Bibliothèque</div>
+      <button mat-stroked-button [routerLink]="['/bibliotheque']" style="color: #1a237e; border-color: #1a237e;">
         Tout voir →
       </button>
     </div>
@@ -323,11 +296,11 @@
 
       <div class="flex items-center gap-4 p-4 rounded-2xl bg-blue-50 cursor-pointer hover:shadow-md transition-shadow"
            [routerLink]="['/bibliotheque/cours']">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-[#0a1396]">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-[#1a237e]">
           <mat-icon class="text-white" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
         </div>
         <div class="flex flex-col flex-auto">
-          <span class="font-extrabold text-[#0a1396]">Cours</span>
+          <span class="font-extrabold text-[#1a237e]">Cours</span>
           <span class="text-secondary text-sm">14 fichiers disponibles</span>
         </div>
         <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
@@ -370,8 +343,9 @@
 
     </div>
   </fuse-card>
+  </div>
 
-</div>
+
     </div>
   </div>
 
@@ -386,5 +360,5 @@
     
 
 
-
-<!-- User info -->
+  </div>
+</div>

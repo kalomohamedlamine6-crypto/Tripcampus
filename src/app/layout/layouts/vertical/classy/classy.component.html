@@ -3,7 +3,7 @@
 
 <!-- Navigation -->
 <fuse-vertical-navigation
-    class="mohamed bg-gray-200 text-[#0a1396] print:hidden fuse-vertical-navigation-item-wrapper "
+    class="mohamed bg-gray-200 text-[#1a237e] print:hidden fuse-vertical-navigation-item-wrapper "
     [mode]="isScreenSmall ? 'over' : 'side'"
     [name]="'mainNavigation'"
     [navigation]="navigation.default"
@@ -13,7 +13,7 @@
         <div class="flex items-center w-full p-4 pl-6" style="background-color:gray-200">
             <!-- Logo -->
             <div class="flex justify-center items-start w-8 overflow-hidden">
-                 <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-10 " style="color:#0a1396;"></mat-icon>
+                 <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-10 " style="color:#1a237e;"></mat-icon>
           </div> 
             <!-- Components -->
             <div class="flex items-center ml-auto" >
@@ -57,30 +57,47 @@
 <!-- Wrapper -->
 <div class="flex flex-col flex-auto w-full min-w-0" >
 
-    <!-- Header -->
-    <div class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
-        <!-- Navigation toggle button -->
+     <Header>
+    <div class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden shadow-[0_0_10px] bg-[#1a237e]">
+      
         <button
             mat-icon-button
             (click)="toggleNavigation('mainNavigation')">
             <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
         </button>
-        <!-- Components -->
+      
+      <div class="flex  items-end w-full space-x-3 mt-2 sm:mt-0 sm:ml-auto">
+        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-[#1a237e]">
+          <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-12  relative bottom-0"
+            style="color: white"></mat-icon>
+        </div>
+      
+        <span
+          class="text-white text-3xl scale-y-150 sm:text-3xl md:text-3xl font-extrabold tracking-tight leading-tight text-center">
+          <p>TripCampus</p>
+        </span>
+      </div>
+        
+        <div class="items-center justify-center text-white text-sm sm:text-base font-medium max-w-sm text-center">
+          <p></p>
+        </div>
+      
+        <!-- Components 
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
             <languages></languages>
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
             <search [appearance]="'bar'"></search>
             <shortcuts></shortcuts>
             <messages></messages>
-            <!-- <button
+             <button
                 class="lg:hidden"
                 mat-icon-button
                 (click)="quickChat.toggle()">
                 <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
-            </button> -->
-        </div>
+            </button> 
+        </div>-->
     </div>
-
+     </Header>
     <!-- Content -->
     <div class="flex flex-col flex-auto">
         <!-- *ngIf="true" hack is required here for router-outlet to work correctly.

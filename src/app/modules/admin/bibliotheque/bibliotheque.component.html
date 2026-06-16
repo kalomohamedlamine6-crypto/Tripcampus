@@ -1,37 +1,18 @@
-<div class="flex flex-col flex-auto min-w-0">
-        
- <header>
-   <div class=" max-w-full-xl mx-auto min-w-0 shadow-[0_0_10px] " style="background-color: #0a1396;">
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden h-full">
+  <div class="flex flex-col flex-auto min-w-0 ">
 
+<div class="flex flex-auto p-6 sm:p-10">
 
-      <div class="flex flex-col items-center sm:items-center text-center w-full">
-        <div class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24  overflow-hidden">
-          <mat-icon svgIcon="heroicons_outline:academic-cap" class="icon-size-20 relative bottom-0 "
-            style="color: white"></mat-icon>
-        </div>
-        <span
-          class="text-white text-7xl scale-y-150 sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
-          <p>TripCampus</p>
-        </span>
+ <div class="flex flex-col flex-auto w-full max-w-xs sm:max-w-5xl gap-6 items-center justify-center mx-auto">
 
+    <!--all cards-->    
+   <ng-container >
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-10">
 
-        <div class="mt-2 text-white text-sm sm:text-base font-medium max-w-2xl text-center">
-          <p>La voix des étudiants,</p>
-          le mirroir des universités !
-        </div>
-      </div>
-
-    </div>
-
- </header>
-
-<div class="flex-auto border-t -mt-px pt-4 sm:pt-6 bg-transparent shadow-[0_0_10px]">
-    <div class=" max-w-screen-xl mx-auto">
-
-        <!--First Card-->
-    <ng-container>
+    <!--first Card-->
+    <ng-container>  
         <!-- Course -->
-        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+        <div class="flex flex-col h-auto shadow rounded-2xl overflow-hidden bg-card">
             <div class="flex flex-col p-6">
                 <div class="flex items-center justify-between">
                     <!-- Course category -->
@@ -48,7 +29,7 @@
                     Agriculture, Sylviculture et Halieutique et Sciences Vétérinaires 
                 </div>
                 <div class="mt-0.5 line-clamp-2 text-secondary">
-                    Formation liée à la production agricole, l’élevage, la pêche, la gestion des forêts et la santé animale.
+                    Production agricole, gestion des ressources naturelles et santé animale.
                 </div>
                 <div class="w-12 h-1 my-6 border-t-2"></div>
                 <!-- Course number -->
@@ -65,54 +46,24 @@
                 <div class="flex items-center mt-2 leading-5 text-md text-secondary">
                     <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
                     <div class="ml-1.5">Corrigés</div>
-                </div>   
-
-                            <!--<span class="ml-1"> -->
-                                <!-- Once -->
-                                <!-- <ng-container>once</ng-container> -->
-                                <!-- Twice -->
-                                <!-- <ng-container *ngIf="course.progress.completed === 2">twice</ng-container>
-                                                <ng-container *ngIf="course.progress.completed > 2">{{course.progress.completed}}
-                                                    {{course.progress.completed | i18nPlural: {
-                                                        '=0'   : 'time',
-                                                        '=1'   : 'time',
-                                                        'other': 'times'
-                                                    } }}
-                                                </ng-container> -->
-                            <!--</span> -->
-                        
-                    
+                </div>  
             </div>
         
             <!-- Footer -->
             <div class="flex flex-col w-full mt-auto">
                 <!-- Course progress -->
                 <div class="relative h-0.5">
-                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 100| percent"
                         [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
-                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 100"></mat-progress-bar>
                 </div>
 
                 <!-- Course launch button -->
                 <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
                     <button mat-stroked-button >
-                        <span class="inline-flex items-center">
-
-                         <!--    Not started
+                        <span class="inline-flex items-center"> 
                             <ng-container>
-                                 Never completed 
-                                <ng-container>
-                                    <span>Start</span>
-                                </ng-container>
-                                 Completed before 
-                                <ng-container>
-                                    <span>Start again</span>
-                                </ng-container>
-                            </ng-container>
-
-                             Started -->
-                            <ng-container>
-                                <span>Continue</span>
+                                <span>Commencer</span>
                             </ng-container> 
 
                             <mat-icon class="ml-1.5 icon-size-5"
@@ -123,8 +74,9 @@
             </div>
         </div>
     </ng-container>
+      
 
-    <!--Second Card-->
+    <!--second Card-->
     <ng-container >
         <!-- Course -->
         <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
@@ -132,19 +84,19 @@
                 <div class="flex items-center justify-between">
                     <!-- Course category -->
                     <ng-container>
-                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500'"
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-orange-800 bg-orange-100 dark:text-orange-50 dark:bg-orange-500'"
                          >
                             <!-- {{category.title}} -->
-                            Industrielle
+                            Tertiare
                         </div>
                     </ng-container>
                 </div>
                 <!-- Course title & description -->
                 <div class="mt-4 text-lg font-medium">
-                    Agriculture, Sylviculture et Halieutique et Sciences Vétérinaires 
+                    Commerce, Administration et Droit
                 </div>
                 <div class="mt-0.5 line-clamp-2 text-secondary">
-                    Formation liée à la production agricole, l’élevage, la pêche, la gestion des forêts et la santé animale.
+                    Gestion des entreprises, activités commerciales et affaires juridiques.
                 </div>
                 <div class="w-12 h-1 my-6 border-t-2"></div>
                 <!-- Course number -->
@@ -178,7 +130,7 @@
                     <button mat-stroked-button >
                         <span class="inline-flex items-center"> 
                             <ng-container>
-                                <span>Continue</span>
+                                <span>Commencer</span>
                             </ng-container> 
 
                             <mat-icon class="ml-1.5 icon-size-5"
@@ -189,5 +141,473 @@
             </div>
         </div>
     </ng-container>
-    </div>
+
+    <!--third Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            Industrielle
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                   Ingénierie, Industries de Transformation et Construction
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                    Conception, production industrielle et réalisation d'infrastructures.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--fourth Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-orange-800 bg-orange-100 dark:text-orange-50 dark:bg-orange-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            tertiaire
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                    Lettres et Arts
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                   Langues, littérature, culture et création artistique.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--fifth Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-orange-800 bg-orange-100 dark:text-orange-50 dark:bg-orange-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            tertiaire
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                    Santé et Protection Sociale
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                    Soins de santé, accompagnement social et bien-être.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--sixth Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            Industrielle
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                   Sciences Naturelles, Mathématiques et Statistiques 
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                    Étude des phénomènes naturels, calcul et analyse des données.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--seventh Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-orange-800 bg-orange-100 dark:text-orange-50 dark:bg-orange-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            Tertiaire
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                    Sciences Sociales, Journalisme et Information
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                    Analyse des sociétés, communication et diffusion de l'information.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--eighth Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-orange-800 bg-orange-100 dark:text-orange-50 dark:bg-orange-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            Tertiaire
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                    Services
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                    Tourisme, hôtellerie, transport, sécurité et services à la personne.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--nineth Card-->
+    <ng-container >
+        <!-- Course -->
+        <div class="flex flex-col h-auto justify-between shadow rounded-2xl overflow-hidden bg-card">
+            <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                    <!-- Course category -->
+                    <ng-container>
+                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold 'text-orange-800 bg-orange-100 dark:text-orange-50 dark:bg-orange-500'"
+                         >
+                            <!-- {{category.title}} -->
+                            Tertiaire
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">
+                   Technologies de l’Information et de la Communication
+                </div>
+                <div class="mt-0.5 line-clamp-2 text-secondary">
+                    Informatique, réseaux, télécommunications et solutions numériques.
+                </div>
+                <div class="w-12 h-1 my-6 border-t-2"></div>
+                <!-- Course number -->
+                <div class="flex items-center leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
+                    <div class="ml-1.5">Cours</div>
+                </div>
+                <!-- Course's exo -->
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Sujets</div>
+                </div> 
+
+                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+                    <div class="ml-1.5">Corrigés</div>
+                </div>  
+            </div>
+        
+            <!-- Footer -->
+            <div class="flex flex-col w-full mt-auto">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                    <div class="z-10 absolute inset-x-0 h-6 -mt-3" [matTooltip]="10 / 1000| percent"
+                        [matTooltipPosition]="'above'" [matTooltipClass]="'-mb-0.5'"></div>
+                    <mat-progress-bar class="h-0.5" [value]="(100 * 10) / 1000"></mat-progress-bar>
+                </div>
+
+                <!-- Course launch button -->
+                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                    <button mat-stroked-button >
+                        <span class="inline-flex items-center"> 
+                            <ng-container>
+                                <span>Commencer</span>
+                            </ng-container> 
+
+                            <mat-icon class="ml-1.5 icon-size-5"
+                                [svgIcon]="'heroicons_solid:arrow-sm-right'"></mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+     </div>
+   </ng-container>    
+ 
+ </div> 
+ 
+</div>
 </div>

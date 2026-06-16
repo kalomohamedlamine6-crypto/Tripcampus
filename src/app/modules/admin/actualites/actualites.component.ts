@@ -1,9 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
+
+
 @Component({
-    selector: 'fil',
-    templateUrl: './fil.component.html',
+    selector: 'actualites',
+    templateUrl: './actualites.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class FilComponent {
+export class ActualitesComponent {
 }

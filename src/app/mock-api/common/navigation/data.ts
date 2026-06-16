@@ -1,31 +1,21 @@
-import { FuseNavigationItem } from '@fuse/components/navigation';
+﻿import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id: 'accueil',
-        title: 'Accueil',
-        type: 'basic',
-        icon: 'mat_outline:home',
-        link: '/accueil',
-        
-        
-    },
-
-    {
-        id: 'espace',
+        id: 'decouvrir',
         title: 'Mon Espace',
         type: 'basic',
         icon: 'heroicons_outline:view-boards',
-        link: '/espace'
+        link: '/decouvrir'
     },
 
     
     {
-        id: 'activite',
-        title: 'Activites/Evenements',
+        id: 'actualites',
+        title: 'Actualités',
         type: 'basic',
         icon: 'heroicons_outline:puzzle',
-        link: '/activite'
+        link: '/actualites'
     },
 
     {
@@ -37,77 +27,85 @@ export const defaultNavigation: FuseNavigationItem[] = [
     },
 
     {
-        id: 'fil',
-        title: 'Fil actu',
+        id: 'communaute',
+        title: 'Communaute',
         type: 'basic',
-        icon: 'heroicons_outline:film',
-        link: '/fil'
+        icon: 'heroicons_outline:user-group',
+        link: '/communaute'
     },
 
-    {
-        id: 'chat',
-        title: 'Chat',
-        type: 'basic',
-        icon: 'heroicons_outline:chat-alt-2',
-        link: '/chat'
-    }
-
-
+    
 ];
 
 export const compactNavigation: FuseNavigationItem[] = [
-    {
-        id: 'Mon ',
-        title: 'Example',
-        type: 'basic',
-        icon: 'heroicons_outline:chart-pie',
-        link: '/example'
-    },
+    // {
+    //     id: 'Mon ',
+    //     title: 'Example',
+    //     type: 'basic',
+    //     icon: 'heroicons_outline:chart-pie',
+    //     link: '/example'
+    // },
 
    
-    {
-        id: 'activite',
-        title: 'Activite',
-        type: 'basic',
-        icon: 'heroicons_outline:clipboard-document-list',
-        link: '/activite'
-    }
+    // {
+    //     id: 'actualites',
+    //     title: 'Actualites',
+    //     type: 'basic',
+    //     icon: 'heroicons_outline:clipboard-document-list',
+    //     link: '/actualites'
+    // }
 ];
 
 export const futuristicNavigation: FuseNavigationItem[] = [
-    {
-        id: 'example',
-        title: 'Example',
-        type: 'basic',
-        icon: 'heroicons_outline:chart-pie',
-        link: '/example'
-    },
+    // {
+    //     id: 'example',
+    //     title: 'Example',
+    //     type: 'basic',
+    //     icon: 'heroicons_outline:chart-pie',
+    //     link: '/example'
+    // },
 
    
-    {
-        id: 'activite',
-        title: 'Activite',
-        type: 'basic',
-        icon: 'heroicons_outline:clipboard-document-list',
-        link: '/activite'
-    }
+    // {
+    //     id: 'actualites',
+    //     title: 'Actualites',
+    //     type: 'basic',
+    //     icon: 'heroicons_outline:clipboard-document-list',
+    //     link: '/actualites'
+    // }
 ];
 
 export const horizontalNavigation: FuseNavigationItem[] = [
     {
-        id: 'example',
-        title: 'Example',
+        id: 'decouvrir',
+        title: 'Découvrir',
         type: 'basic',
-        icon: 'heroicons_outline:chart-pie',
-        link: '/example'
+        icon: 'heroicons_outline:view-boards',
+        link: '/decouvrir'
     },
 
     
     {
-        id: 'activite',
-        title: 'Activite',
+        id: 'actualites',
+        title: 'Actualités',
         type: 'basic',
-        icon: 'heroicons_outline:clipboard-document-list',
-        link: '/activite'
+        icon: 'heroicons_outline:puzzle',
+        link: '/actualites'
+    },
+
+    {
+        id: 'bibliotheque',
+        title: 'Bibliotheque',
+        type: 'basic',
+        icon: 'heroicons_outline:collection',
+        link: '/bibliotheque'
+    },
+
+    {
+        id: 'communaute',
+        title: 'Communaute',
+        type: 'basic',
+        icon: 'heroicons_outline:user-group',
+        link: '/communaute'
     }
 ];

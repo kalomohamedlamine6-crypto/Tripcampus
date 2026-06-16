@@ -1,31 +1,63 @@
-<div class="flex flex-col items-center justify-center w-full h-full">
-    <div class="w-full max-w-3xl">
-        <div class="max-w-none mx-auto prose prose-sm">
+<div class="flex flex-col items-center justify-center w-full h-full bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="w-full max-w-3xl px-4 text-center">
+        <!-- Logo and Title -->
+        <div class="mb-8">
             <img
-                class="w-20"
+                class="w-24 mx-auto mb-6"
                 src="assets/images/logo/logo.svg"
                 alt="Logo image">
-            <h1>Landing Module</h1>
-            <p>
-                This can be the landing or the welcome page of your application. If you have an SSR (Server Side Rendering) setup, or if you don't need to have Search engine
-                visibility and optimizations, you can even use this page as your primary landing page.
-            </p>
-            <p>
-                This is a separate "module", it has its own directory and routing setup and also it's completely separated from the actual application. This is also a simple example of
-                a multiple applications setup that uses the same codebase. You can have different entry points and essentially have different applications within the same codebase.
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Bienvenue sur TripCampus</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-2">
+                La plateforme collaborative pour explorer le monde et apprendre ensemble
             </p>
         </div>
-        <div>
-            <a
-                class="mt-8"
-                mat-flat-button
+
+        <!-- Features Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
+            <div class="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+                <mat-icon class="text-4xl text-blue-600 mb-4" [svgIcon]="'heroicons_outline:users'"></mat-icon>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Communauté</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Connectez-vous avec des voyageurs du monde entier</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+                <mat-icon class="text-4xl text-green-600 mb-4" [svgIcon]="'heroicons_outline:book-open'"></mat-icon>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Apprentissage</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Partagez vos expériences et connaissances</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+                <mat-icon class="text-4xl text-purple-600 mb-4" [svgIcon]="'heroicons_outline:chat-bubble-left-right'"></mat-icon>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Discussions</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Échangez en temps réel avec la communauté</p>
+            </div>
+        </div>
+
+        <!-- Authentication Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <button
+                mat-raised-button
                 [color]="'primary'"
-                [routerLink]="'/dashboards/project'">
-                <span>Launch the App</span>
+                (click)="goToSignUp()"
+                class="px-8 py-3 text-lg font-semibold">
+                <span>Inscription</span>
                 <mat-icon
                     class="ml-2 icon-size-5"
                     [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
-            </a>
+            </button>
+            <button
+                mat-stroked-button
+                [color]="'primary'"
+                (click)="goToSignIn()"
+                class="px-8 py-3 text-lg font-semibold">
+                <span>Connexion</span>
+                <mat-icon
+                    class="ml-2 icon-size-5"
+                    [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
+            </button>
         </div>
+
+        <!-- Login Info -->
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-8">
+            Vous êtes déjà membre? <span class="font-semibold text-blue-600 dark:text-blue-400 cursor-pointer hover:underline" (click)="goToSignIn()">Connectez-vous ici</span>
+        </p>
     </div>
 </div>
