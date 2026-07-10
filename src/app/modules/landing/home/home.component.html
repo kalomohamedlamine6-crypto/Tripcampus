@@ -1,63 +1,103 @@
-<div class="flex flex-col items-center justify-center w-full h-full bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
-    <div class="w-full max-w-3xl px-4 text-center">
-        <!-- Logo and Title -->
-        <div class="mb-8">
-            <img
-                class="w-24 mx-auto mb-6"
-                src="assets/images/logo/logo.svg"
-                alt="Logo image">
-            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Bienvenue sur TripCampus</h1>
-            <p class="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                La plateforme collaborative pour explorer le monde et apprendre ensemble
-            </p>
-        </div>
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto">
+    <div class="relative z-10 w-full text-center bg-indigo-100">
+        <!-- page accueillante -->
 
-        <!-- Features Section -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
-            <div class="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
-                <mat-icon class="text-4xl text-blue-600 mb-4" [svgIcon]="'heroicons_outline:users'"></mat-icon>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Communauté</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Connectez-vous avec des voyageurs du monde entier</p>
-            </div>
-            <div class="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
-                <mat-icon class="text-4xl text-green-600 mb-4" [svgIcon]="'heroicons_outline:book-open'"></mat-icon>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Apprentissage</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Partagez vos expériences et connaissances</p>
-            </div>
-            <div class="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
-                <mat-icon class="text-4xl text-purple-600 mb-4" [svgIcon]="'heroicons_outline:chat-bubble-left-right'"></mat-icon>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Discussions</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Échangez en temps réel avec la communauté</p>
-            </div>
+        <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary text-[#1a237e] text-xs font-semibold mt-8 mb-4 border border-primary/10">
+            ✨Orientation Supérieur en Côte d'Ivoire✨
         </div>
-
-        <!-- Authentication Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <button
-                mat-raised-button
-                [color]="'primary'"
-                (click)="goToSignUp()"
-                class="px-8 py-3 text-lg font-semibold">
-                <span>Inscription</span>
-                <mat-icon
-                    class="ml-2 icon-size-5"
-                    [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
-            </button>
-            <button
-                mat-stroked-button
-                [color]="'primary'"
-                (click)="goToSignIn()"
-                class="px-8 py-3 text-lg font-semibold">
-                <span>Connexion</span>
-                <mat-icon
-                    class="ml-2 icon-size-5"
-                    [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
-            </button>
-        </div>
-
-        <!-- Login Info -->
-        <p class="text-sm text-gray-500 dark:text-gray-400 mt-8">
-            Vous êtes déjà membre? <span class="font-semibold text-blue-600 dark:text-blue-400 cursor-pointer hover:underline" (click)="goToSignIn()">Connectez-vous ici</span>
+        <h1
+            class="text-3xl md:text-3xl lg:text-[44px] font-extrabold text-foreground leading-[1.1] tracking-tight mb-3">
+            Trouvez la formation qui <span class="text-[#1a237e]">correspond</span> à votre avenir.
+        </h1>
+        <p class="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
+            Comparez les établissements, explorez les filières et obtenez des recommandations personnalisées grâce à
+            notre quiz d'orientation
         </p>
+
+        <!-- barre de recherche -->
+        <!-- <div class="relative w-xl mx-auto mb-4 flex flex-0 justify-center">
+            <input type="text" placeholder="Rechercher une formation, un établissement ou un mot-clé"
+                class="w-1/2 pl-10 pr-14 py-4 text-sm bg-white rounded-2xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1a237e]/20 focus:border-[#1a237e] placeholder:text-muted-foreground transition-all duration-200"> 
+            <button class=" inset-y-0 right-2 my-0.5 mx-0 px-3 bg-[#1a237e] text-white text-sm font-semibold rounded-xl hover:bg-indigo-800 transition-colors duration-150 flex items-center gap-1.5">
+                <mat-icon [svgIcon]="'heroicons_outline:search'"></mat-icon>
+            </button> 
+    </div> -->
+
+        <!-- Tag chap-->
+        <!-- <div class="flex flex-wrap justify-center gap-2 mb-10">
+        <button *ngFor="let tag of TagChap" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-border text-md font-medium text-foreground hover:text-primary hover:bg-secondary transition-all duration-150 shadow-sm">
+            <mat-icon [svgIcon]="tag.icon"></mat-icon>
+            {{ tag.label }}
+        </button>
+       </div>     -->
+        <div class="flex flex-wrap justify-center gap-2 mb-4">
+            <button mat-stroked-button
+                class="px-8 py-2 rounded-full bg-white shadow-md text-md font-semibold cursor-pointer  hover:border-[#1a237e] hover:text-[#1a237e] hover:bg-[#1a237e]/10 transition-all duration-150">
+                📊Comparer
+            </button>
+            <button mat-stroked-button (click)="openQuiz()"
+                class="px-8 py-2 rounded-full bg-white shadow-md text-md font-semibold cursor-pointer hover:border-[#1a237e] hover:text-[#1a237e] hover:bg-[#1a237e]/10 transition-all duration-150">
+                ❔Quiz d'Or
+            </button>
+        </div>
+
+        <!-- stats -->
+        <div class="relative z-10 mt-6 w-full max-w-2xl mx-auto">
+            <div
+                class="grid grid-cols-3 divide-x divide-border bg-white border-border rounded-2xl shadow-sm overflow-hidden mb-3">
+                <div *ngFor="let stat of Stats" class="flex flex-col items-center py-5 px-4 gap-0.5">
+                    <span class="text-3xl font-extrabold text-[#1a237e]">{{ stat.value }}</span>
+                    <span class="text-md text-muted-foreground font-medium">{{ stat.label }}</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TOUT CE DONT VOUS AVEZ BESOIN -->
+        <div class="border-y border-border py-16 px-4" style="background-color: whitesmoke;">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-foreground text-center mb-6">
+                    Tout ce dont vous avez besoin pour choisir.
+                </h2>
+
+                <!-- features -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div *ngFor="let feature of Features"
+                        class="border border-border rounded-2xl p-2 hover:border-[#1a237e]/30 hover:shadow-md transition-all duration-200">
+                        <mat-icon [svgIcon]="feature.icon"
+                            class="text-[#1a237e] w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center mb-2"></mat-icon>
+                        <h3 class=" text-xl text-base font-semibold text-foreground mb-2">{{ feature.title }}</h3>
+                        <p class="text-md text-muted-foreground leading-relaxed">{{ feature.description }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--filières preview-->
+        <div class="py-16 px-4 max-w-5xl mx-auto w-full">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-foreground">Filières à forte insertion en Côte d'Ivoire</h2>
+                <a href="/filieres" class="text-primary font-semibold hover:underline">Voir toutes les filières</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div *ngFor="let filiere of Filieres"
+                    class="border border-border rounded-2xl bg-white p-4 hover:border-[#1a237e]/20 hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between">
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <mat-icon [svgIcon]="filiere.icon"
+                                class="text-[#1a237e] w-8 h-8 rounded-xl bg-indigo-100 flex items-center justify-center"></mat-icon>
+                            <h3 class="text-lg font-semibold text-foreground">{{ filiere.label }}</h3>
+                        </div>
+                        <span class="text-lg font-bold text-[#1a237e]">{{ filiere.taux }}</span>
+                    </div>
+                    <p
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-50 text-[#1a237e] text-xs font-semibold mt-6 mb-1 border border-primary/10 text-muted-foreground leading-relaxed">
+                        {{ filiere.description }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

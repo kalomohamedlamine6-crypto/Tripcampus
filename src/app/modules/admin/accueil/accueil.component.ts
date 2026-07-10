@@ -38,7 +38,7 @@ ecoleSelectionnee = {
   ]
 };
 
-// Génère un tableau de 5 étoiles : [true, true, true, true, false] par exemple
+//  tableau de 5 étoiles 
 get etoiles(): string[] {
   
   return Array.from({ length: 5 }, (_, i) => {

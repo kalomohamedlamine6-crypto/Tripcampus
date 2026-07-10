@@ -1,17 +1,13 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'decouvrir',
-    templateUrl: './decouvrir.component.html',
-    encapsulation: ViewEncapsulation.None,
+  selector: 'comparateur',
+  templateUrl: './comparateur.component.html',
+    
 })
-export class DecouvrirComponent {
-    selectedEtablissement: any = null;
-    sidebarOpened = false;
-    taskForm: FormGroup;
-
-    etablissements = [
+export class ComparateurComponent {
+ 
+     etablissements = [
         {
             statut: 'Public',
             name: 'Université Virtuelle de Côte d’Ivoire',
@@ -94,46 +90,4 @@ export class DecouvrirComponent {
         },
     ];
 
-    constructor(private _formBuilder: FormBuilder) {
-        this.taskForm = this._formBuilder.group({
-            title: [''],
-            completed: [false],
-            dueDate: [null],
-            notes: ['']
-        });
-    }
-
-    openDetails(item: any): void {
-        this.selectedEtablissement = item;
-        this.sidebarOpened = true;
-        this.taskForm.patchValue({
-            title: item.name,
-            completed: item.completed,
-            dueDate: item.dueDate,
-            notes: item.notes
-        });
-    }
-
-    closeSidebar(): void {
-        this.sidebarOpened = false;
-    }
-
-    toggleCompleted(): void {
-        const completed = !this.taskForm.get('completed').value;
-        this.taskForm.get('completed').setValue(completed);
-        if (this.selectedEtablissement) {
-            this.selectedEtablissement.completed = completed;
-        }
-    }
-
-    saveForm(): void {
-        if (this.selectedEtablissement) {
-            this.selectedEtablissement.name = this.taskForm.get('title').value;
-            this.selectedEtablissement.completed = this.taskForm.get('completed').value;
-            this.selectedEtablissement.dueDate = this.taskForm.get('dueDate').value;
-            this.selectedEtablissement.notes = this.taskForm.get('notes').value;
-            this.sidebarOpened = false;
-        }
-    }
 }
-

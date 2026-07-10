@@ -3,7 +3,7 @@
 export const defaultNavigation: FuseNavigationItem[] = [
     {
         id: 'decouvrir',
-        title: 'Mon Espace',
+        title: 'Découvrir',
         type: 'basic',
         icon: 'heroicons_outline:view-boards',
         link: '/decouvrir'
@@ -11,27 +11,27 @@ export const defaultNavigation: FuseNavigationItem[] = [
 
     
     {
+        id: 'formation-filiere',
+        title: 'Formation-filiere',
+        type: 'basic',
+        icon: 'heroicons_outline:collection',
+        link: '/formation-filiere'
+    },
+
+    {
+        id: 'parcours',
+        title: 'Parcours',
+        type: 'basic',
+        icon: 'heroicons_outline:user-group',
+        link: '/parcours'
+    },
+
+    {
         id: 'actualites',
         title: 'Actualités',
         type: 'basic',
         icon: 'heroicons_outline:puzzle',
         link: '/actualites'
-    },
-
-    {
-        id: 'bibliotheque',
-        title: 'Bibliotheque',
-        type: 'basic',
-        icon: 'heroicons_outline:collection',
-        link: '/bibliotheque'
-    },
-
-    {
-        id: 'communaute',
-        title: 'Communaute',
-        type: 'basic',
-        icon: 'heroicons_outline:user-group',
-        link: '/communaute'
     },
 
     
@@ -80,32 +80,26 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         id: 'decouvrir',
         title: 'Découvrir',
         type: 'basic',
-        icon: 'heroicons_outline:view-boards',
+        icon: 'heroicons_outline:office-building',
         link: '/decouvrir'
     },
 
+
+    {
+        id: 'formation-filiere',
+        title: 'Formationfiliere',
+        type: 'basic',
+        icon: 'heroicons_outline:view-grid',
+        link: '/Formation-filiere'
+    },
+
     
+
     {
         id: 'actualites',
         title: 'Actualités',
         type: 'basic',
-        icon: 'heroicons_outline:puzzle',
+        icon: 'heroicons_outline:bell',
         link: '/actualites'
     },
-
-    {
-        id: 'bibliotheque',
-        title: 'Bibliotheque',
-        type: 'basic',
-        icon: 'heroicons_outline:collection',
-        link: '/bibliotheque'
-    },
-
-    {
-        id: 'communaute',
-        title: 'Communaute',
-        type: 'basic',
-        icon: 'heroicons_outline:user-group',
-        link: '/communaute'
-    }
 ];

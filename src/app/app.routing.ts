@@ -1,17 +1,18 @@
 import { Route } from '@angular/router';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
-import { AuthRedirectGuard } from 'app/core/auth/guards/auth-redirect.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
+
 
 // @formatter:off
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 export const appRoutes: Route[] = [
 
-    // Redirect empty path based on authentication status
-    {path: '', pathMatch : 'full', canActivate: [AuthRedirectGuard], children: []},
+    // Redirect empty path to home landing page
+    {path: '', pathMatch : 'full', redirectTo: 'home'},
+   
 
     // Redirect signed in user to '/accueil'
     //
@@ -19,6 +20,7 @@ export const appRoutes: Route[] = [
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this  communautee.
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'accueil'},
+
 
     // Auth routes for guests
     {
@@ -38,6 +40,22 @@ export const appRoutes: Route[] = [
         ]
     },
 
+    // Landing routes
+    {
+        path: '',
+        component  : LayoutComponent,
+        data: {
+            layout: 'modern'
+        },
+        children   : [
+            {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
+              {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
+            {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
+            {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},
+            {path: 'formation-filiere', loadChildren: () => import('app/modules/admin/formation-filiere/formation-filiere.module').then(m => m.FormationFiliereModule)},
+        ]
+    },
+
     // Auth routes for authenticated users
     {
         path: '',
@@ -53,17 +71,10 @@ export const appRoutes: Route[] = [
         ]
     },
 
-    // Landing routes
-    {
-        path: '',
-        component  : LayoutComponent,
-        data: {
-            layout: 'empty'
-        },
-        children   : [
-            {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
-        ]
-    },
+   
+
+    // Alias route for Filières
+    {path: 'filieres', pathMatch: 'full', redirectTo: 'formation-filiere'},
 
     // Admin routes
     {
@@ -78,9 +89,7 @@ export const appRoutes: Route[] = [
             {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
             {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
             {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},
-            {path: 'bibliotheque', loadChildren: () => import('app/modules/admin/bibliotheque/bibliotheque.module').then(m => m.BibliothequeModule)},
-            {path: 'communaute', loadChildren: () => import('app/modules/admin/communaute/communaute.module').then(m => m. CommunauteModule)},
-
+            {path: 'formation-filiere', loadChildren: () => import('app/modules/admin/formation-filiere/formation-filiere.module').then(m => m.FormationFiliereModule)},
         ]
     }
 ];

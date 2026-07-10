@@ -49,7 +49,7 @@ export class AuthSignInComponent implements OnInit
             password  : ['admin', Validators.required],
             rememberMe: ['']
         });
-              this._router.navigateByUrl('accueil');
+            //   this._router.navigateByUrl('home');
     }
 
     // -----------------------------------------------------------------------------------------------------

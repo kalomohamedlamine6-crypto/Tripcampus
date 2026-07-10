@@ -15,23 +15,23 @@ import { Route, RouterModule } from '@angular/router';
 import { FuseCardModule } from '@fuse/components/card';
 import { FuseFindByKeyPipeModule } from '@fuse/pipes/find-by-key';
 import { TranslocoModule } from '@ngneat/transloco';
-import { BibliothequeComponent } from 'app/modules/admin/bibliotheque/bibliotheque.component';
+import { FormationFiliereComponent } from 'app/modules/admin/formation-filiere/formation-filiere.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
-const bibliothequeRoutes: Route[] = [
+const FormationFiliereRoutes: Route[] = [
     {
         path: '',
-        component: BibliothequeComponent
+        component: FormationFiliereComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        BibliothequeComponent
+        FormationFiliereComponent,
     ],
     imports: [
-        RouterModule.forChild(bibliothequeRoutes),
+        RouterModule.forChild(FormationFiliereRoutes),
         FuseCardModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -61,5 +61,5 @@ const bibliothequeRoutes: Route[] = [
         MatTabsModule,
     ]
 })
-export class BibliothequeModule {
+export class FormationFiliereModule {
 }

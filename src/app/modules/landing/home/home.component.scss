@@ -1,0 +1,36 @@
+::ng-deep {
+    .transparent-tabs {
+        .mat-mdc-tab-labels {
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .mat-mdc-tab {
+            min-width: 140px !important;
+            font-weight: 600;
+            
+            .mdc-tab__content {
+                color: #374151;
+            }
+
+            &.mat-mdc-tab-active {
+                .mdc-tab__content {
+                    color: #1a237e;
+                }
+            }
+        }
+
+        .mdc-tab-indicator__content {
+            border-color: #1a237e !important;
+        }
+    }
+
+    .dark {
+        .transparent-tabs .mat-mdc-tab .mdc-tab__content {
+            color: #d1d5db;
+        }
+
+        .transparent-tabs .mat-mdc-tab.mat-mdc-tab-active .mdc-tab__content {
+            color: #60a5fa;
+        }
+    }
+}

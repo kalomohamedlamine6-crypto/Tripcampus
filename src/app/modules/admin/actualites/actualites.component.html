@@ -1,68 +1,104 @@
 <div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden h-full">
   <div class="flex flex-col flex-auto min-w-0 ">
 
-  <div class="flex-auto w-full pt-4 sm:pt-6 bg-transparent">
-    <div class=" max-w-screen-xl mx-auto">
-      
-      <div class="flex items-center justify-between">
-        <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Activités & Événements dans votre établissement</div>
-        <span class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full items-center justify-center flex">
-          <mat-icon class="icon-size-5 mr-1" [svgIcon]="'heroicons_outline:bell'"></mat-icon>
-          3 à venir
-         </span>
-      </div>
-      <div class="flex flex-col mt-4 gap-4">
+        
+          
+            <div>
+              <h2 class="items-center justify-center text-3xl font-semibold tracking-tight"></h2>
+            </div>
+          
+        
+    <mat-drawer-container class="flex-auto h-full">
 
-      <div class="flex items-start gap-4 p-3 rounded-xl bg-blue-100">
-        <div class="flex flex-col items-center bg-[#1a237e] text-white rounded-lg px-3 py-1 min-w-12 text-center">
-          <span class="text-xs font-bold">JUN</span>
-          <span class="text-xl font-extrabold leading-none">05</span>
-        </div>
-        <div>
-          <div class="font-bold">Hackathon PIGIER 2026</div>
-          <div class="text-secondary text-sm">09h00 — Amphithéâtre A</div>
-          <span class="text-xs text-blue-600 font-semibold">Inscrit ✓</span>
-        </div>
-      </div>
+      <mat-drawer class="w-90 dark:bg-gray-900 border-r" [autoFocus]="false" [mode]="drawerMode" [opened]="drawerOpened"
+        #matDrawer>
 
-      <div class="flex items-start gap-4 p-3 rounded-xl bg-white">
-        <div class="flex flex-col items-center bg-gray-400 text-white rounded-lg px-3 py-1 min-w-12 text-center">
-          <span class="text-xs font-bold">JUN</span>
-          <span class="text-xl font-extrabold leading-none">12</span>
+        <div class="p-6 border-b bg-card">
+          <div class="flex items-center justify-between">
+            <div class="text-xl text-[#1a237e] font-extrabold leading-tight">A LA UNE</div>
+            <span
+              class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full items-center justify-center flex">
+              <mat-icon class="icon-size-4 mr-1" [svgIcon]="'heroicons_outline:bell'"></mat-icon>
+              <span>{{ newsList.length }} actualités</span>
+            </span>
+          </div>
         </div>
-        <div>
-          <div class="font-bold">Conférence Réseaux & Cybersécurité</div>
-          <div class="text-secondary text-sm">14h00 — Salle B2</div>
-          <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
-        </div>
-      </div>
 
-      <div class="flex items-start gap-4 p-3 rounded-xl bg-white">
-        <div class="flex flex-col items-center bg-gray-400 text-white rounded-lg px-3 py-1 min-w-12 text-center">
-          <span class="text-xs font-bold">JUN</span>
-          <span class="text-xl font-extrabold leading-none">20</span>
-        </div>
-        <div>
-          <div class="font-bold">Remise des diplômes BTS</div>
-          <div class="text-secondary text-sm">10h00 —Au Préau</div>
-          <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
-        </div>
-      </div>
+        <div class="flex flex-col p-4 gap-4 overflow-y-auto">
+          <ng-container *ngFor="let news of newsList; let i = index; trackBy: trackByFn">
 
-      <div class="flex items-center justify-between">
-        <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Activités & Événements dans d'autres établissements</div>
-        <span class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full items-center justify-center flex">
-          <mat-icon class="icon-size-5 mr-1" [svgIcon]="'heroicons_outline:bell'"></mat-icon>
-          aucun
-         </span>
-      </div>
-      <div class="flex flex-col items-center justify-center text-secondary font-medium py-8">
-        <mat-icon class="icon-size-10 mb-2" [svgIcon]="'heroicons_outline:bell'"></mat-icon>
-        <span class="text-lg">Aucun événement à venir dans d'autres établissements.</span>
-      </div>
- 
-    </div>
-  </div>
+            <div class="flex items-start gap-4 p-3 rounded-xl cursor-pointer transition-all duration-200 border"
+              [ngClass]="{
+                        'bg-blue-100 border-[#1a237e] shadow-sm': currentNewsIndex === i,
+                        'bg-white dark:bg-gray-800 border-transparent hover:bg-gray-50 dark:hover:bg-gray-700': currentNewsIndex !== i
+                    }" (click)="selectNews(i)">
+
+              <div
+                class="flex flex-col items-center text-white rounded-lg px-3 py-1 min-w-12 text-center transition-colors"
+                [ngClass]="currentNewsIndex === i ? 'bg-[#1a237e]' : 'bg-gray-400'">
+                <span class="text-xs font-bold">{{ news.dateMonth }}</span>
+                <span class="text-xl font-extrabold leading-none">{{ news.dateDay }}</span>
+              </div>
+
+              <div class="flex-auto min-w-0">
+                <div class="font-bold text-sm truncate">{{ news.icon }} {{ news.title }}</div>
+                <div class="text-secondary text-xs font-medium line-clamp-2 mt-0.5">{{ news.summary }}</div>
+              </div>
+            </div>
+
+          </ng-container>
+        </div>
+      </mat-drawer>
+
+      <mat-drawer-content class="flex flex-col overflow-hidden bg-gray-50 dark:bg-gray-900">
+
+        <div class="lg:hidden flex flex-0 items-center py-3 px-4 border-b bg-card">
+          <button mat-icon-button (click)="matDrawer.toggle()">
+            <mat-icon [svgIcon]="'heroicons_outline:view-list'"></mat-icon>
+          </button>
+          <h2 class="ml-2.5 text-md font-bold text-[#1a237e] truncate">
+            {{ newsList[currentNewsIndex]?.title }}
+          </h2>
+        </div>
+
+        <div class="flex-auto overflow-y-auto p-6 sm:p-10" cdkScrollable>
+          <div class="prose prose-sm max-w-3xl mx-auto p-6 sm:p-10 rounded-2xl shadow-sm border bg-card">
+
+            <div class="text-xs font-semibold text-secondary mb-2">
+              Publié le {{ newsList[currentNewsIndex]?.dateDay }} {{ newsList[currentNewsIndex]?.dateMonthFull }}
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#1a237e] mb-4">
+              {{ newsList[currentNewsIndex]?.icon }} {{ newsList[currentNewsIndex]?.title }}
+            </h1>
+
+            <hr class="my-4 border-gray-200">
+
+            <div class="mt-6 text-md leading-relaxed text-slate-700 dark:text-slate-300"
+              [innerHTML]="newsList[currentNewsIndex]?.content">
+            </div>
+          </div>
+        </div>
+
+        <div class="z-10 sticky flex p-4 bottom-4 justify-center">
+          <div class="flex items-center p-1.5 rounded-full shadow-lg bg-[#1a237e] text-white gap-2">
+            <button mat-flat-button class="!bg-transparent !text-white" [disabled]="currentNewsIndex === 0"
+              (click)="prevNews()">
+              ← Précédent
+            </button>
+            <span class="text-sm font-medium px-2">{{ currentNewsIndex + 1 }} / {{ newsList.length }}</span>
+            <button mat-flat-button class="!bg-transparent !text-white"
+              [disabled]="currentNewsIndex === newsList.length - 1" (click)="nextNews()">
+              Suivant →
+            </button>
+          </div>
+        </div>
+
+      </mat-drawer-content>
+    </mat-drawer-container>
+
+
+
 
 
   </div>

@@ -1,364 +1,178 @@
-<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden h-full">
-  <div class="flex flex-col flex-auto min-w-0 ">
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent">
 
-
-  <div class="flex-auto pt-4 sm:pt-6 bg-transparent ">
-    <div class=" max-w-screen-xl mx-auto">
-      <!-- Avatar and name and button -->
-      <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center min-w-0 w-full gap-4">
-
-  <!-- Photo -->
-  <div class="w-22 h-22  ring-4" style="ring-color: #1a237e;">
-    <img class="w-full h-full object-cover " src="assets/images/avatars/male-04.jpg" alt="User avatar">
-  </div>
-
-  <!-- Nom / Contact -->
-  <div class="flex flex-col min-w-0">
-    <span class="font-bold text-lg">Brian Hughes</span>
-    <span class="text-gray-500">London, UK</span>
-    <span class="text-gray-500">brian@email.com</span>
-    <span class="text-gray-500">+30 00 00 00 00</span>
-  </div>
-
-  <!-- Séparateur visible seulement en grand écran -->
-  <div class="hidden lg:flex h-8 mx-4 border-l-2"></div>
-
-  <!-- Infos perso -->
-  <div class="flex flex-col gap-0">
-    <p class="text-gray-500">23 ans</p>
-    <p class="text-gray-500">Ivoirien</p>
-    <p class="text-gray-500">Célibataire sans enfant</p>
-  </div>
-
-  <!-- Université + Bouton → poussé à droite en grand écran, normal en mobile -->
-  <div class="flex items-center space-x-3 mt-2 sm:mt-0 sm:ml-auto">
-    <div class="flex flex-col">
-      <span class="font-bold text-lg">PIGIER.CI</span>
-      <span class="text-gray-500 text-sm">(Abidjan, Plateau)</span>
-    </div>
-    <button class="fuse-mat-button-rounded bg-[#1a237e] text-white" mat-flat-button [color]="'primary'">
-      <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:clipboard-list'"></mat-icon>
-      <span class="ml-2">Noter</span>
-    </button>
-  </div>
+    <!-- Header -->
+    <div
+        class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
+        <!-- Loader -->
+        <div class="absolute inset-x-0 bottom-0">
+            <!-- <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar> -->
+        </div>
+        <!-- Title -->
+        <div class="text-4xl font-extrabold tracking-tight">Catalogue des établissements</div>
+        <!-- Actions -->
+        <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
+            <!-- Search -->
+            <mat-form-field
+                class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded min-w-64 border border-border rounded-2xl hover:border-[#1a237e]">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                <input matInput [autocomplete]="'on'" [placeholder]="'Rechercher un établissement'">
+            </mat-form-field>
+        </div>
 
     </div>
-  <div class="sm:col-span-2 md:col-span-4 flex flex-wrap p-6 mt-8 bg-card shadow-lg rounded-2xl overflow-hidden bg-gray-200 ">
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 p-6">
+    <!-- Main -->
+    <div class="flex flex-auto overflow-hidden">
 
-  <!-- carte À propos -->
-  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
-    <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">À propos de </div>
-    <div class="mt-6 text-secondary">
-      Étudiant en Génie Logiciel passionné par le développement d'applications et les réseaux.
-      Actuellement en Licence à PIGIER.CI, je cherche à acquérir des compétences solides.
+        <!-- school list -->
+        <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
+
+            <div class="grid">
+                <!-- Header -->
+                <div class="inventory-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5 grid-cols-[56px_120px_minmax(0,2fr)_140px_140px_64px_72px]"
+                    matSort matSortDisableClear>
+                    <div></div>
+                    <div class="hidden md:block" [mat-sort-header]="'statut'">
+                        Statut
+                    </div>
+                    <div class="hidden sm:block">Name</div>
+                    <div class="hidden sm:block" [mat-sort-header]="'note'">
+                        note
+                    </div>
+                    <div class="hidden lg:block" [mat-sort-header]="'Ville / Commune'">
+                        Ville / Commune
+                    </div>
+
+                    <div class="hidden sm:block">Details</div>
+                </div>
+
+                <!-- Rows -->
+                <div *ngFor="let item of etablissements"
+                    class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5 grid-cols-[56px_120px_minmax(0,2fr)_140px_140px_64px_72px]">
+                    <div class="flex items-center">
+                        <div
+                            class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border bg-indigo-50 text-indigo-700 font-semibold">
+                            {{ item.name.charAt(0) }}
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block truncate">
+                        {{ item.statut }}
+                    </div>
+
+                    <div class="truncate">
+                        {{ item.name }}
+                    </div>
+
+                    <div class="hidden sm:flex items-center gap-1 text-amber-500">
+                        <ng-container *ngFor="let star of [].constructor(5); let i = index">
+                            <mat-icon class="icon-size-5"
+                                [svgIcon]="i < item.note ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
+                        </ng-container>
+                    </div>
+
+                    <div class="hidden lg:flex items-center">
+                        <div class="min-w-4">{{ item.Ville }}</div>
+                    </div>
+
+                    <div>
+                        <button class="min-w-10 min-h-7 h-7 px-2 leading-6" mat-stroked-button
+                            (click)="openDetails(item)">
+                            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--fiche établissement-->
+        <aside *ngIf="sidebarOpened"
+            class="w-full sm:w-[420px] border-l border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-950 overflow-hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between py-6 px-6 border-b border-gray-200 dark:border-gray-800">
+                    <div>
+                        <div class="text-lg font-semibold">Fiche établissement</div>
+                        <div class="text-sm text-gray-500">Détails</div>
+                    </div>
+                    <button mat-icon-button (click)="closeSidebar()">
+                        <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                    </button>
+                </div>
+
+                <form class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto" [formGroup]="taskForm">
+
+                    <div class="grid gap-6 sm:grid-cols-[160px_minmax(0,1fr)] mb-8 items-start">
+                        <!-- Image -->
+                        <div
+                            class="rounded-3xl overflow-hidden border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-900">
+                            <img class="w-full h-44 sm:h-full object-cover"
+                                [src]="selectedEtablissement?.image || 'assets/images/avatars'"
+                                alt="Photo de l'établissement">
+                        </div>
+                        <!-- Nom et Note -->
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-2xl font-semibold leading-tight">{{ selectedEtablissement?.name }}
+                                </div>
+                                <div
+                                    class="flex flex-wrap items-center gap-2 mt-3 text-sm text-gray-600 dark:text-gray-400">
+                                    <div class="flex items-center gap-1">
+                                        <ng-container *ngFor="let star of [].constructor(5); let i = index">
+                                            <mat-icon class="icon-size-5 text-amber-500"
+                                                [svgIcon]="i < selectedEtablissement?.note ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
+                                        </ng-container>
+                                    </div>
+                                    <span class="font-medium">{{ selectedEtablissement?.note }} / 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                        <!-- Détails -->
+                        <div class="mt-6 space-y-5">
+                            <div class="grid gap-3 sm:grid-cols-2">
+                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
+                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Statut</div>
+                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.statut }}</div>
+                                </div>
+                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
+                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Localisation</div>
+                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.Ville }}</div>
+                                </div>
+                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
+                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Type</div>
+                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.type }}</div>
+                                </div>
+                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
+                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Fondé en</div>
+                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.founded }}</div>
+                                </div>
+                            </div>
+                            <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
+                                <div class="text-xs uppercase tracking-[0.2em] text-gray-500">À propos</div>
+                                <p class="mt-2 text-sm leading-7 text-secondary">{{ selectedEtablissement?.description }}</p>
+                            </div>
+
+                            <div class="grid gap-2 grid-cols-1 sm:grid-cols-2">
+                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
+                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Adresse</div>
+                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.address }}</div>
+                                </div>
+                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
+                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Téléphone</div>
+                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.phone }}</div>
+                                </div>
+                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
+                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Site web</div>
+                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.website }}</div>
+                                </div>
+                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
+                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Email</div>
+                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.email }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </form>
+            </div>
+        </aside>
     </div>
-    <hr class="w-full border-t my-6">
-    <div class="flex flex-col gap-4">
-      <div class="flex items-center">
-        <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
-        <span class="leading-none">Abidjan, Côte d'Ivoire</span>
-      </div>
-      <div class="flex items-center">
-        <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
-        <span class="leading-none">PIGIER.CI — Licence GL</span>
-      </div>
-      <div class="flex items-center">
-        <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:cake'"></mat-icon>
-        <span class="leading-none">24 Avril 2003</span>
-      </div>
-    </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button style="background-color: #1a237e;">
-      Voir la biographie complète
-    </button>
-  </fuse-card>
-
-
-  <!-- carte Ma Formation -->
-  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
-    <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Ma Formation</div>
-    <div class="flex flex-col mt-4 gap-4">
-
-      <div class="flex items-start gap-3">
-        <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-[#1a237e] mt-1"></div>
-          <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
-        </div>
-        <div>
-          <div class="font-bold">Baccalauréat</div>
-          <div class="text-secondary text-sm">2023 — Lycée Municipal</div>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-3">
-        <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-[#1a237e] mt-1"></div>
-          <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
-        </div>
-        <div>
-          <div class="font-bold">Certification MOS Excel</div>
-          <div class="text-secondary text-sm">2023-2024 — PIGIER.CI</div>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-3">
-        <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-[#1a237e] mt-1"></div>
-          <div class="w-0.5 h-full bg-gray-200 mt-1"></div>
-        </div>
-        <div>
-          <div class="font-bold">Brevet de Technicien Supérieur</div>
-          <div class="text-secondary text-sm">2023-2025 — PIGIER.CI</div>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-3">
-        <div class="flex flex-col items-center">
-          <div class="w-3 h-3 rounded-full bg-green-500 mt-1 ring-2 ring-green-200"></div>
-        </div>
-        <div>
-          <div class="font-bold">Licence en Réseaux, Génie Logiciel</div>
-          <div class="text-secondary text-sm">2023-2026 — PIGIER.CI</div>
-          <span class="text-xs text-green-600 font-semibold bg-green-100 px-2 py-0.5 rounded-full">En cours</span>
-        </div>
-      </div>
-
-    </div>
-  </fuse-card>
-
-
-  <!-- carte Mes Compétences -->
-  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
-    <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Mes Compétences</div>
-    <div class="flex flex-col mt-6 gap-4">
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">HTML / CSS</span>
-          <span class="text-sm text-secondary">80%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 80%"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">Angular</span>
-          <span class="text-sm text-secondary">60%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 60%"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">Excel</span>
-          <span class="text-sm text-secondary">60%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 60%"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span class="text-sm font-medium">Réseaux</span>
-          <span class="text-sm text-secondary">70%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-[#1a237e] h-2 rounded-full" style="width: 70%"></div>
-        </div>
-      </div>
-
-    </div>
-    <button class="px-6 mt-8 text-white top-20" mat-flat-button style="background-color: #1a237e;">
-      Voir mes projets
-    </button>
-  </fuse-card>
-  
-
-  <!-- Carte Camarades -->
-  <fuse-card class="flex flex-col max-w-80 w-full p-8 shadow-2xl">
-      <div class="flex items-center justify-between">
-      <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Mes Camarades</div>
-      <span class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">12 contacts</span>
-    </div>
-    <div class="flex flex-col mt-4 gap-3">
-
-      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
-        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/female-01.jpg" alt="">
-        <div class="flex flex-col flex-auto min-w-0">
-          <span class="font-semibold truncate">Aminata Koné</span>
-          <span class="text-secondary text-sm">Licence GL — même promo</span>
-        </div>
-        <span class="w-2 h-2 rounded-full bg-green-500"></span>
-      </div>
-
-      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
-        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/male-01.jpg" alt="">
-        <div class="flex flex-col flex-auto min-w-0">
-          <span class="font-semibold truncate">Kouassi Yao</span>
-          <span class="text-secondary text-sm">BTS Informatique</span>
-        </div>
-        <span class="w-2 h-2 rounded-full bg-green-500"></span>
-      </div>
-
-      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
-        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/female-02.jpg" alt="">
-        <div class="flex flex-col flex-auto min-w-0">
-          <span class="font-semibold truncate">Fatoumata Bamba</span>
-          <span class="text-secondary text-sm">Licence GL — même promo</span>
-        </div>
-        <span class="w-2 h-2 rounded-full bg-gray-300"></span>
-      </div>
-
-      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
-        <img class="w-10 h-10 rounded-full object-cover" src="assets/images/avatars/male-02.jpg" alt="">
-        <div class="flex flex-col flex-auto min-w-0">
-          <span class="font-semibold truncate">Ismaël Traoré</span>
-          <span class="text-secondary text-sm">Master Réseaux</span>
-        </div>
-        <span class="w-2 h-2 rounded-full bg-gray-300"></span>
-      </div>
-
-    </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/chat']" style="background-color: #1a237e;">
-      Voir tous les contacts
-    </button>
-  </fuse-card>
-
-    </div>
-
-
-  <div class="flex flex-col sm:flex-row w-full gap-2">
-
- <!-- Carte Activités & Événements -->
-  <fuse-card class="flex flex-col flex-1 min-w-64 p-8 shadow-2xl">
-    <div class="flex items-center justify-between">
-      <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Activités & Événements</div>
-      <span class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full">3 à venir</span>
-    </div>
-    <div class="flex flex-col mt-4 gap-4">
-
-      <div class="flex items-start gap-4 p-3 rounded-xl bg-blue-50">
-        <div class="flex flex-col items-center bg-[#1a237e] text-white rounded-lg px-3 py-1 min-w-12 text-center">
-          <span class="text-xs font-bold">JUN</span>
-          <span class="text-xl font-extrabold leading-none">05</span>
-        </div>
-        <div>
-          <div class="font-bold">Hackathon PIGIER 2026</div>
-          <div class="text-secondary text-sm">09h00 — Amphithéâtre A</div>
-          <span class="text-xs text-blue-600 font-semibold">Inscrit ✓</span>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-4 p-3 rounded-xl bg-gray-50">
-        <div class="flex flex-col items-center bg-gray-400 text-white rounded-lg px-3 py-1 min-w-12 text-center">
-          <span class="text-xs font-bold">JUN</span>
-          <span class="text-xl font-extrabold leading-none">12</span>
-        </div>
-        <div>
-          <div class="font-bold">Conférence Réseaux & Cybersécurité</div>
-          <div class="text-secondary text-sm">14h00 — Salle B2</div>
-          <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
-        </div>
-      </div>
-
-      <div class="flex items-start gap-4 p-3 rounded-xl bg-gray-50">
-        <div class="flex flex-col items-center bg-gray-400 text-white rounded-lg px-3 py-1 min-w-12 text-center">
-          <span class="text-xs font-bold">JUN</span>
-          <span class="text-xl font-extrabold leading-none">20</span>
-        </div>
-        <div>
-          <div class="font-bold">Remise des diplômes BTS</div>
-          <div class="text-secondary text-sm">10h00 —Au Préau</div>
-          <span class="text-xs text-orange-600 font-semibold">Non inscrit</span>
-        </div>
-      </div>
-
-    </div>
-    <button class="px-6 mt-8 text-white" mat-flat-button [routerLink]="['/actualites']" style="background-color: #1a237e;">
-      Voir tous les événements
-    </button>
-  </fuse-card>
- <!-- Ma Bibliothèque -->
-  <fuse-card class="flex flex-col flex-1 min-w-64 p-8 shadow-2xl">
-    <div class="flex items-center justify-between">
-      <div class="text-2xl text-[#1a237e] font-extrabold leading-tight">Ma Bibliothèque</div>
-      <button mat-stroked-button [routerLink]="['/bibliotheque']" style="color: #1a237e; border-color: #1a237e;">
-        Tout voir →
-      </button>
-    </div>
-
-    <div class="flex flex-col gap-4 mt-6">
-
-      <div class="flex items-center gap-4 p-4 rounded-2xl bg-blue-50 cursor-pointer hover:shadow-md transition-shadow"
-           [routerLink]="['/bibliotheque/cours']">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-[#1a237e]">
-          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
-        </div>
-        <div class="flex flex-col flex-auto">
-          <span class="font-extrabold text-[#1a237e]">Cours</span>
-          <span class="text-secondary text-sm">14 fichiers disponibles</span>
-        </div>
-        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-      </div>
-
-      <div class="flex items-center gap-4 p-4 rounded-2xl bg-orange-50 cursor-pointer hover:shadow-md transition-shadow"
-           [routerLink]="['/bibliotheque/sujets']">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-orange-400">
-          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:clipboard-list'"></mat-icon>
-        </div>
-        <div class="flex flex-col flex-auto">
-          <span class="font-extrabold text-orange-500">Sujets</span>
-          <span class="text-secondary text-sm">8 fichiers disponibles</span>
-        </div>
-        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-      </div>
-
-      <div class="flex items-center gap-4 p-4 rounded-2xl bg-green-50 cursor-pointer hover:shadow-md transition-shadow"
-           [routerLink]="['/bibliotheque/corriges']">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-green-500">
-          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
-        </div>
-        <div class="flex flex-col flex-auto">
-          <span class="font-extrabold text-green-600">Corrigés</span>
-          <span class="text-secondary text-sm">6 fichiers disponibles</span>
-        </div>
-        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-      </div>
-
-      <div class="flex items-center gap-4 p-4 rounded-2xl bg-purple-50 cursor-pointer hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-500">
-          <mat-icon class="text-white" [svgIcon]="'heroicons_solid:download'"></mat-icon>
-        </div>
-        <div class="flex flex-col flex-auto">
-          <span class="font-extrabold text-purple-600">Téléchargés</span>
-          <span class="text-secondary text-sm">5 fichiers récents</span>
-        </div>
-        <mat-icon class="text-gray-400" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-      </div>
-
-    </div>
-  </fuse-card>
-  </div>
-
-
-    </div>
-  </div>
-
-
-      
-
-
-
-
-
-
-    
-
-
-  </div>
-</div>

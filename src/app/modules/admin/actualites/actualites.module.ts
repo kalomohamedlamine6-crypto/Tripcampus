@@ -1,6 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Route, RouterModule } from '@angular/router';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { Route, RouterModule } from '@angular/router';
 import { ActualitesComponent } from './actualites.component';
 
 const actualitesRoutes: Route[] = [
@@ -15,8 +19,12 @@ const actualitesRoutes: Route[] = [
         ActualitesComponent
     ],
     imports     : [
+        CommonModule,
         RouterModule.forChild(actualitesRoutes),
-        MatIconModule
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        ScrollingModule
     ]
 })
 export class ActualitesModule

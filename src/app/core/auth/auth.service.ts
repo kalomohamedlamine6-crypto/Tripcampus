@@ -37,7 +37,7 @@ export class AuthService
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
+    // @ Public methodseu
     // -----------------------------------------------------------------------------------------------------
 
     /**
@@ -94,7 +94,7 @@ export class AuthService
     /**
      * Sign in using the access token
      */
-    signInUsingToken(): Observable<any>
+        signInUsingToken(): Observable<any>
     {
         // Renew token
         return this._httpClient.post('api/auth/refresh-access-token', {
@@ -106,7 +106,10 @@ export class AuthService
                 of(false)
             ),
             switchMap((response: any) => {
-
+                if (!response || !response.accessToken) {
+                this._authenticated = false;
+                return of(false);
+                }
                 // Store the access token in the local storage
                 this.accessToken = response.accessToken;
 
@@ -131,6 +134,7 @@ export class AuthService
         localStorage.removeItem('accessToken');
 
         // Set the authenticated flag to false
+        // this._authenticated = false;
         this._authenticated = false;
 
         // Return the observable

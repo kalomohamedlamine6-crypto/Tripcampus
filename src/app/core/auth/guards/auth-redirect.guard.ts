@@ -7,16 +7,14 @@ import { AuthService } from 'app/core/auth/auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthRedirectGuard implements CanActivate
-{
+export class AuthRedirectGuard implements CanActivate {
     /**
      * Constructor
      */
     constructor(
         private _authService: AuthService,
         private _router: Router
-    )
-    {
+    ) {
     }
 
     /**
@@ -28,18 +26,15 @@ export class AuthRedirectGuard implements CanActivate
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
-    {
+    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         return this._authService.check()
             .pipe(
                 map((authenticated) => {
-                    if ( authenticated )
-                    {
+                    if (authenticated) {
                         // User is authenticated, redirect to dashboard
                         return this._router.parseUrl('/accueil');
                     }
-                    else
-                    {
+                    else {
                         // User is not authenticated, redirect to home (landing)
                         return this._router.parseUrl('/home');
                     }
