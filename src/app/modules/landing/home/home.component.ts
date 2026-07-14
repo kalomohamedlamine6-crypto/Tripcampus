@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { QuizComponent } from './Quiz/quiz.component';
+import { ComparateurComponent } from './Comparateur/comparateur.component';
 
 @Component({
     selector: 'landing-home',
@@ -28,11 +29,14 @@ Features: { icon: string; title: string; description: string }[] = [
   { icon: "heroicons_solid:trending-up", title: "Taux d'insertion", description: "Accédez aux données d'insertion professionnelle pour chaque formation" },
 ];
 
-Filieres: { label: string; taux: string; description: string; icon: string }[] = [
-  { label: "Informatique", taux: "+75%", description: " Domaine: Numérique & Technologie", icon: "heroicons_solid:chip" },
-  { label: "Marketing", taux: "+65%", description: "Domaine: Management, Gestion et Commerce", icon: "heroicons_solid:shopping-cart" },
-  { label: "Finance", taux: "+65%", description: "Domaine: Management, Gestion et Commerce", icon: "heroicons_solid:cash" },
-  { label: "Génie Civil et BTP", taux: "+70%", description: "Domaine: Ingénierie et métiers techniques", icon: "heroicons_solid:office-building" },
+Filieres: { label: string; taux: string; description: string; icon: string; badgeColor: string }[] = [
+  { label: "Technologies de l'information", taux: "92%", description: "Développement, cybersécurité et transformation digitale", icon: "heroicons_solid:chip", badgeColor: "bg-blue-50 border-blue-200 text-blue-700"},
+  { label: "Finance & Banque", taux: "80%", description: "Expertise comptable, gestion d'actifs et services financiers", icon: "heroicons_solid:trending-up", badgeColor: "bg-green-50 border-green-200 text-green-700" },
+  { label: "Energie & Ressource", taux: "85%", description: "Secteur pétrolier, énergies renouvelables et exploitation minière", icon: "heroicons_solid:lightning-bolt", badgeColor: "bg-orange-50 border-orange-200 text-orange-700" },
+  { label: "Agronomie", taux: "70%", description: "Production agricole, valorisation et export des produits", icon: "heroicons_solid:support", badgeColor: "bg-accent-50 border-accent-200 text-accent-700"},
+  { label: "Construction & BTP", taux: "82%", description: "Ingénierie civile, architecture et gestion de projets", icon: "heroicons_solid:library", badgeColor: "bg-amber-50 border-amber-200 text-amber-700" },
+  { label: "Santé & Bien-être", taux: "87%", description: "Médecine, pharmacie, infirmerie et services de santé", icon: "heroicons_solid:heart", badgeColor: "bg-red-50 border-red-200 text-red-700" },
+
 ]
 constructor(private _dialog: MatDialog) {}
 
@@ -41,6 +45,14 @@ constructor(private _dialog: MatDialog) {}
             width: '600px',
             maxWidth: '95vw',
             panelClass: 'quiz-modal-panel'
+        });
+      }
+
+      openComparateur(): void {
+        this._dialog.open(ComparateurComponent, {
+            width: '600px',
+            maxWidth: '95vw',
+            panelClass: 'comparateur-modal-panel'
         });
       }
 }

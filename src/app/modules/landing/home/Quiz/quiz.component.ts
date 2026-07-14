@@ -6,14 +6,14 @@ import { MatDialogRef } from '@angular/material/dialog';
     selector: 'Quiz',
     templateUrl: './quiz.component.html',
     
-})
+})  
 export class QuizComponent implements OnInit {
     
     horizontalStepperForm: FormGroup;
 
     constructor(
         private _formBuilder: FormBuilder,
-        private _dialogRef: MatDialogRef<QuizComponent> 
+        private _dialogRef: MatDialogRef<QuizComponent>  
     ) {}
 
     ngOnInit(): void {

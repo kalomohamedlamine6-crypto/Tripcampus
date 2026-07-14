@@ -13,11 +13,12 @@ import { LandingHomeComponent } from 'app/modules/landing/home/home.component';
 import { landingHomeRoutes } from 'app/modules/landing/home/home.routing';
 import { QuizComponent } from 'app/modules/landing/home/Quiz/quiz.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ComparateurComponent } from './Comparateur/comparateur.component';
 
 @NgModule({
     declarations: [
         LandingHomeComponent,
-        QuizComponent
+        QuizComponent,ComparateurComponent
     ],
     imports     : [
         RouterModule.forChild(landingHomeRoutes),

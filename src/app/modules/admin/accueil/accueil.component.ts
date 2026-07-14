@@ -8,7 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 export class AccueilComponent
 {
-    // accueil.component.ts
+  // accueil.component.ts
 ecoles = [
   { nom: "PIGIER", note: 7.5 },
   { nom: "IUA", note: 7.0 },
