@@ -35,7 +35,7 @@ export class globalService {
 
     ) { }
 
-    etablissements = [
+    etablissements : ibra[] = [
         {
             statut: 'Public',
             name: 'Université Virtuelle de Côte d’Ivoire',
