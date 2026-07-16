@@ -1,42 +1,150 @@
-<div class="p-8 bg-white rounded-2xl shadow-sm">
-    <h2 class="text-2xl font-bold text-[#1a237e] mb-4">Comparateur d’établissements</h2>
- 
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
-        <div *ngFor="let etab of etablissementsCriteres"
-            class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition">
-            <div class="flex items-center justify-between mb-3">
-                <h3 class="font-semibold text-lg">{{ etab.name }}</h3>
-                <button
-                    type="button"
-                    class="px-3 py-1 rounded-full text-sm font-medium"
-                    [ngClass]="etablissementsCriteres.includes(etab) ? 'bg-[#1a237e] text-white' : 'bg-gray-100 text-gray-700'"
-                    (click)="toggleSelection(etab)"
-                >
-                    {{ etablissementsCriteres.includes(etab) ? 'Retirer' : 'Sélectionner' }}
-                </button>
-            </div>
-
-            <p class="text-sm text-gray-600 mb-1">{{ etab.category }}</p>
-            <p class="text-sm text-gray-600 mb-1">{{ etab.ville }}</p>
-            <p class="text-sm text-gray-600 mb-1">{{ etab.type }}</p>
-            <p class="text-sm text-gray-600">{{ etab.description }}</p>
-        </div>
+<div class="max-w-5xl mx-auto px-4 py-12 md:py-16">
+  
+  <!-- En-tête -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+    <div>
+     
+      <h1 class="text-3xl md:text-4xl font-extrabold text-foreground mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+        Comparer les établissements
+      </h1>
+      <p class="text-muted-foreground text-sm max-w-lg">
+        Séletionnez jusqu'à {{ MAX_COMPARE }} établissements pour analyser les spécificités.
+      </p>
     </div>
 
-    <div *ngIf="selectedForComparison.length > 0" class="border-t pt-6"> 
+    <!-- Sélecteur d'établissement -->
+    <div class="w-full md:w-auto min-w-[250px]">
+      <div *ngIf="isLimitReached; else selectDropdown" class="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-3 py-2.5 rounded-xl font-medium">
+        Limite de {{ MAX_COMPARE }} écoles atteinte. Retirez-en une pour en ajouter une autre.
+      </div>
+      
+      <ng-template #selectDropdown>
+        <div class="relative">
+          <select
+            (change)="onAddEtablissement($event)"
+            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm font-semibold text-foreground bg-white border border-border rounded-xl cursor-pointer hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
+            <option value="" disabled selected hidden>
+                Ajouter un établissement
+            </option>
+            <option *ngFor="let etab of availableEtablissements" [value]="etab.name">
+              {{etab.name }} ({{etab.ville }})
+            </option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground">
+            <mat-icon svgIcon="heroicons_solid:plus"></mat-icon>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- État vide -->
+  <div *ngIf="selectedEtablissements.length === 0; else tableSection" class="text-center py-16 bg-white border border-dashed border-border rounded-2xl">
+    <mat-icon svgIcon="heroicons_solid:building-2" class="mx-auto text-muted-foreground/40 mb-4"></mat-icon>
+    <p class="text-muted-foreground text-sm mb-4">Sélectionnez des établissements.</p>
+  </div>
+
+  <!-- Tableau de comparaison -->
+  <ng-template #tableSection>
+    <div class="bg-white rounded-2xl border border-border overflow-hidden shadow-sm">
+      
+      <!-- En-tête des colonnes -->
+      <div class="grid" [ngClass]="getGridColsClass()" class="grid border-b border-border">
+        <div class="p-5 flex items-end pb-5">
+          
+        </div>
         
- 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            <div
-                *ngFor="let etab of selectedForComparison"
-                class="border border-[#1a237e]/20 rounded-xl p-4 bg-indigo-50"
-            >
-                <h4 class="font-semibold text-lg mb-2">{{ etablissements.name }}</h4>
-                <p class="text-sm text-gray-700"><strong>Statut :</strong> {{ etab.statut }}</p>
-                <p class="text-sm text-gray-700"><strong>Note :</strong> {{ etab.note }}</p>
-                <p class="text-sm text-gray-700"><strong>Insertion :</strong> {{ etab.insertPro || 'À venir' }}</p>
-                <p class="text-sm text-gray-700"><strong>Prix :</strong> {{ etab.prixMoy || 'À venir' }}</p>
-            </div>
+        <div *ngFor="let etab of selectedEtablissements" class="p-5 flex flex-col items-center gap-2 border-l border-border relative group">
+          <!-- Bouton supprimer -->
+          <button
+            (click)="onRemoveEtablissement(etab.name)"
+            class="absolute top-3 right-3 p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+            [title]="'Retirer ' + etab.name">
+
+            <mat-icon svgIcon="heroicons_solid:trash" ></mat-icon>
+          </button>
+
+          <!-- Avatar de l'école -->
+          <img [src]="etab.image" [alt]="etab.name" class="w-14 h-14 rounded-2xl object-cover shadow-sm mt-2">
+
+          <div class="text-center">
+            <p class="text-sm font-bold text-foreground line-clamp-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+              {{ etab.name }}
+            </p>
+            <p class="text-[11px] text-muted-foreground">{{ etab.ville }}</p>
+          </div>
+          
+          <!-- Note Étoiles -->
+          <div class="flex items-center gap-0.5">
+            <mat-icon 
+              *ngFor="let star of getStarsArray(etab.note)" 
+              svgIcon="heroicons_solid:star"  
+              class="text-amber-400 fill-amber-400">
+            </mat-icon>
+           
+            <mat-icon 
+              *ngFor="let emptyStar of getStarsArray(5 - (+etab.note))" 
+              svgIcon="heroicons_solid:star" 
+              class="text-gray-200 fill-gray-200">
+            </mat-icon>
+          </div>
         </div>
+      </div>
+
+      <!-- Lignes de données -->
+      <div *ngFor="let row of compareRows; let idx = index" 
+           class="grid border-b border-border last:border-0"
+           [ngClass]="[getGridColsClass(), idx % 2 === 1 ? 'bg-background' : '']">
+        
+        <!-- Label du critère -->
+        <div class="p-4 flex items-center">
+          <span class="text-sm font-medium text-foreground">{{ row.label }}</span>
+        </div>
+        
+        <!-- Valeur pour chaque établissement -->
+        <div *ngFor="let etab of selectedEtablissements" class="p-4 flex items-center justify-center border-l border-border text-center">
+          
+          <!-- critère -->
+          <ng-container [ngSwitch]="row.key">
+            
+            <span *ngSwitchCase="'prixMoy'" class="text-sm font-semibold text-foreground">
+              {{ etab.prixMoy }}
+            </span>
+
+            <span *ngSwitchCase="'statut'" 
+                  class="px-3 py-1 rounded-full text-xs font-semibold"
+                  [ngClass]="etab.statut === 'Public' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-violet-50 text-violet-700 border border-violet-200'">
+              {{ etab.statut }}
+            </span>
+
+            <span *ngSwitchCase="'type'" class="text-xs text-muted-foreground">
+              {{ etab.type }}
+            </span>
+
+            <span *ngSwitchCase="'ville'" class="text-sm text-foreground">
+              {{ etab.ville }}
+            </span>
+
+            <span *ngSwitchCase="'insertPro'" 
+                  class="px-2.5 py-1 rounded-lg text-xs font-semibold"
+                  [ngClass]="{
+                    'bg-emerald-50 text-emerald-700 border border-emerald-200': etab.insertPro === 'Excellente' || etab.insertPro === 'Très bonne',
+                    'bg-amber-50 text-amber-700 border border-amber-200': etab.insertPro === 'Bonne'
+                  }">
+              {{ etab.insertPro }}
+            </span>
+
+            <span *ngSwitchCase="'founded'" class="text-sm text-muted-foreground font-mono">
+              {{ etab.founded }}
+            </span>
+
+          </ng-container>
+
+        </div>
+      </div>
+
     </div>
+  </ng-template>
+
+
 </div>

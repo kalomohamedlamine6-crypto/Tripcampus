@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { globalService } from '../serviceGlobal/serviceGlobal.service';
+import { GlobalService } from '../serviceGlobal/serviceGlobal.service';
 
 @Component({
     selector: 'decouvrir',
@@ -107,7 +107,7 @@ export class DecouvrirComponent implements OnInit {
     // ];
     constructor(
         private _formBuilder: FormBuilder,
-        private globalServive: globalService
+        private globalServive: GlobalService
     ) {
 
     }

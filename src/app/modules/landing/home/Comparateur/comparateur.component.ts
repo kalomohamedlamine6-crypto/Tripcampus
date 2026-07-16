@@ -1,66 +1,103 @@
 import { Component, OnInit } from '@angular/core';
-import { globalService } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
-// import { globalService } from '../serviceGlobal/serviceGlobal.service';
+import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
 
-// import { Etablissement, etablissementsData } from '../../../../shared/models/etablissement.model';
+
+
+//     selectedEtablissement: any = null;
+//     etablissements: any;
+//     etablissementsCriteres: any[]=[]
+
+
+// constructor(
+//         private GlobalService: GlobalService
+//     ) {
+
+//     }
+// ngOnInit(): void {
+//         // throw new Error('Method not implemented.');
+//         this.etablissements = this.GlobalService.etablissements
+
+//         this.verifetablissementCriteres()
+
+//         console.log("etablissementsCriteres :",this.etablissementsCriteres);
+        
+//     }
+
+
+
+
+// }
 
 @Component({
-    selector: 'comparateur',
-    templateUrl: './comparateur.component.html',
+  selector: 'Comparateur',
+  templateUrl: './comparateur.component.html',
 })
 export class ComparateurComponent implements OnInit{
+  
+  readonly MAX_COMPARE = 3;
+  
+  // Tableau des établissements sélectionnés 
+  selectedEtablissements: Etablissement[] = [];
+  
+  // Critères de comparaison
+  compareRows: CompareRow[] = [
+    { key: 'prixMoy', label: 'Frais de scolarité' },
+    { key: 'statut', label: 'Statut' },
+    { key: 'type', label: 'Type d\'établissement' },
+    { key: 'ville', label: 'Localisation' },
+    { key: 'insertPro', label: 'Insertion Pro.' },
+    { key: 'founded', label: 'Année de création' }
+  ];
 
-    selectedEtablissement: any = null;
-    etablissements: any;
-    etablissementsCriteres: any[]=[]
+  constructor(public GlobalService: GlobalService) {}
 
-
-constructor(
-        private globalServive: globalService
-    ) {
-
+  ngOnInit(): void {
+    if (this.GlobalService.etablissements.length >= 2) {
+      this.selectedEtablissements = this.GlobalService.etablissements.slice(0, 2);
     }
-ngOnInit(): void {
-        // throw new Error('Method not implemented.');
-        this.etablissements = this.globalServive.etablissements
+  }
 
-        this.verifetablissementCriteres()
+  //établissements pas encore affichés dans le comparateur
+  get availableEtablissements(): Etablissement[] {
+    return this.GlobalService.etablissements.filter(
+      e => !this.selectedEtablissements.some(selected => selected.name === e.name)
+    );
+  }
 
-        console.log("etablissementsCriteres :",this.etablissementsCriteres);
-        
+  // Vérifie si la limite d'écoles à comparer est atteinte
+  get isLimitReached(): boolean {
+    return this.selectedEtablissements.length >= this.MAX_COMPARE;
+  }
+
+  // Ajoute un établissement sélectionné depuis le dropdown
+  onAddEtablissement(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const name = selectElement.value;
+    if (!name) return;
+
+    const etablissement = this.GlobalService.etablissements.find(e => e.name === name);
+    if (etablissement && !this.isLimitReached) {
+      this.selectedEtablissements.push(etablissement);
     }
+    selectElement.value = ''; 
+  }
 
-    async verifetablissementCriteres(){
-        // this.etablissementsCriteres=[]
-        for (let i = 0; i < this.etablissements.length; i++) {
-            const element = this.etablissements[i];
-            // if (element.statut=="Privé") {
-                this.etablissementsCriteres.push(element)
-            // }
+  // Suppression
+  onRemoveEtablissement(name: string): void {
+    this.selectedEtablissements = this.selectedEtablissements.filter(e => e.name !== name);
+  }
 
-            
-        }
-    }
+  // nombre de colonnes
+  getGridColsClass(): string {
+    const totalCols = this.selectedEtablissements.length;
+    if (totalCols === 1) return 'grid-cols-2';
+    if (totalCols === 2) return 'grid-cols-3';
+    return 'grid-cols-4';
+  }
 
-    // etablissements: Etablissement[] = etablissementsData;
-
-    // etablissementsCriteres = [
-    //     { label: 'Statut' },
-    //     { label: 'Insertion professionnelle' },
-    //     { label: 'Qualité / Prix' },
-    //     { label: 'BTS' },
-    //     { label: 'LM(D)' },
-    // ];
-
-    selectedForComparison: any[] = [];
-
-    toggleSelection(etablissementsCriteres: any): void {
-        const index = this.selectedForComparison.findIndex(item => item.name === etablissementsCriteres.name);
-
-        if (index >= 0) {
-            this.selectedForComparison.splice(index, 1);
-        } else if (this.selectedForComparison.length < 3) {
-            this.selectedForComparison.push(etablissementsCriteres);
-        }
-    }
+  //  tableau d' étoiles 
+  getStarsArray(note: number | string): number[] {
+    const count = typeof note === 'number' ? note : parseInt(note, 10) || 0;
+    return Array(count).fill(0);
+  }
 }

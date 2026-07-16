@@ -18,7 +18,7 @@ import { ComparateurComponent } from './Comparateur/comparateur.component';
 @NgModule({
     declarations: [
         LandingHomeComponent,
-        QuizComponent,ComparateurComponent
+        QuizComponent, ComparateurComponent
     ],
     imports     : [
         RouterModule.forChild(landingHomeRoutes),

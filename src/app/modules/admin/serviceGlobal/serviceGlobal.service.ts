@@ -1,41 +1,47 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
+
+export interface Etablissement {
+    statut: string;
+    name: string;
+    note: number | string;
+    ville: string;
+    completed: boolean;
+    priority?: number;
+    dueDate?: string | null;
+    notes?: string;
+    tags?: string[];
+    type: string;
+    category: string;
+    image: string;
+    address: string;
+    phone: string;
+    website: string;
+    email: string;
+    description: string;
+    founded: string;
+    insertPro?: string;
+    prixMoy?: string;
+    stats?: number;
+}
+
+export type CriterionKey = 'prixMoy' | 'statut' | 'type' | 'insertPro' | 'founded' | 'ville';
+
+export interface CompareRow {
+    key: CriterionKey;
+    label: string;
+}
+
 @Injectable({
     providedIn: 'root'
 })
-export class globalService {
+export class GlobalService {
+    ibra: Etablissement | undefined;
 
-    ibra: {
-        statut: string;
-        name: string;
-        note: number | string;
-        ville: string;
-        completed: boolean;
-        priority?: number;
-        dueDate?: string | null;
-        notes?: string;
-        tags?: string[];
-        type: string;
-        category: string;
-        image: string;
-        address: string;
-        phone: string;
-        website: string;
-        email: string;
-        description: string;
-        founded: string;
-        insertPro?: string;
-        prixMoy?: string;
-        stats?: number;
-    } | undefined
+    constructor(private http: HttpClient) { }
 
-    constructor(
-        private http: HttpClient,
-
-    ) { }
-
-    etablissements = [
+    etablissements: Etablissement[] = [
         {
             statut: 'Public',
             name: 'Université Virtuelle de Côte d’Ivoire',
@@ -59,6 +65,7 @@ export class globalService {
             prixMoy: '250 000 FCFA',
             stats: 1,
         },
+
         {
             statut: 'Privé',
             name: 'Institut Supérieur de Management',
