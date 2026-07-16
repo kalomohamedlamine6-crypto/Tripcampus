@@ -3,12 +3,24 @@
   <!-- En-tête -->
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
     <div>
+<<<<<<< HEAD
      
       <h1 class="text-3xl md:text-4xl font-extrabold text-foreground mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
         Comparer les établissements
       </h1>
       <p class="text-muted-foreground text-sm max-w-lg">
         Séletionnez jusqu'à {{ MAX_COMPARE }} établissements pour analyser les spécificités.
+=======
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-primary text-xs font-semibold mb-4 border border-primary/10">
+        <lucide-icon name="building-2" [size]="12"></lucide-icon>
+        Comparateur 
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-foreground mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+        Comparez les établissements
+      </h1>
+      <p class="text-muted-foreground text-sm max-w-lg">
+        Sélectionnez jusqu'à {{ MAX_COMPARE }} établissements pour analyser leurs spécificités.
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
       </p>
     </div>
 
@@ -22,6 +34,7 @@
         <div class="relative">
           <select
             (change)="onAddEtablissement($event)"
+<<<<<<< HEAD
             class="w-full appearance-none px-4 py-2.5 pr-10 text-sm font-semibold text-foreground bg-white border border-border rounded-xl cursor-pointer hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
             <option value="" disabled selected hidden>
                 Ajouter un établissement
@@ -32,6 +45,17 @@
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground">
             <mat-icon svgIcon="heroicons_solid:plus"></mat-icon>
+=======
+            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm font-semibold text-foreground bg-white border border-border rounded-xl cursor-pointer hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20"
+          >
+            <option value="" disabled selected hidden>+ Ajouter un établissement...</option>
+            <option *ngFor="let e of availableEtablissements" [value]="e.name">
+              {{ e.name }} ({{ e.ville }})
+            </option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground">
+            <lucide-icon name="plus" [size]="16"></lucide-icon>
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
           </div>
         </div>
       </ng-template>
@@ -40,8 +64,14 @@
 
   <!-- État vide -->
   <div *ngIf="selectedEtablissements.length === 0; else tableSection" class="text-center py-16 bg-white border border-dashed border-border rounded-2xl">
+<<<<<<< HEAD
     <mat-icon svgIcon="heroicons_solid:building-2" class="mx-auto text-muted-foreground/40 mb-4"></mat-icon>
     <p class="text-muted-foreground text-sm mb-4">Sélectionnez des établissements.</p>
+=======
+    <lucide-icon name="building-2" class="mx-auto text-muted-foreground/40 mb-4" [size]="40"></lucide-icon>
+    <p class="text-foreground font-semibold mb-1">Votre comparateur est vide</p>
+    <p class="text-muted-foreground text-sm mb-4">Sélectionnez une école ci-dessus pour commencer.</p>
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
   </div>
 
   <!-- Tableau de comparaison -->
@@ -51,6 +81,7 @@
       <!-- En-tête des colonnes -->
       <div class="grid" [ngClass]="getGridColsClass()" class="grid border-b border-border">
         <div class="p-5 flex items-end pb-5">
+<<<<<<< HEAD
           
         </div>
         
@@ -72,10 +103,36 @@
               {{ etab.name }}
             </p>
             <p class="text-[11px] text-muted-foreground">{{ etab.ville }}</p>
+=======
+          <span class="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            Critères ({{ selectedEtablissements.length }})
+          </span>
+        </div>
+        
+        <div *ngFor="let e of selectedEtablissements" class="p-5 flex flex-col items-center gap-2 border-l border-border relative group">
+          <!-- Bouton supprimer -->
+          <button
+            (click)="onRemoveEtablissement(e.name)"
+            class="absolute top-3 right-3 p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+            [title]="'Retirer ' + e.name"
+          >
+            <lucide-icon name="trash-2" [size]="14"></lucide-icon>
+          </button>
+
+          <!-- Avatar de l'école -->
+          <img [src]="e.image" [alt]="e.name" class="w-14 h-14 rounded-2xl object-cover shadow-sm mt-2">
+
+          <div class="text-center">
+            <p class="text-sm font-bold text-foreground line-clamp-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+              {{ e.name }}
+            </p>
+            <p class="text-[11px] text-muted-foreground">{{ e.ville }}</p>
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
           </div>
           
           <!-- Note Étoiles -->
           <div class="flex items-center gap-0.5">
+<<<<<<< HEAD
             <mat-icon 
               *ngFor="let star of getStarsArray(etab.note)" 
               svgIcon="heroicons_solid:star"  
@@ -87,11 +144,30 @@
               svgIcon="heroicons_solid:star" 
               class="text-gray-200 fill-gray-200">
             </mat-icon>
+=======
+            <lucide-icon 
+              *ngFor="let star of getStarsArray(e.note)" 
+              name="star" 
+              [size]="11" 
+              class="text-amber-400 fill-amber-400">
+            </lucide-icon>
+            <!-- Complément à 5 étoiles (vides) -->
+            <lucide-icon 
+              *ngFor="let emptyStar of getStarsArray(5 - (+e.note))" 
+              name="star" 
+              [size]="11" 
+              class="text-gray-200 fill-gray-200">
+            </lucide-icon>
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
           </div>
         </div>
       </div>
 
+<<<<<<< HEAD
       <!-- Lignes de données -->
+=======
+      <!-- Lignes de données dynamiques -->
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
       <div *ngFor="let row of compareRows; let idx = index" 
            class="grid border-b border-border last:border-0"
            [ngClass]="[getGridColsClass(), idx % 2 === 1 ? 'bg-background' : '']">
@@ -102,6 +178,7 @@
         </div>
         
         <!-- Valeur pour chaque établissement -->
+<<<<<<< HEAD
         <div *ngFor="let etab of selectedEtablissements" class="p-4 flex items-center justify-center border-l border-border text-center">
           
           <!-- critère -->
@@ -136,6 +213,48 @@
 
             <span *ngSwitchCase="'founded'" class="text-sm text-muted-foreground font-mono">
               {{ etab.founded }}
+=======
+        <div *ngFor="let e of selectedEtablissements" class="p-4 flex items-center justify-center border-l border-border text-center">
+          
+          <!-- Rendu  selon  critère -->
+          <ng-container [ngSwitch]="row.key">
+            
+            <!-- Frais de scolarité -->
+            <span *ngSwitchCase="'prixMoy'" class="text-sm font-semibold text-foreground">
+              {{ e.prixMoy }}
+            </span>
+
+            <!-- Statut  -->
+            <span *ngSwitchCase="'statut'" 
+                  class="px-3 py-1 rounded-full text-xs font-semibold"
+                  [ngClass]="e.statut === 'Public' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-violet-50 text-violet-700 border border-violet-200'">
+              {{ e.statut }}
+            </span>
+
+            <!-- Type -->
+            <span *ngSwitchCase="'type'" class="text-xs text-muted-foreground">
+              {{ e.type }}
+            </span>
+
+            <!-- Ville -->
+            <span *ngSwitchCase="'ville'" class="text-sm text-foreground">
+              {{ e.ville }}
+            </span>
+
+            <!-- Insertion Pro -->
+            <span *ngSwitchCase="'insertPro'" 
+                  class="px-2.5 py-1 rounded-lg text-xs font-semibold"
+                  [ngClass]="{
+                    'bg-emerald-50 text-emerald-700 border border-emerald-200': e.insertPro === 'Excellente' || e.insertPro === 'Très bonne',
+                    'bg-amber-50 text-amber-700 border border-amber-200': e.insertPro === 'Bonne'
+                  }">
+              {{ e.insertPro }}
+            </span>
+
+            <!-- Année de création -->
+            <span *ngSwitchCase="'founded'" class="text-sm text-muted-foreground font-mono">
+              {{ e.founded }}
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
             </span>
 
           </ng-container>
@@ -147,4 +266,8 @@
   </ng-template>
 
 
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
