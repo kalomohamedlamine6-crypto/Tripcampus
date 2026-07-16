@@ -41,16 +41,7 @@ export class GlobalService {
 
     constructor(private http: HttpClient) { }
 
-<<<<<<< HEAD
     etablissements: Etablissement[] = [
-=======
-    constructor(
-        private http: HttpClient,
-
-    ) { }
-
-    etablissements : ibra[] = [
->>>>>>> 083b5657c89de91469e56a885be0201fdf4583de
         {
             statut: 'Public',
             name: 'Université Virtuelle de Côte d’Ivoire',
