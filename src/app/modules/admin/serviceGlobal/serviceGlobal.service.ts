@@ -3,16 +3,12 @@ import { Injectable } from "@angular/core";
 
 
 export interface Etablissement {
-    statut: string;
     name: string;
-    note: number | string;
     ville: string;
-    completed: boolean;
-    priority?: number;
-    dueDate?: string | null;
-    notes?: string;
-    tags?: string[];
+    statut: string;
     type: string;
+
+    // INFOS SUP POUR APERCU
     category: string;
     image: string;
     address: string;
@@ -20,13 +16,22 @@ export interface Etablissement {
     website: string;
     email: string;
     description: string;
-    founded: string;
-    insertPro?: string;
-    prixMoy?: string;
-    stats?: number;
+    founded: number;
+
+    // A REVOIR
+    completed: boolean;
+    priority?: number;
+    dueDate?: string | null;
+    tags?: string[];
+
+    // STATS CHIFFRES (SURTOUT POUR LES COMPARAISONS)
+    fraisAnnuels: number;
+    noteMoyenne: number | string;
+    tauxInsertion: number;
+    tauxReussiteExamens: number;
 }
 
-export type CriterionKey = 'prixMoy' | 'statut' | 'type' | 'insertPro' | 'founded' | 'ville';
+export type CriterionKey = 'fraisAnnuels' | 'statut' | 'type' | 'tauxInsertion' | 'tauxReussiteExamens' ;
 
 export interface CompareRow {
     key: CriterionKey;
@@ -45,12 +50,11 @@ export class GlobalService {
         {
             statut: 'Public',
             name: 'Université Virtuelle de Côte d’Ivoire',
-            note: 4,
+            noteMoyenne: 4,
             ville: 'Abidjan-Cocody',
             completed: false,
             priority: 1,
             dueDate: null,
-            notes: '',
             tags: [],
             type: 'Universitaire',
             category: 'Université',
@@ -60,21 +64,20 @@ export class GlobalService {
             website: 'www.uvi.ci',
             email: 'contact@uvi.ci',
             description: 'Université spécialisée dans l’enseignement et la recherche à distance.',
-            founded: '2012',
-            insertPro: 'Très bonne',
-            prixMoy: '250 000 FCFA',
-            stats: 1,
+            founded: 2012,
+            tauxInsertion: 73,
+            fraisAnnuels: 250000 ,
+            tauxReussiteExamens: 54,
         },
 
         {
             statut: 'Privé',
             name: 'Institut Supérieur de Management',
-            note: 3,
+            noteMoyenne: 3,
             ville: 'Abidjan-Cocody',
             completed: false,
             priority: 1,
             dueDate: null,
-            notes: '',
             tags: [],
             type: 'Grande école',
             category: 'École de Management',
@@ -84,20 +87,19 @@ export class GlobalService {
             website: 'www.ism.ci',
             email: 'info@ism.ci',
             description: 'Institut de formation en gestion et commerce.',
-            founded: '1998',
-            insertPro: 'Bonne',
-            prixMoy: '300 000 FCFA',
-            stats: 1,
+            founded: 1998,
+            tauxInsertion: 70,
+            fraisAnnuels: 300000 ,
+            tauxReussiteExamens: 70,
         },
         {
             statut: 'Public',
             name: 'ESATIC',
-            note: 5,
+            noteMoyenne: 5,
             ville: 'Abidjan-Treichville',
             completed: false,
             priority: 1,
             dueDate: null,
-            notes: '',
             tags: [],
             type: 'École spécialisée',
             category: 'Technologie et communication',
@@ -107,10 +109,10 @@ export class GlobalService {
             website: 'www.esatic.ci',
             email: 'admissions@esatic.ci',
             description: 'École supérieure axée sur les technologies de l’information.',
-            founded: '1985',
-            insertPro: 'Excellente',
-            prixMoy: '180 000 FCFA',
-            stats: 1,
+            founded: 1985,
+            tauxInsertion: 97.5 ,
+            fraisAnnuels: 180000 ,
+            tauxReussiteExamens: 97,
         },
     ];
 }

@@ -41,12 +41,11 @@ export class ComparateurComponent implements OnInit{
   
   // Critères de comparaison
   compareRows: CompareRow[] = [
-    { key: 'prixMoy', label: 'Frais de scolarité' },
+    { key: 'fraisAnnuels', label: 'Frais de scolarité' },
     { key: 'statut', label: 'Statut' },
     { key: 'type', label: 'Type d\'établissement' },
-    { key: 'ville', label: 'Localisation' },
-    { key: 'insertPro', label: 'Insertion Pro.' },
-    { key: 'founded', label: 'Année de création' }
+    { key: 'tauxReussiteExamens', label: 'Taux de réussite Examens' },
+    { key: 'tauxInsertion', label: 'Insertion Pro.' },
   ];
 
   constructor(public GlobalService: GlobalService) {}
@@ -96,8 +95,8 @@ export class ComparateurComponent implements OnInit{
   }
 
   //  tableau d' étoiles 
-  getStarsArray(note: number | string): number[] {
-    const count = typeof note === 'number' ? note : parseInt(note, 10) || 0;
+  getStarsArray(noteMoyenne: number | string): number[] {
+    const count = typeof noteMoyenne === 'number' ? noteMoyenne : parseInt(noteMoyenne, 10) || 0;
     return Array(count).fill(0);
   }
 }

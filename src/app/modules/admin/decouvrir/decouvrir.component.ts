@@ -32,9 +32,9 @@ export class DecouvrirComponent implements OnInit {
     //     email: string;
     //     description: string;
     //     founded: string;
-    //     insertPro?: string;
-    //     prixMoy?: string;
-    //     stats?: number;} = [
+    //     tauxInsertion?: string;
+    //     fraisAnnuels?: string;
+    //     tauxReussiteExamens?: number;} = [
     //     {
     //         statut: 'Public',
     //         name: 'Université Virtuelle de Côte d’Ivoire',
@@ -54,9 +54,9 @@ export class DecouvrirComponent implements OnInit {
     //         email: 'contact@uvi.ci',
     //         description: 'Université spécialisée dans l’enseignement et la recherche à distance.',
     //         founded: '2012',
-    //         insertPro: 'Très bonne',
-    //         prixMoy: '250 000 FCFA',
-    //         stats: 1,
+    //         tauxInsertion: 'Très bonne',
+    //         fraisAnnuels: '250 000 FCFA',
+    //         tauxReussiteExamens: 1,
     //     },
     //     {
     //         statut: 'Privé',
@@ -77,9 +77,9 @@ export class DecouvrirComponent implements OnInit {
     //         email: 'info@ism.ci',
     //         description: 'Institut de formation en gestion et commerce.',
     //         founded: '1998',
-    //         insertPro: 'Bonne',
-    //         prixMoy: '300 000 FCFA',
-    //         stats: 1,
+    //         tauxInsertion: 'Bonne',
+    //         fraisAnnuels: '300 000 FCFA',
+    //         tauxReussiteExamens: 1,
     //     },
     //     {
     //         statut: 'Public',
@@ -100,9 +100,9 @@ export class DecouvrirComponent implements OnInit {
     //         email: 'admissions@esatic.ci',
     //         description: 'École supérieure axée sur les technologies de l’information.',
     //         founded: '1985',
-    //         insertPro: 'Excellente',
-    //         prixMoy: '180 000 FCFA',
-    //         stats: 1,
+    //         tauxInsertion: 'Excellente',
+    //         fraisAnnuels: '180 000 FCFA',
+    //         tauxReussiteExamens: 1,
     //     },
     // ];
     constructor(
@@ -119,7 +119,7 @@ export class DecouvrirComponent implements OnInit {
             title: [''],
             completed: [false],
             dueDate: [null],
-            insertPro: ['']
+            tauxInsertion: ['']
         });
     }
     openDetails(item: any): void {
@@ -129,7 +129,7 @@ export class DecouvrirComponent implements OnInit {
             title: item.name,
             completed: item.completed,
             dueDate: item.dueDate,
-            insertPro: item.insertPro
+            tauxInsertion: item.tauxInsertion
         });
     }
 
@@ -150,7 +150,7 @@ export class DecouvrirComponent implements OnInit {
     //         this.selectedEtablissement.name = this.taskForm.get('title').value;
     //         this.selectedEtablissement.completed = this.taskForm.get('completed').value;
     //         this.selectedEtablissement.dueDate = this.taskForm.get('dueDate').value;
-    //         this.selectedEtablissement.insertPro = this.taskForm.get('insertPro').value;
+    //         this.selectedEtablissement.tauxInsertion = this.taskForm.get('tauxInsertion').value;
     //         this.sidebarOpened = false;
     //     }
     // }

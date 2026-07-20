@@ -4,7 +4,7 @@
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
     <div>
      
-      <h1 class="text-3xl md:text-4xl font-extrabold text-foreground mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+      <h1 class="text-3xl text-[#1a237e] md:text-4xl font-extrabold text-foreground mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
         Comparer les établissements
       </h1>
       <p class="text-muted-foreground text-sm max-w-lg">
@@ -41,7 +41,7 @@
   <!-- État vide -->
   <div *ngIf="selectedEtablissements.length === 0; else tableSection" class="text-center py-16 bg-white border border-dashed border-border rounded-2xl">
     <mat-icon svgIcon="heroicons_solid:building-2" class="mx-auto text-muted-foreground/40 mb-4"></mat-icon>
-    <p class="text-muted-foreground text-sm mb-4">Sélectionnez des établissements.</p>
+    <p class="text-muted-foreground text-sm mb-4">Sélectionnez les établissements que vous voulez comparer.</p>
   </div>
 
   <!-- Tableau de comparaison -->
@@ -77,13 +77,13 @@
           <!-- Note Étoiles -->
           <div class="flex items-center gap-0.5">
             <mat-icon 
-              *ngFor="let star of getStarsArray(etab.note)" 
+              *ngFor="let star of getStarsArray(etab.noteMoyenne)" 
               svgIcon="heroicons_solid:star"  
               class="text-amber-400 fill-amber-400">
             </mat-icon>
            
             <mat-icon 
-              *ngFor="let emptyStar of getStarsArray(5 - (+etab.note))" 
+              *ngFor="let emptyStar of getStarsArray(5 - (+etab.noteMoyenne))" 
               svgIcon="heroicons_solid:star" 
               class="text-gray-200 fill-gray-200">
             </mat-icon>
@@ -107,8 +107,8 @@
           <!-- critère -->
           <ng-container [ngSwitch]="row.key">
             
-            <span *ngSwitchCase="'prixMoy'" class="text-sm font-semibold text-foreground">
-              {{ etab.prixMoy }}
+            <span *ngSwitchCase="'fraisAnnuels'" class="text-sm font-semibold text-foreground">
+              {{ etab.fraisAnnuels }} FCFA
             </span>
 
             <span *ngSwitchCase="'statut'" 
@@ -121,22 +121,21 @@
               {{ etab.type }}
             </span>
 
-            <span *ngSwitchCase="'ville'" class="text-sm text-foreground">
-              {{ etab.ville }}
+            <span *ngSwitchCase="'tauxReussiteExamens'" class="text-sm text-foreground">
+              {{ etab.tauxReussiteExamens }}%
             </span>
 
-            <span *ngSwitchCase="'insertPro'" 
+            <span *ngSwitchCase="'tauxInsertion'" 
                   class="px-2.5 py-1 rounded-lg text-xs font-semibold"
                   [ngClass]="{
-                    'bg-emerald-50 text-emerald-700 border border-emerald-200': etab.insertPro === 'Excellente' || etab.insertPro === 'Très bonne',
-                    'bg-amber-50 text-amber-700 border border-amber-200': etab.insertPro === 'Bonne'
+                    'bg-emerald-50 text-emerald-700 border border-emerald-200': etab.tauxInsertion > 75,
+                    'bg-amber-100 text-amber-700 border border-amber-200': etab.tauxInsertion > 50 && etab.tauxInsertion < 75,  
+                    'bg-warn-200 text-warn-700 border border-warn-700': etab.tauxInsertion > 25 && etab.tauxInsertion < 50,
+                    'bg-red-400 text-red-700 border border-red-700': etab.tauxInsertion < 25
                   }">
-              {{ etab.insertPro }}
+              {{ etab.tauxInsertion }}%
             </span>
 
-            <span *ngSwitchCase="'founded'" class="text-sm text-muted-foreground font-mono">
-              {{ etab.founded }}
-            </span>
 
           </ng-container>
 

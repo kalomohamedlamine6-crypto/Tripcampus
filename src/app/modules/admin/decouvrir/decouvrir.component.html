@@ -35,8 +35,8 @@
                         Statut
                     </div>
                     <div class="hidden sm:block">Name</div>
-                    <div class="hidden sm:block" [mat-sort-header]="'note'">
-                        note
+                    <div class="hidden sm:block" [mat-sort-header]="'noteMoyenne'">
+                        noteMoyenne
                     </div>
                     <div class="hidden lg:block">Ville / Commune</div>
 
@@ -64,7 +64,7 @@
                     <div class="hidden sm:flex items-center gap-1 text-amber-500">
                         <ng-container *ngFor="let star of [].constructor(5); let i = index">
                             <mat-icon class="icon-size-5"
-                                [svgIcon]="i < item.note ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
+                                [svgIcon]="i < item.noteMoyenne ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
                         </ng-container>
                     </div>
 
@@ -116,10 +116,10 @@
                                     <div class="flex items-center gap-1">
                                         <ng-container *ngFor="let star of [].constructor(5); let i = index">
                                             <mat-icon class="icon-size-5 text-amber-500"
-                                                [svgIcon]="i < selectedEtablissement?.note ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
+                                                [svgIcon]="i < selectedEtablissement?.noteMoyenne ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
                                         </ng-container>
                                     </div>
-                                    <span class="font-medium">{{ selectedEtablissement?.note }} / 5</span>
+                                    <span class="font-medium">{{ selectedEtablissement?.noteMoyenne }} / 5</span>
                                 </div>
                             </div>
                         </div>
