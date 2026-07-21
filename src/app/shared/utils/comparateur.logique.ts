@@ -28,8 +28,8 @@ export interface CritereNumerique<T, K> {
 export interface DetailScore {
   cle: string;
   label: string;
-  valeurA: number 
-  valeurB: number 
+  valeurA: number; 
+  valeurB: number; 
   gagnant: "A" | "B" | "EGALITE";
 }
 
@@ -53,8 +53,7 @@ function normaliserNombres(valeur: number, adverse: number, sens: SensCritere): 
 }
 
 // Calcule le ratio de A pour UN critère, quelle que soit sa forme.
-// C'est ici que l'union discriminée devient utile : en testant
-// "critere.type", TypeScript sait, À L'INTÉRIEUR de chaque bloc if,
+//  TypeScript sait, À L'INTÉRIEUR de chaque bloc if,
 // exactement quels champs sont disponibles sur "critere".
 // Essaie par exemple d'écrire "critere.preference" dans le bloc
 // "numerique" ci-dessous : TypeScript te dira que ce champ n'existe
@@ -62,7 +61,7 @@ function normaliserNombres(valeur: number, adverse: number, sens: SensCritere): 
 function calculerRatioA<T, K>(
   critere: CritereNumerique<T, K>,
   a: T,
-  b: T
+  b: T,
 ): { ratioA: number; valeurA: number; valeurB: number } {
  {
     const valeurA = critere.extraire(a);
@@ -77,9 +76,10 @@ function calculerRatioA<T, K>(
 }
 
 
-export function comparer<T, K>(
-  a: T,
-  b: T,
+export function comparer<T, K extends string>(
+  // a: T, ceux-ci
+  // b: T, concernaient la comparaison pour seulement 2 établissements
+  items: T[] // pour la comparaison entre 3 établissements ou plus !
   criteres: CritereNumerique<T, K>[]
 ): ResultatComparaison<T> {
   let scoreA = 0;
@@ -87,6 +87,7 @@ export function comparer<T, K>(
   const details: DetailScore[] = [];
 
   for (const critere of criteres) {
+    // log
     const { ratioA, valeurA, valeurB } = calculerRatioA(critere, a, b);
     const ratioB = 1 - ratioA;
 
