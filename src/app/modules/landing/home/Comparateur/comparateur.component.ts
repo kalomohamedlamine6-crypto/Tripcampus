@@ -35,8 +35,7 @@ import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serv
 export class ComparateurComponent implements OnInit {
 
   readonly MAX_COMPARE = 3;
-  ratio: number = 0
-  totalOfRatio: number = 0
+  
   // Tableau des établissements sélectionnés 
   selectedEtablissements: Etablissement[] = [];
 
@@ -48,26 +47,14 @@ export class ComparateurComponent implements OnInit {
     { key: 'tauxReussiteExamens', label: 'Taux de réussite Examens' },
     { key: 'tauxInsertion', label: 'Insertion Pro.' },
   ];
+4
 
   constructor(public GlobalService: GlobalService) { }
 
   ngOnInit(): void {
     if (this.GlobalService.etablissements.length >= 2) {
       this.selectedEtablissements = this.GlobalService.etablissements.slice(0, 2);
-      this.ratio = 0
-      for (let a = 0; a < this.selectedEtablissements.length; a++) {
-        const element = this.selectedEtablissements[a];
-        this.totalOfRatio += element.fraisAnnuels
-
-      }
-      for (let a = 0; a < this.selectedEtablissements.length; a++) {
-        const element = this.selectedEtablissements[a];
-      // if (this.selectedEtablissements.length) {
-          this.ratio = (element.fraisAnnuels / this.totalOfRatio)
-        // }
-
-      }
-      console.log("totalOfRatio : ", this.totalOfRatio, "ratio : ", this.ratio);
+      
 
     }
   }

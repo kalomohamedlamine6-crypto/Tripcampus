@@ -31,7 +31,7 @@ export interface Etablissement {
     tauxReussiteExamens: number;
 }
 
-export type CriterionKey = 'fraisAnnuels' | 'statut' | 'type' | 'tauxInsertion' | 'tauxReussiteExamens' ;
+export type CriterionKey = 'noteMoyenne' | 'fraisAnnuels' | 'statut' | 'type' | 'tauxInsertion' | 'tauxReussiteExamens' ;
 
 export interface CompareRow {
     key: CriterionKey;
