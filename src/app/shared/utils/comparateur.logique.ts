@@ -47,10 +47,10 @@ export function trouverGagnant<T>(scores: Map<T, number>, items: T[]): T[]{
 
 
 
-export function comparer<T, K extends string>({ items, criteres }: {
-  items: T[]; // pour la comparaison entre au moins 2 établissements !
-  criteres: CritereNumerique<T, K>[];
-}): ResultatComparaison<T> {
+export function comparer<T, K extends string>(
+  items: T[], // pour la comparaison entre au moins 2 établissements !
+  criteres: CritereNumerique<T, K>[]
+): ResultatComparaison<T> {
 
 
   const scores = new Map<T, number>();
@@ -94,15 +94,26 @@ export const criteresEtablissement: CritereNumerique<Etablissement, CriterionKey
     sens: "PLUS_BAS_MIEUX",
     extraire: (etab) => etab.fraisAnnuels,
   },
-
-
-
-
-
-
-
-
-
-  
-]
+  {
+    cle: "noteMoyenne",
+    label: "Note moyenne",
+    poids: 0.3,
+    sens: "PLUS_HAUT_MIEUX",
+    extraire: (etab) => typeof etab.noteMoyenne === "number" ? etab.noteMoyenne : parseInt(etab.noteMoyenne, 10) || 0,
+  },
+  {
+    cle: "tauxReussiteExamens",
+    label: "Taux de réussite Examens",
+    poids: 0.2,
+    sens: "PLUS_HAUT_MIEUX",
+    extraire: (etab) => etab.tauxReussiteExamens,
+  },
+  {
+    cle: "tauxInsertion",
+    label: "Insertion Pro.",
+    poids: 0.2,
+    sens: "PLUS_HAUT_MIEUX",
+    extraire: (etab) => etab.tauxInsertion,
+  },
+];
   

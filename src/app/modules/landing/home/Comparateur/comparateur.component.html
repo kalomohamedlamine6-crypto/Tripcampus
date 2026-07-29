@@ -1,10 +1,11 @@
 <div class="max-w-5xl mx-auto px-4 py-12 md:py-16">
-  
+
   <!-- En-tête -->
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
     <div>
-     
-      <h1 class="text-3xl text-[#1a237e] md:text-4xl font-extrabold text-foreground mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+
+      <h1 class="text-3xl text-[#1a237e] md:text-4xl font-extrabold text-foreground mb-2"
+        style="font-family: 'Plus Jakarta Sans', sans-serif">
         Comparer les établissements
       </h1>
       <p class="text-muted-foreground text-sm max-w-lg">
@@ -14,17 +15,17 @@
 
     <!-- Sélecteur d'établissement -->
     <div class="w-full md:w-auto min-w-[250px]">
-      <div *ngIf="isLimitReached; else selectDropdown" class="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-3 py-2.5 rounded-xl font-medium">
+      <div *ngIf="isLimitReached; else selectDropdown"
+        class="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-3 py-2.5 rounded-xl font-medium">
         Limite de {{ MAX_COMPARE }} écoles atteinte. Retirez-en une pour en ajouter une autre.
       </div>
-      
+
       <ng-template #selectDropdown>
         <div class="relative">
-          <select
-            (change)="onAddEtablissement($event)"
+          <select (change)="onAddEtablissement($event)"
             class="w-full appearance-none px-4 py-2.5 pr-10 text-sm font-semibold text-foreground bg-white border border-border rounded-xl cursor-pointer hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
             <option value="" disabled selected hidden>
-                Ajouter un établissement
+              Ajouter un établissement
             </option>
             <option *ngFor="let etab of availableEtablissements" [value]="etab.name">
               {{etab.name }} ({{etab.ville }})
@@ -39,7 +40,8 @@
   </div>
 
   <!-- État vide -->
-  <div *ngIf="selectedEtablissements.length === 0; else tableSection" class="text-center py-16 bg-white border border-dashed border-border rounded-2xl">
+  <div *ngIf="selectedEtablissements.length === 0; else tableSection"
+    class="text-center py-16 bg-white border border-dashed border-border rounded-2xl">
     <mat-icon svgIcon="heroicons_solid:building-2" class="mx-auto text-muted-foreground/40 mb-4"></mat-icon>
     <p class="text-muted-foreground text-sm mb-4">Sélectionnez les établissements que vous voulez comparer.</p>
   </div>
@@ -47,44 +49,41 @@
   <!-- Tableau de comparaison -->
   <ng-template #tableSection>
     <div class="bg-white rounded-2xl border border-border overflow-hidden shadow-sm">
-      
+
       <!-- En-tête des colonnes -->
       <div class="grid" [ngClass]="getGridColsClass()" class="grid border-b border-border">
         <div class="p-5 flex items-end pb-5">
-          
+
         </div>
-        
-        <div *ngFor="let etab of selectedEtablissements" class="p-5 flex flex-col items-center gap-2 border-l border-border relative group">
+
+        <div *ngFor="let etab of selectedEtablissements"
+          class="p-5 flex flex-col items-center gap-2 border-l border-border relative group">
           <!-- Bouton supprimer -->
-          <button
-            (click)="onRemoveEtablissement(etab.name)"
+          <button (click)="onRemoveEtablissement(etab.name)"
             class="absolute top-3 right-3 p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
             [title]="'Retirer ' + etab.name">
 
-            <mat-icon svgIcon="heroicons_solid:trash" ></mat-icon>
+            <mat-icon svgIcon="heroicons_solid:trash"></mat-icon>
           </button>
 
           <!-- Avatar de l'école -->
           <img [src]="etab.image" [alt]="etab.name" class="w-14 h-14 rounded-2xl object-cover shadow-sm mt-2">
 
           <div class="text-center">
-            <p class="text-sm font-bold text-foreground line-clamp-2" style="font-family: 'Plus Jakarta Sans', sans-serif">
+            <p class="text-sm font-bold text-foreground line-clamp-2"
+              style="font-family: 'Plus Jakarta Sans', sans-serif">
               {{ etab.name }}
             </p>
             <p class="text-[11px] text-muted-foreground">{{ etab.ville }}</p>
           </div>
-          
+
           <!-- Note Étoiles -->
           <div class="flex items-center gap-0.5">
-            <mat-icon 
-              *ngFor="let star of getStarsArray(etab.noteMoyenne)" 
-              svgIcon="heroicons_solid:star"  
+            <mat-icon *ngFor="let star of getStarsArray(etab.noteMoyenne)" svgIcon="heroicons_solid:star"
               class="text-amber-400 fill-amber-400">
             </mat-icon>
-           
-            <mat-icon 
-              *ngFor="let emptyStar of getStarsArray(5 - (+etab.noteMoyenne))" 
-              svgIcon="heroicons_solid:star" 
+
+            <mat-icon *ngFor="let emptyStar of getStarsArray(5 - (+etab.noteMoyenne))" svgIcon="heroicons_solid:star"
               class="text-gray-200 fill-gray-200">
             </mat-icon>
           </div>
@@ -92,28 +91,27 @@
       </div>
 
       <!-- Lignes de données -->
-      <div *ngFor="let row of compareRows; let idx = index" 
-           class="grid border-b border-border last:border-0"
-           [ngClass]="[getGridColsClass(), idx % 2 === 1 ? 'bg-background' : '']">
-        
+      <div *ngFor="let row of compareRows; let idx = index" class="grid border-b border-border last:border-0"
+        [ngClass]="[getGridColsClass(), idx % 2 === 1 ? 'bg-background' : '']">
+
         <!-- Label du critère -->
         <div class="p-4 flex items-center">
           <span class="text-sm font-medium text-foreground">{{ row.label }}</span>
         </div>
-        
+
         <!-- Valeur pour chaque établissement -->
-        <div *ngFor="let etab of selectedEtablissements" class="p-4 flex items-center justify-center border-l border-border text-center">
-          
+        <div *ngFor="let etab of selectedEtablissements"
+          class="p-4 flex items-center justify-center border-l border-border text-center">
+
           <!-- critère -->
           <ng-container [ngSwitch]="row.key">
-            
+
             <span *ngSwitchCase="'fraisAnnuels'" class="text-sm font-semibold text-foreground">
               {{ etab.fraisAnnuels }} FCFA
             </span>
 
-            <span *ngSwitchCase="'statut'" 
-                  class="px-3 py-1 rounded-full text-xs font-semibold"
-                  [ngClass]="etab.statut === 'Public' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-violet-50 text-violet-700 border border-violet-200'">
+            <span *ngSwitchCase="'statut'" class="px-3 py-1 rounded-full text-xs font-semibold"
+              [ngClass]="etab.statut === 'Public' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-violet-50 text-violet-700 border border-violet-200'">
               {{ etab.statut }}
             </span>
 
@@ -125,9 +123,7 @@
               {{ etab.tauxReussiteExamens }}%
             </span>
 
-            <span *ngSwitchCase="'tauxInsertion'" 
-                  class="px-2.5 py-1 rounded-lg text-xs font-semibold"
-                  [ngClass]="{
+            <span *ngSwitchCase="'tauxInsertion'" class="px-2.5 py-1 rounded-lg text-xs font-semibold" [ngClass]="{
                     'bg-emerald-50 text-emerald-700 border border-emerald-200': etab.tauxInsertion > 75,
                     'bg-amber-100 text-amber-700 border border-amber-200': etab.tauxInsertion > 50 && etab.tauxInsertion < 75,  
                     'bg-warn-200 text-warn-700 border border-warn-700': etab.tauxInsertion > 25 && etab.tauxInsertion < 50,
@@ -141,6 +137,29 @@
 
         </div>
       </div>
+      
+      <div *ngIf="resultatComparaison" class="grid border-b border-border last:border-0"
+        [ngClass]="getGridColsClass()">
+
+        <!-- Label des scores -->
+        <div class="p-4 flex items-center">
+          <span class="text-sm font-medium text-foreground">Est meilleur à</span>
+        </div>
+
+        <!-- Valeur pour chaque établissement -->
+        <div *ngFor="let etab of selectedEtablissements"
+          class="p-4 flex flex-col gap-2 justify-center border-l border-border text-center">
+           {{(resultatComparaison?.scores?.get(etab) ?? 0)| percent}}
+           <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+             <div class="h-2 bg-[#1a237e] rounded-full transition-all"
+                  [style.width.%]="(resultatComparaison?.scores?.get(etab) ?? 0)*100">
+             </div>
+           </div>
+        </div>
+
+      </div>
+
+
 
     </div>
   </ng-template>

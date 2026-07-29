@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
-
+import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/shared/utils/comparateur.logique';
 
 
 //     selectedEtablissement: any = null;
@@ -35,9 +35,9 @@ import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serv
 export class ComparateurComponent implements OnInit {
 
   readonly MAX_COMPARE = 3;
-  
-  // Tableau des établissements sélectionnés 
-  selectedEtablissements: Etablissement[] = [];
+  selectedEtablissements: Etablissement[] = [];                // Tableau des établissements sélectionnés 
+  resultatComparaison: ResultatComparaison<Etablissement> | null = null;
+  private timerComparaison: any = null;               // le "ticket" pour clearTimeout et setTimeout
 
   // Critères de comparaison
   compareRows: CompareRow[] = [
@@ -47,16 +47,25 @@ export class ComparateurComponent implements OnInit {
     { key: 'tauxReussiteExamens', label: 'Taux de réussite Examens' },
     { key: 'tauxInsertion', label: 'Insertion Pro.' },
   ];
-4
+  
 
   constructor(public GlobalService: GlobalService) { }
 
+  recalculerComparaison(): void{
+    if (this.selectedEtablissements.length >= 2){
+      if (this.timerComparaison !== null){
+        clearTimeout(this.timerComparaison);
+      }
+      this.timerComparaison = setTimeout(()=>{this.resultatComparaison = comparer(this.selectedEtablissements, criteresEtablissement)}, 2000);  
+    } else{
+      this.resultatComparaison = null;
+    }
+  }
   ngOnInit(): void {
     if (this.GlobalService.etablissements.length >= 2) {
-      this.selectedEtablissements = this.GlobalService.etablissements.slice(0, 2);
-      
-
+      this.selectedEtablissements = this.GlobalService.etablissements.slice(0, 2); 
     }
+    this.recalculerComparaison();
   }
 
   //établissements pas encore affichés dans le comparateur
@@ -82,11 +91,13 @@ export class ComparateurComponent implements OnInit {
       this.selectedEtablissements.push(etablissement);
     }
     selectElement.value = '';
+    this.recalculerComparaison();
   }
 
   // Suppression
   onRemoveEtablissement(name: string): void {
     this.selectedEtablissements = this.selectedEtablissements.filter(e => e.name !== name);
+    this.recalculerComparaison();
   }
 
   // nombre de colonnes
