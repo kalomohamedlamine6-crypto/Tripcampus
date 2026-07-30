@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
+import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serviceGlobal/serviceGlobal.service'; 
 import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/shared/utils/comparateur.logique';
+import confetti from 'canvas-confetti';        //export par défaut                                               
+import { ViewChildren, QueryList, ElementRef } from '@angular/core';
 
 
 //     selectedEtablissement: any = null;
@@ -27,7 +29,7 @@ import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/s
 
 
 // }
-
+@ViewChildren('carteEtab') cartesEtab!: QueryList<ElementRef>;
 @Component({
   selector: 'Comparateur',
   templateUrl: './comparateur.component.html',
@@ -35,9 +37,9 @@ import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/s
 export class ComparateurComponent implements OnInit {
 
   readonly MAX_COMPARE = 3;
-  selectedEtablissements: Etablissement[] = [];                // Tableau des établissements sélectionnés 
+  selectedEtablissements: Etablissement[] = [];    // Tableau des établissements sélectionnés 
   resultatComparaison: ResultatComparaison<Etablissement> | null = null;
-  private timerComparaison: any = null;               // le "ticket" pour clearTimeout et setTimeout
+  private timerComparaison: any = null;          // le "ticket" pour clearTimeout et setTimeout
 
   // Critères de comparaison
   compareRows: CompareRow[] = [
@@ -51,13 +53,18 @@ export class ComparateurComponent implements OnInit {
 
   constructor(public GlobalService: GlobalService) { }
 
-  recalculerComparaison(): void{
+  recalculerComparaison(immediat: boolean): void{
     if (this.selectedEtablissements.length >= 2){
-      if (this.timerComparaison !== null){
+      if (immediat){
+        this.resultatComparaison = comparer(this.selectedEtablissements, criteresEtablissement);
+      } else{
+        if (this.timerComparaison !== null){
         clearTimeout(this.timerComparaison);
-      }
-      this.timerComparaison = setTimeout(()=>{this.resultatComparaison = comparer(this.selectedEtablissements, criteresEtablissement)}, 2000);  
-    } else{
+        }
+        this.timerComparaison = setTimeout(()=>{this.resultatComparaison = comparer(this.selectedEtablissements, criteresEtablissement)}, 2000);  
+        } 
+    }
+      else{
       this.resultatComparaison = null;
     }
   }
@@ -65,10 +72,14 @@ export class ComparateurComponent implements OnInit {
     if (this.GlobalService.etablissements.length >= 2) {
       this.selectedEtablissements = this.GlobalService.etablissements.slice(0, 2); 
     }
-    this.recalculerComparaison();
+    this.recalculerComparaison(true);
   }
 
-  //établissements pas encore affichés dans le comparateur
+//rôle du getter : Je crée une propriété accessible en lecture seule nommée availableEtablissements.
+// Quand quelqu'un me demande cette valeur, je prends la liste globale de tous les établissements.
+// Je passe cette liste au crible (filtre) pour inspecter chaque établissement un par un.
+// Pour chaque établissement, je vérifie la liste de ceux qui ont déjà été sélectionnés : si cet établissement n'est présent dans AUCUN des éléments sélectionnés, alors je le garde.
+// Enfin, je renvoie la nouvelle liste contenant uniquement les établissements restants."
   get availableEtablissements(): Etablissement[] {
     return this.GlobalService.etablissements.filter(
       e => !this.selectedEtablissements.some(selected => selected.name === e.name)
@@ -88,17 +99,32 @@ export class ComparateurComponent implements OnInit {
 
     const etablissement = this.GlobalService.etablissements.find(e => e.name === name);
     if (etablissement && !this.isLimitReached) {
+      const nombreAvant = this.selectedEtablissements.length;
       this.selectedEtablissements.push(etablissement);
+      if (nombreAvant === 1){
+        this.recalculerComparaison(false);
+      } else{
+        this.recalculerComparaison(true);
+      }
     }
     selectElement.value = '';
-    this.recalculerComparaison();
+    
   }
 
   // Suppression
   onRemoveEtablissement(name: string): void {
     this.selectedEtablissements = this.selectedEtablissements.filter(e => e.name !== name);
-    this.recalculerComparaison();
+    this.recalculerComparaison(true);
   }
+  // Donne le gagnant
+  estGagnant(etab:Etablissement): boolean{
+    if (this.resultatComparaison===null){
+      return false;
+    } else {
+      return this.resultatComparaison.gagnants.some(g=>g.name===etab.name)
+    }
+  }
+
 
   // nombre de colonnes
   getGridColsClass(): string {

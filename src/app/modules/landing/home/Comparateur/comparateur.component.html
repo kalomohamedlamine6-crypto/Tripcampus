@@ -56,7 +56,7 @@
 
         </div>
 
-        <div *ngFor="let etab of selectedEtablissements"
+        <div #carteEtab *ngFor="let etab of selectedEtablissements; let i = index"
           class="p-5 flex flex-col items-center gap-2 border-l border-border relative group">
           <!-- Bouton supprimer -->
           <button (click)="onRemoveEtablissement(etab.name)"
