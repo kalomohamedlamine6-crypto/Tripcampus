@@ -48,6 +48,7 @@
         "@angular-eslint/eslint-plugin-template": "13.1.0",
         "@angular-eslint/schematics": "^22.1.0",
         "@angular-eslint/template-parser": "13.1.0",
+        "@angular/build": "^22.1.2",
         "@angular/cli": "^22.1.2",
         "@angular/compiler-cli": "13.2.3",
         "@tailwindcss/aspect-ratio": "0.4.0",
