@@ -9,7 +9,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link: '/decouvrir'
     },
 
-    
+
     {
         id: 'formation-filiere',
         title: 'Formation-filiere',
@@ -34,7 +34,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link: '/actualites'
     },
 
-    
+
 ];
 
 export const compactNavigation: FuseNavigationItem[] = [
@@ -46,7 +46,7 @@ export const compactNavigation: FuseNavigationItem[] = [
     //     link: '/example'
     // },
 
-   
+
     // {
     //     id: 'actualites',
     //     title: 'Actualites',
@@ -65,7 +65,7 @@ export const futuristicNavigation: FuseNavigationItem[] = [
     //     link: '/example'
     // },
 
-   
+
     // {
     //     id: 'actualites',
     //     title: 'Actualites',
@@ -93,7 +93,7 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         link: '/Formation-filiere'
     },
 
-    
+
 
     {
         id: 'actualites',

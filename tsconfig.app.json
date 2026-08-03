@@ -12,4 +12,9 @@
     "include": [
         "src/**/*.d.ts"
     ]
+    ,
+    "exclude": [
+        "srcCopie",
+        "srcCopie/**"
+    ]
 }

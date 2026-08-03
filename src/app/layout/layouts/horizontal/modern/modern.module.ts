@@ -48,7 +48,7 @@ import { MatInputModule } from '@angular/material/input';
     ],
     exports     : [
         ModernLayoutComponent,
-        
+
     ]
 })
 export class ModernLayoutModule

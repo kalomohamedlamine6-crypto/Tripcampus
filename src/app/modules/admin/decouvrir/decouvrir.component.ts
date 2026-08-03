@@ -112,7 +112,7 @@ export class DecouvrirComponent implements OnInit {
 
     }
     ngOnInit(): void {
-        this.etablissements = this.globalServive.etablissements
+        this.etablissements = this.globalServive.etablissements;
 
 
         this.taskForm = this._formBuilder.group({

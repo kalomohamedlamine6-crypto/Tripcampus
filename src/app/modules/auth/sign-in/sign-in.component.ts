@@ -77,7 +77,7 @@ export class AuthSignInComponent implements OnInit
         console.log('this.signInForm.value',this.signInForm.value);
         this._authService.signIn(this.signInForm.value).subscribe(
                 () => {
-                    
+
 
                     // Set the redirect url.
                     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user

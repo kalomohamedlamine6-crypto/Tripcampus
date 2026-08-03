@@ -19,7 +19,7 @@ import { FormationFiliereComponent } from 'app/modules/admin/formation-filiere/f
 import { SharedModule } from 'app/shared/shared.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
-const FormationFiliereRoutes: Route[] = [
+const formationFiliereRoutes: Route[] = [
     {
         path: '',
         component: FormationFiliereComponent
@@ -28,10 +28,10 @@ const FormationFiliereRoutes: Route[] = [
 
 @NgModule({
     declarations: [
-        FormationFiliereComponent,
+        FormationFiliereComponent
     ],
     imports: [
-        RouterModule.forChild(FormationFiliereRoutes),
+        RouterModule.forChild(formationFiliereRoutes),
         FuseCardModule,
         MatButtonModule,
         MatFormFieldModule,

@@ -12,7 +12,7 @@ export const appRoutes: Route[] = [
 
     // Redirect empty path to home landing page
     {path: '', pathMatch : 'full', redirectTo: 'home'},
-   
+
 
     // Redirect signed in user to '/accueil'
     //
@@ -71,7 +71,7 @@ export const appRoutes: Route[] = [
         ]
     },
 
-   
+
 
     // Alias route for Filières
     {path: 'filieres', pathMatch: 'full', redirectTo: 'formation-filiere'},

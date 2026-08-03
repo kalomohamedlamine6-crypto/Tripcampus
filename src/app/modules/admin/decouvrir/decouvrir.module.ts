@@ -27,10 +27,8 @@ const decouvrirRoutes: Route[] = [
 
 @NgModule({
     declarations: [
-        DecouvrirComponent,
+        DecouvrirComponent
     ],
-        
-         
     imports     : [
         RouterModule.forChild(decouvrirRoutes),
         MatButtonModule,

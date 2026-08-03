@@ -1,0 +1,1557 @@
+
+> @fuse/starter@14.2.0 build
+> ng build --watch=false
+
+- Generating browser application bundles (phase: setup)...
+[32m✔[39m Browser application bundle generation complete.
+[32m✔[39m Browser application bundle generation complete.
+[1m[33m
+./src/@fuse/components/navigation/vertical/vertical.component.scss?ngResource - Warning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 0, column 8 of file:///c:/Users/SITC/Documents/Templates/fuse-starter-v14.2.0/src/@fuse/components/navigation/vertical/vertical.component.scss:0:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+0 | @import 'styles/appearances/default';
+
+
+src\@fuse\components\navigation\vertical\vertical.component.scss 1:9  root stylesheet
+
+
+./src/@fuse/components/navigation/vertical/vertical.component.scss?ngResource - Warning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 1, column 8 of file:///c:/Users/SITC/Documents/Templates/fuse-starter-v14.2.0/src/@fuse/components/navigation/vertical/vertical.component.scss:1:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+1 | @import 'styles/appearances/compact';
+
+
+src\@fuse\components\navigation\vertical\vertical.component.scss 2:9  root stylesheet
+
+
+./src/@fuse/components/navigation/vertical/vertical.component.scss?ngResource - Warning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 2, column 8 of file:///c:/Users/SITC/Documents/Templates/fuse-starter-v14.2.0/src/@fuse/components/navigation/vertical/vertical.component.scss:2:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+2 | @import 'styles/appearances/dense';
+
+
+src\@fuse\components\navigation\vertical\vertical.component.scss 3:9  root stylesheet
+
+
+./src/@fuse/components/navigation/vertical/vertical.component.scss?ngResource - Warning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+Deprecation Warning on line 3, column 8 of file:///c:/Users/SITC/Documents/Templates/fuse-starter-v14.2.0/src/@fuse/components/navigation/vertical/vertical.component.scss:3:8:
+Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+3 | @import 'styles/appearances/thin';
+
+
+src\@fuse\components\navigation\vertical\vertical.component.scss 4:9  root stylesheet
+
+
+Warning: c:\Users\SITC\Documents\Templates\fuse-starter-v14.2.0\node_modules\@ngneat\transloco\fesm2015\ngneat-transloco.js depends on 'flat'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.dev/tools/cli/build#configuring-commonjs-dependencies
+
+Warning: c:\Users\SITC\Documents\Templates\fuse-starter-v14.2.0\src\app\mock-api\dashboards\analytics\data.ts depends on 'moment'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.dev/tools/cli/build#configuring-commonjs-dependencies
+
+[39m[22m
+[1m[31m
+./src/@fuse/fuse.module.ts:24:13-35 - Error: export 'MATERIAL_SANITY_CHECKS' (imported as 'MATERIAL_SANITY_CHECKS') was not found in '@angular/material/core' (possible exports: DateAdapter, ErrorStateMatcher, MATERIAL_ANIMATIONS, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_NATIVE_DATE_FORMATS, MAT_OPTGROUP, MAT_OPTION_PARENT_COMPONENT, MAT_RIPPLE_GLOBAL_OPTIONS, MatLine, MatLineModule, MatNativeDateModule, MatOptgroup, MatOption, MatOptionModule, MatOptionSelectionChange, MatPseudoCheckbox, MatPseudoCheckboxModule, MatRipple, MatRippleLoader, MatRippleModule, NativeDateAdapter, NativeDateModule, RippleRef, RippleRenderer, RippleState, ShowOnDirtyErrorStateMatcher, VERSION, _ErrorStateTracker, _MatInternalFormField, _StructuralStylesLoader, _animationsDisabled, _countGroupLabelsBeforeOption, _getAnimationsState, _getOptionScrollPosition, defaultRippleAnimationConfig, provideNativeDateAdapter, setLines)
+
+./src/@fuse/styles/themes.scss - Error: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined function.
+   ╷
+12 │       typography: mat.define-typography-config(
+   │ ┌─────────────────^
+13 │ │         $font-family: theme('fontFamily.sans'),
+14 │ │         $title: mat.define-typography-level(1.25rem, 2rem, 600),
+15 │ │         $body-2: mat.define-typography-level(0.875rem, 1.5rem, 600),
+16 │ │         $button: mat.define-typography-level(0.875rem, 0.875rem, 500),
+17 │ │         $input: mat.define-typography-level(0.875rem, 1.2857142857, 400) /* line-height: 20px */
+18 │ └     )
+   ╵
+  src\@fuse\styles\themes.scss 12:17  root stylesheet
+
+./src/@fuse/styles/themes.scss?ngGlobalStyle - Error: Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):
+HookWebpackError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined function.
+   ╷
+12 │       typography: mat.define-typography-config(
+   │ ┌─────────────────^
+13 │ │         $font-family: theme('fontFamily.sans'),
+14 │ │         $title: mat.define-typography-level(1.25rem, 2rem, 600),
+15 │ │         $body-2: mat.define-typography-level(0.875rem, 1.5rem, 600),
+16 │ │         $button: mat.define-typography-level(0.875rem, 0.875rem, 500),
+17 │ │         $input: mat.define-typography-level(0.875rem, 1.2857142857, 400) /* line-height: 20px */
+18 │ └     )
+   ╵
+  src\@fuse\styles\themes.scss 12:17  root stylesheet
+
+./node_modules/ngx-markdown/fesm2022/ngx-markdown.mjs:10:0-42 - Error: Module not found: Error: Can't resolve 'marked' in 'c:\Users\SITC\Documents\Templates\fuse-starter-v14.2.0\node_modules\ngx-markdown\fesm2022'
+
+./node_modules/ngx-markdown/fesm2022/ngx-markdown.mjs:313:37-69 - Error: Module not found: Error: Can't resolve 'marked-katex-extension' in 'c:\Users\SITC\Documents\Templates\fuse-starter-v14.2.0\node_modules\ngx-markdown\fesm2022'
+
+Error: [96mnode_modules/ngx-markdown/types/ngx-markdown.d.ts[0m:[93m3[0m:[93m58[0m - [91merror[0m[90m TS2307: [0mCannot find module 'marked' or its corresponding type declarations.
+
+[7m3[0m import { MarkedExtension, MarkedOptions, Renderer } from 'marked';
+[7m [0m [91m                                                         ~~~~~~~~[0m
+
+
+Error: [96mnode_modules/ngx-markdown/types/ngx-markdown.d.ts[0m:[93m4[0m:[93m59[0m - [91merror[0m[90m TS2307: [0mCannot find module 'marked' or its corresponding type declarations.
+
+[7m4[0m export { MarkedOptions, Renderer as MarkedRenderer } from 'marked';
+[7m [0m [91m                                                          ~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/alert/alert.component.ts[0m:[93m207[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<boolean>'.
+
+[7m207[0m         this.dismissedChanged.next(this.dismissed);
+[7m   [0m [91m                              ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/alert/alert.module.ts[0m:[93m9[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseAlertComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m9[0m         FuseAlertComponent
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/alert/alert.module.ts[0m:[93m17[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m17[0m         FuseAlertComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/card/card.module.ts[0m:[93m7[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseCardComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m7[0m         FuseCardComponent
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/card/card.module.ts[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m13[0m         FuseCardComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/drawer/drawer.component.ts[0m:[93m133[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<boolean>'.
+
+[7m133[0m             this.fixedChanged.next(this.fixed);
+[7m   [0m [91m                              ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/drawer/drawer.component.ts[0m:[93m165[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<FuseDrawerMode>'.
+
+[7m165[0m             this.modeChanged.next(currentMode);
+[7m   [0m [91m                             ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/drawer/drawer.component.ts[0m:[93m189[0m:[93m34[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<FuseDrawerPosition>'.
+
+[7m189[0m             this.positionChanged.next(this.position);
+[7m   [0m [91m                                 ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/drawer/drawer.component.ts[0m:[93m435[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<boolean>'.
+
+[7m435[0m         this.openedChanged.next(open);
+[7m   [0m [91m                           ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/drawer/drawer.module.ts[0m:[93m7[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseDrawerComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m7[0m         FuseDrawerComponent
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/drawer/drawer.module.ts[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m13[0m         FuseDrawerComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/fullscreen/fullscreen.module.ts[0m:[93m10[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseFullscreenComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m10[0m         FuseFullscreenComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/fullscreen/fullscreen.module.ts[0m:[93m19[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m19[0m         FuseFullscreenComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/loading-bar/loading-bar.module.ts[0m:[93m8[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseLoadingBarComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m8[0m         FuseLoadingBarComponent
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/loading-bar/loading-bar.module.ts[0m:[93m15[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m15[0m         FuseLoadingBarComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseHorizontalNavigationBasicItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m25[0m         FuseHorizontalNavigationBasicItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseHorizontalNavigationBranchItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m26[0m         FuseHorizontalNavigationBranchItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m27[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseHorizontalNavigationDividerItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m27[0m         FuseHorizontalNavigationDividerItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m28[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseHorizontalNavigationSpacerItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m28[0m         FuseHorizontalNavigationSpacerItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m29[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseHorizontalNavigationComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m29[0m         FuseHorizontalNavigationComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m30[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationAsideItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m30[0m         FuseVerticalNavigationAsideItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationBasicItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m31[0m         FuseVerticalNavigationBasicItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationCollapsableItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m32[0m         FuseVerticalNavigationCollapsableItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationDividerItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m33[0m         FuseVerticalNavigationDividerItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationGroupItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m34[0m         FuseVerticalNavigationGroupItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationSpacerItemComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m35[0m         FuseVerticalNavigationSpacerItemComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseVerticalNavigationComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m36[0m         FuseVerticalNavigationComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m46[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m46[0m         FuseScrollbarModule
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m49[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m49[0m         FuseHorizontalNavigationComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/navigation.module.ts[0m:[93m50[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m50[0m         FuseVerticalNavigationComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/vertical/vertical.component.ts[0m:[93m204[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<FuseVerticalNavigationAppearance>'.
+
+[7m204[0m             this.appearanceChanged.next(changes.appearance.currentValue);
+[7m   [0m [91m                                   ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/vertical/vertical.component.ts[0m:[93m246[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<FuseVerticalNavigationMode>'.
+
+[7m246[0m             this.modeChanged.next(currentMode);
+[7m   [0m [91m                             ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/vertical/vertical.component.ts[0m:[93m277[0m:[93m34[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<FuseVerticalNavigationPosition>'.
+
+[7m277[0m             this.positionChanged.next(changes.position.currentValue);
+[7m   [0m [91m                                 ~~~~[0m
+
+
+Error: [96msrc/@fuse/components/navigation/vertical/vertical.component.ts[0m:[93m743[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<boolean>'.
+
+[7m743[0m         this.openedChanged.next(open);
+[7m   [0m [91m                           ~~~~[0m
+
+
+Error: [96msrc/@fuse/directives/scrollbar/scrollbar.module.ts[0m:[93m6[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mDirective FuseScrollbarDirective is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m6[0m         FuseScrollbarDirective
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/directives/scrollbar/scrollbar.module.ts[0m:[93m9[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m9[0m         FuseScrollbarDirective
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/fuse.module.ts[0m:[93m2[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@angular/material/core"' has no exported member 'MATERIAL_SANITY_CHECKS'.
+
+[7m2[0m import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
+[7m [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/fuse.module.ts[0m:[93m12[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m12[0m         FuseConfirmationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/pipes/find-by-key/find-by-key.module.ts[0m:[93m6[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mPipe FuseFindByKeyPipe is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m6[0m         FuseFindByKeyPipe
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/pipes/find-by-key/find-by-key.module.ts[0m:[93m9[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m9[0m         FuseFindByKeyPipe
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/@fuse/services/confirmation/confirmation.module.ts[0m:[93m11[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuseConfirmationDialogComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m11[0m         FuseConfirmationDialogComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/app.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AppComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         AppComponent
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/app.module.ts[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m31[0m         FuseModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/app.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         LayoutModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/languages/languages.module.ts[0m:[93m10[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent LanguagesComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m10[0m         LanguagesComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/languages/languages.module.ts[0m:[93m19[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m19[0m         LanguagesComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/messages/messages.module.ts[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent MessagesComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m13[0m         MessagesComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/messages/messages.module.ts[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m25[0m         MessagesComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/notifications/notifications.module.ts[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent NotificationsComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m13[0m         NotificationsComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/notifications/notifications.module.ts[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m25[0m         NotificationsComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/quick-chat/quick-chat.module.ts[0m:[93m14[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent QuickChatComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m14[0m         QuickChatComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/quick-chat/quick-chat.module.ts[0m:[93m22[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m22[0m         FuseDrawerModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/quick-chat/quick-chat.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m23[0m         FuseScrollbarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/quick-chat/quick-chat.module.ts[0m:[93m27[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m27[0m         QuickChatComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/search/search.component.ts[0m:[93m129[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'next' does not exist on type 'EventEmitter<any>'.
+
+[7m129[0m                         this.search.next(resultSets);
+[7m   [0m [91m                                    ~~~~[0m
+
+
+Error: [96msrc/app/layout/common/search/search.module.ts[0m:[93m14[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent SearchComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m14[0m         SearchComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/search/search.module.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m26[0m         SearchComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/settings/settings.module.ts[0m:[93m12[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent SettingsComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m12[0m         SettingsComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/settings/settings.module.ts[0m:[93m19[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m19[0m         FuseDrawerModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/settings/settings.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m23[0m         SettingsComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/shortcuts/shortcuts.module.ts[0m:[93m17[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent ShortcutsComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m17[0m         ShortcutsComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/shortcuts/shortcuts.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m33[0m         ShortcutsComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/user/user.module.ts[0m:[93m11[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent UserComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m11[0m         UserComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/common/user/user.module.ts[0m:[93m21[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m21[0m         UserComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent LayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m38[0m         LayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m40[0m:[93m19[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m 40[0m     imports     : [
+[7m   [0m [91m                  ~[0m
+[7m 41[0m         LayoutComponent,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         ...layoutModules
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     ],
+[7m   [0m [91m~~~~~[0m
+
+
+Error: [96msrc/app/layout/layout.module.ts[0m:[93m43[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m43[0m         SettingsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/empty/empty.module.ts[0m:[93m9[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent EmptyLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m9[0m         EmptyLayoutComponent
+[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/empty/empty.module.ts[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m13[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/empty/empty.module.ts[0m:[93m17[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m17[0m         EmptyLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m22[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent CenteredLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m22[0m         CenteredLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m31[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/centered/centered.module.ts[0m:[93m43[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m43[0m         CenteredLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent EnterpriseLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         EnterpriseLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/enterprise/enterprise.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         EnterpriseLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m22[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent MaterialLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m22[0m         MaterialLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m31[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/material/material.module.ts[0m:[93m43[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m43[0m         MaterialLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent ModernLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m26[0m         ModernLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m42[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m42[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m43[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m43[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m44[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m44[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/horizontal/modern/modern.module.ts[0m:[93m50[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m50[0m         ModernLayoutComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent ClassicLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         ClassicLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classic/classic.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         ClassicLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent ClassyLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         ClassyLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/classy/classy.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         ClassyLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent CompactLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         CompactLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/compact/compact.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         CompactLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent DenseLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         DenseLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/dense/dense.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         DenseLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FuturisticLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         FuturisticLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/futuristic/futuristic.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         FuturisticLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent ThinLayoutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m23[0m         ThinLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m32[0m         FuseFullscreenModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m33[0m         FuseLoadingBarModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m34[0m         FuseNavigationModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         LanguagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m36[0m         MessagesModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         NotificationsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m38[0m         QuickChatModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         SearchModule,
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m40[0m         ShortcutsModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m41[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m41[0m         UserModule,
+[7m  [0m [91m        ~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/layout/layouts/vertical/thin/thin.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6004: [0mCan't be exported from this NgModule, as it must be imported first
+
+[7m45[0m         ThinLayoutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/accueil/accueil.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AccueilComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m33[0m         AccueilComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/accueil/accueil.module.ts[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m37[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/accueil/accueil.module.ts[0m:[93m47[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m47[0m         FuseFindByKeyPipeModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/actualites/actualites.module.ts[0m:[93m19[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent ActualitesComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m19[0m         ActualitesComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/decouvrir/decouvrir.module.ts[0m:[93m30[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent DecouvrirComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m30[0m         DecouvrirComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/decouvrir/decouvrir.module.ts[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m39[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/formation-filiere/formation-filiere.module.ts[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent FormationFiliereComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m31[0m         FormationFiliereComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/formation-filiere/formation-filiere.module.ts[0m:[93m35[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m35[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/admin/formation-filiere/formation-filiere.module.ts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m45[0m         FuseFindByKeyPipeModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/confirmation-required/confirmation-required.module.ts[0m:[93m11[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthConfirmationRequiredComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m11[0m         AuthConfirmationRequiredComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/confirmation-required/confirmation-required.module.ts[0m:[93m16[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m16[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/forgot-password/forgot-password.module.ts[0m:[93m16[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthForgotPasswordComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m16[0m         AuthForgotPasswordComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/forgot-password/forgot-password.module.ts[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m25[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/forgot-password/forgot-password.module.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m26[0m         FuseAlertModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/reset-password/reset-password.module.ts[0m:[93m16[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthResetPasswordComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m16[0m         AuthResetPasswordComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/reset-password/reset-password.module.ts[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m25[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/reset-password/reset-password.module.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m26[0m         FuseAlertModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-in/sign-in.module.ts[0m:[93m17[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthSignInComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m17[0m         AuthSignInComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-in/sign-in.module.ts[0m:[93m27[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m27[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-in/sign-in.module.ts[0m:[93m28[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m28[0m         FuseAlertModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-out/sign-out.module.ts[0m:[93m11[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthSignOutComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m11[0m         AuthSignOutComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-out/sign-out.module.ts[0m:[93m16[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m16[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-up/sign-up.module.ts[0m:[93m17[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthSignUpComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m17[0m         AuthSignUpComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-up/sign-up.module.ts[0m:[93m27[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m27[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/sign-up/sign-up.module.ts[0m:[93m28[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m28[0m         FuseAlertModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/unlock-session/unlock-session.module.ts[0m:[93m16[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent AuthUnlockSessionComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m16[0m         AuthUnlockSessionComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/unlock-session/unlock-session.module.ts[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m25[0m         FuseCardModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/auth/unlock-session/unlock-session.module.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m NG6002: [0mThis import contains errors, which may affect components that depend on this NgModule.
+
+[7m26[0m         FuseAlertModule,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/landing/home/home.module.ts[0m:[93m20[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent LandingHomeComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m20[0m         LandingHomeComponent,
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/landing/home/home.module.ts[0m:[93m21[0m:[93m9[0m - [91merror[0m[90m NG6008: [0mComponent QuizComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m21[0m         QuizComponent, ComparateurComponent
+[7m  [0m [91m        ~~~~~~~~~~~~~[0m
+
+
+Error: [96msrc/app/modules/landing/home/home.module.ts[0m:[93m21[0m:[93m24[0m - [91merror[0m[90m NG6008: [0mComponent ComparateurComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?
+
+[7m21[0m         QuizComponent, ComparateurComponent
+[7m  [0m [91m                       ~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[39m[22m

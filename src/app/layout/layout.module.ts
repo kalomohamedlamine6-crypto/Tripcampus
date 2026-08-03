@@ -41,10 +41,6 @@ const layoutModules = [
         SharedModule,
         SettingsModule,
         ...layoutModules
-    ],
-    exports     : [
-        LayoutComponent,
-        ...layoutModules
     ]
 })
 export class LayoutModule

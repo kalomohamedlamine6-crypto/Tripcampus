@@ -4,12 +4,12 @@ import { ViewEncapsulation } from '@angular/core';
 interface NewsArticle {
     id: string;
     icon: string;
-    dateMonth: string;      
-    dateMonthFull: string;  
-    dateDay: string;        
+    dateMonth: string;
+    dateMonthFull: string;
+    dateDay: string;
     title: string;
     summary: string;
-    content: string;       
+    content: string;
 }
 
 @Component({
@@ -23,7 +23,7 @@ export class ActualitesComponent implements OnInit {
     drawerOpened: boolean = true;
     currentNewsIndex: number = 0;
 
-    
+
     newsList: NewsArticle[] = [
         {
             id: '1',
@@ -31,11 +31,14 @@ export class ActualitesComponent implements OnInit {
             dateMonth: 'JUN',
             dateMonthFull: 'Juin',
             dateDay: '05',
-            title: "Inscriptions ouvertes à l'ESATIC",
-            summary: "Les candidatures pour le cycle ingénieur sont ouvertes jusqu'au 15 juillet.",
+            title: 'Inscriptions ouvertes à l\'ESATIC',
+            summary: 'Les candidatures pour le cycle ingénieur sont ouvertes jusqu\'au 15 juillet.',
             content: `
-                <p>Nous informons l'ensemble des candidats que les inscriptions pour le concours d'entrée au <strong>cycle ingénieur de l'ESATIC</strong> sont officiellement lancées.</p>
-                <p>Les dossiers de candidature doivent être déposés complets avant la date limite fixée au <strong>15 juillet</strong>. Ne ratez pas cette opportunité d'intégrer une école d'excellence dans le domaine du numérique.</p>
+                <p>Nous informons l'ensemble des candidats que les inscriptions pour le concours d'entrée au
+                <strong>cycle ingénieur de l'ESATIC</strong> sont officiellement lancées.</p>
+                <p>Les dossiers de candidature doivent être déposés complets avant la date limite fixée au
+                <strong>15 juillet</strong>. Ne ratez pas cette opportunité d'intégrer une école d'excellence dans le
+                domaine du numérique.</p>
             `
         },
         {
@@ -44,11 +47,13 @@ export class ActualitesComponent implements OnInit {
             dateMonth: 'JUN',
             dateMonthFull: 'Juin',
             dateDay: '12',
-            title: "Nouvelle formation en Data Science",
-            summary: "Une nouvelle licence est désormais proposée au sein de l'établissement.",
+            title: 'Nouvelle formation en Data Science',
+            summary: 'Une nouvelle licence est désormais proposée au sein de l\'établissement.',
             content: `
-                <p>Face aux nouveaux défis de l'intelligence artificielle, l'ESATIC ouvre sa toute nouvelle <strong>Licence en Data Science</strong>.</p>
-                <p>Ce programme permettra aux étudiants d'acquérir de solides compétences en manipulation de données, statistiques avancées et Big Data.</p>
+                <p>Face aux nouveaux défis de l'intelligence artificielle, l'ESATIC ouvre sa toute nouvelle
+                <strong>Licence en Data Science</strong>.</p>
+                <p>Ce programme permettra aux étudiants d'acquérir de solides compétences en manipulation de données,
+                statistiques avancées et Big Data.</p>
             `
         },
         {
@@ -57,9 +62,9 @@ export class ActualitesComponent implements OnInit {
             dateMonth: 'JUN',
             dateMonthFull: 'Juin',
             dateDay: '20',
-            title: "20 bourses disponibles",
-            summary: "Programme d'accompagnement destiné aux nouveaux bacheliers.",
-            content: `<p>Grâce à nos partenaires du secteur privé, 20 bourses d'études complètes seront allouées aux bacheliers les plus méritants ayant postulé cette année.</p>`
+            title: '20 bourses disponibles',
+            summary: 'Programme d\'accompagnement destiné aux nouveaux bacheliers.',
+            content: '<p>Grâce à nos partenaires du secteur privé, 20 bourses d\'études complètes seront allouées aux bacheliers les plus méritants ayant postulé cette année.</p>'
         },
         {
             id: '4',
@@ -67,9 +72,10 @@ export class ActualitesComponent implements OnInit {
             dateMonth: 'JUL',
             dateMonthFull: 'Juillet',
             dateDay: '14&15',
-            title: "Le salon de l'orientation",
-            summary: "Rencontrez les responsables pédagogiques et découvrez nos locaux.",
-            content: `<p>Venez nous rencontrer lors des journées portes ouvertes et du salon de l'orientation qui se tiendront les 14 et 15 juillet dans l'enceinte de l'école.</p>`
+            title: 'Le salon de l\'orientation',
+            summary: 'Rencontrez les responsables pédagogiques et découvrez nos locaux.',
+            content: '<p>Venez nous rencontrer lors des journées portes ouvertes et du salon de l\'orientation qui se ' +
+                'tiendront les 14 et 15 juillet dans l\'enceinte de l\'école.</p>'
         }
     ];
 
@@ -81,7 +87,7 @@ export class ActualitesComponent implements OnInit {
     selectNews(index: number): void {
         this.currentNewsIndex = index;
         if (this.drawerMode === 'over') {
-            this.drawerOpened = false; 
+            this.drawerOpened = false;
         }
     }
 

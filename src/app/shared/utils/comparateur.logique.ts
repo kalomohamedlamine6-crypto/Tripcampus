@@ -1,15 +1,15 @@
-import type { Etablissement, CriterionKey } from "app/modules/admin/serviceGlobal/serviceGlobal.service";
+import type { Etablissement, CriterionKey } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
 
 // ============================================================
 //  LES CRITÈRES — description de "ce qu'on compare"
 // ============================================================
 
-export type SensCritere = "PLUS_BAS_MIEUX" | "PLUS_HAUT_MIEUX";
+export type SensCritere = 'PLUS_BAS_MIEUX' | 'PLUS_HAUT_MIEUX';
 
 export interface CritereNumerique<T, K extends string = string> {
   cle: K; // identifiant lisible, ex: "fraisAnnuels"
-  label: string; 
-  poids: number; 
+  label: string;
+  poids: number;
   sens: SensCritere;
   extraire: (item: T) => number; // fonction qui va chercher la valeur dans l'objet
 }
@@ -28,29 +28,29 @@ export interface ResultatComparaison<T> {
 }
 
 //FONCTION POUR IDENTIFIER LE GAGNANT DE LA COMPARAISON
-export function trouverGagnant<T>(scores: Map<T, number>, items: T[]): T[]{
+export const trouverGagnant = <T>(scores: Map<T, number>, items: T[]): T[] => {
   let meilleurScore = scores.get(items[0]) ?? 0;
   let meilleursItems = [items[0]];
 
-   for(const [item, score] of scores){
-    if(score > meilleurScore){
+  for (const [item, score] of scores) {
+    if (score > meilleurScore) {
       meilleursItems = [item];
       meilleurScore = score;
-    } else if (score === meilleurScore){
+    } else if (score === meilleurScore) {
       meilleursItems.push(item);
     }
-   }
-   return meilleursItems;
-} 
+  }
+  return meilleursItems;
+};
 
 
 
 
 
-export function comparer<T, K extends string>(
+export const comparer = <T, K extends string>(
   items: T[], // pour la comparaison entre au moins 2 établissements !
   criteres: CritereNumerique<T, K>[]
-): ResultatComparaison<T> {
+): ResultatComparaison<T> => {
 
 
   const scores = new Map<T, number>();
@@ -67,7 +67,7 @@ export function comparer<T, K extends string>(
     let totalTransformee = 0;
     for (const item of items) {
       const raw = critere.extraire(item);
-      const transformed = critere.sens === "PLUS_BAS_MIEUX" ? total - raw : raw;
+      const transformed = critere.sens === 'PLUS_BAS_MIEUX' ? total - raw : raw;
       valeursTransformees.set(item, transformed);
       totalTransformee += transformed;
     }
@@ -79,41 +79,40 @@ export function comparer<T, K extends string>(
       const ancienScore = scores.get(item) ?? 0;
       const nouveauScore = ancienScore + contribution;
       scores.set(item, nouveauScore);
-    } 
-  }   
+    }
+  }
   const gagnants = trouverGagnant(scores, items);
 
   return {scores, gagnants};
-}
+};
 
 export const criteresEtablissement: CritereNumerique<Etablissement, CriterionKey>[]=[
   {
-    cle: "fraisAnnuels",
-    label: "Frais de scolarité",
+    cle: 'fraisAnnuels',
+    label: 'Frais de scolarité',
     poids: 0.2,
-    sens: "PLUS_BAS_MIEUX",
-    extraire: (etab) => etab.fraisAnnuels,
+    sens: 'PLUS_BAS_MIEUX',
+    extraire: etab => etab.fraisAnnuels,
   },
   {
-    cle: "noteMoyenne",
-    label: "Note moyenne",
+    cle: 'noteMoyenne',
+    label: 'Note moyenne',
     poids: 0.3,
-    sens: "PLUS_HAUT_MIEUX",
-    extraire: (etab) => typeof etab.noteMoyenne === "number" ? etab.noteMoyenne : parseInt(etab.noteMoyenne, 10) || 0,
+    sens: 'PLUS_HAUT_MIEUX',
+    extraire: etab => typeof etab.noteMoyenne === 'number' ? etab.noteMoyenne : parseInt(etab.noteMoyenne, 10) || 0,
   },
   {
-    cle: "tauxReussiteExamens",
-    label: "Taux de réussite Examens",
+    cle: 'tauxReussiteExamens',
+    label: 'Taux de réussite Examens',
     poids: 0.2,
-    sens: "PLUS_HAUT_MIEUX",
-    extraire: (etab) => etab.tauxReussiteExamens,
+    sens: 'PLUS_HAUT_MIEUX',
+    extraire: etab => etab.tauxReussiteExamens,
   },
   {
-    cle: "tauxInsertion",
-    label: "Insertion Pro.",
+    cle: 'tauxInsertion',
+    label: 'Insertion Pro.',
     poids: 0.2,
-    sens: "PLUS_HAUT_MIEUX",
-    extraire: (etab) => etab.tauxInsertion,
+    sens: 'PLUS_HAUT_MIEUX',
+    extraire: etab => etab.tauxInsertion,
   },
 ];
-  

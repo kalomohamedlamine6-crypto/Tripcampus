@@ -50,7 +50,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
 
         this._router.events
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(event => {
+            .subscribe((event) => {
                 if (event instanceof NavigationEnd) {
                     const url = event.urlAfterRedirects;
                     this.currentUrl = url;
@@ -98,5 +98,5 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
     //     }).catch(err => console.error(err));
     // }
 
-    
+
 }

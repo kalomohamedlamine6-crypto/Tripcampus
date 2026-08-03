@@ -26,14 +26,14 @@ export class AuthService
     /**
      * Setter & getter for access token
      */
-    set accessToken(token: string)
-    {
-        localStorage.setItem('accessToken', token);
-    }
-
     get accessToken(): string
     {
         return localStorage.getItem('accessToken') ?? '';
+    }
+
+    set accessToken(token: string)
+    {
+        localStorage.setItem('accessToken', token);
     }
 
     // -----------------------------------------------------------------------------------------------------

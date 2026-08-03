@@ -26,15 +26,15 @@ export class UserService
      *
      * @param value
      */
+    get user$(): Observable<User>
+    {
+        return this._user.asObservable();
+    }
+
     set user(value: User)
     {
         // Store the value
         this._user.next(value);
-    }
-
-    get user$(): Observable<User>
-    {
-        return this._user.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------

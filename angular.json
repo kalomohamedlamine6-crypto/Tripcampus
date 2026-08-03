@@ -2,8 +2,7 @@
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "cli": {
-        "defaultCollection": "@angular-eslint/schematics",
-        "analytics": "3399d0f7-7f39-4155-a1ec-544d60cf9491"
+        "defaultCollection": "@angular-eslint/schematics"
     },
     "newProjectRoot": "projects",
     "projects": {
@@ -96,10 +95,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "buildTarget": "fuse:build:production"
+                            "browserTarget": "fuse:build:production"
                         },
                         "development": {
-                            "buildTarget": "fuse:build:development"
+                            "browserTarget": "fuse:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -141,4 +140,5 @@
             }
         }
     },
+    "defaultProject": "fuse"
 }

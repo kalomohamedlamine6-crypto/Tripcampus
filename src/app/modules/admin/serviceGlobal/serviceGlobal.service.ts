@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 
 export interface Etablissement {
@@ -43,8 +43,6 @@ export interface CompareRow {
 })
 export class GlobalService {
     ibra: Etablissement | undefined;
-
-    constructor(private http: HttpClient) { }
 
     etablissements: Etablissement[] = [
         {
