@@ -1,32 +1,9 @@
 import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
 import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/shared/utils/comparateur.logique';
+import confetti from 'canvas-confetti'; 
 
 
-//     selectedEtablissement: any = null;
-//     etablissements: any;
-//     etablissementsCriteres: any[]=[]
-
-
-// constructor(
-//         private GlobalService: GlobalService
-//     ) {
-
-//     }
-// ngOnInit(): void {
-//         // throw new Error('Method not implemented.');
-//         this.etablissements = this.GlobalService.etablissements
-
-//         this.verifetablissementCriteres()
-
-//         console.log("etablissementsCriteres :",this.etablissementsCriteres);
-
-//     }
-
-
-
-
-// }
 
 @Component({
   selector: 'Comparateur',
@@ -34,8 +11,8 @@ import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/s
 })
 export class ComparateurComponent implements OnInit {
 
-  @ViewChildren('carteEtab') cartesEtab!: QueryList<ElementRef>;
   readonly maxCompare = 3;
+  @ViewChildren('carteEtab') cartesEtab!: QueryList<ElementRef>;
   selectedEtablissements: Etablissement[] = [];    // Tableau des établissements sélectionnés
   resultatComparaison: ResultatComparaison<Etablissement> | null = null;
   compareRows: CompareRow[] = [
@@ -71,17 +48,41 @@ export class ComparateurComponent implements OnInit {
     if (this.selectedEtablissements.length >= 2){
       if (immediat){
         this.resultatComparaison = comparer(this.selectedEtablissements, criteresEtablissement);
+        setTimeout(() => this.lancerConfettis(), 0);
       } else{
         if (this.timerComparaison !== null){
           clearTimeout(this.timerComparaison);
         }
         this.timerComparaison = setTimeout(() => {
           this.resultatComparaison = comparer(this.selectedEtablissements, criteresEtablissement);
-        }, 2000);
+          setTimeout(() => this.lancerConfettis(), 0);}, 2000);
       }
     }
     else{
       this.resultatComparaison = null;
+    }
+  }
+
+  // Donne le statut de gagnant pour un établissement donné
+  estGagnant(etab: Etablissement): boolean{
+    if (this.resultatComparaison===null){
+      return false;
+    } else {
+      return this.resultatComparaison.gagnants.some(g=>g.name===etab.name);
+    }
+  }
+
+  // Lancer des fleurs😅au(x) gagnant(s)
+  lancerConfettis(): void {
+    const cartes = this.cartesEtab.toArray();
+    for (let i = 0; i < this.selectedEtablissements.length; i++) {
+      const etab = this.selectedEtablissements[i];
+      if (this.estGagnant(etab)) {        
+        const rect = cartes[i].nativeElement.getBoundingClientRect();
+        const x = (rect.left + rect.width / 2) / window.innerWidth;
+        const y = (rect.top + rect.height / 2) / window.innerHeight;
+        confetti({ origin: { x, y }, zIndex: 9999, particleCount: 100, spread: 45, scalar: 1.2, colors: ['[#1a237e]', '#1a1288', '#8a0d9b', '#bd123a', '#fbb1b1'] });
+      }
     }
   }
 
@@ -110,14 +111,7 @@ export class ComparateurComponent implements OnInit {
     this.selectedEtablissements = this.selectedEtablissements.filter(e => e.name !== name);
     this.recalculerComparaison(true);
   }
-  // Donne le gagnant
-  estGagnant(etab: Etablissement): boolean{
-    if (this.resultatComparaison===null){
-      return false;
-    } else {
-      return this.resultatComparaison.gagnants.some(g=>g.name===etab.name);
-    }
-  }
+  
 
 
   // nombre de colonnes

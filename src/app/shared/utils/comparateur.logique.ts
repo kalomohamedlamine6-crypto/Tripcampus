@@ -45,8 +45,6 @@ export const trouverGagnant = <T>(scores: Map<T, number>, items: T[]): T[] => {
 
 
 
-
-
 export const comparer = <T, K extends string>(
   items: T[], // pour la comparaison entre au moins 2 établissements !
   criteres: CritereNumerique<T, K>[]
