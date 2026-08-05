@@ -14,6 +14,7 @@ import { landingHomeRoutes } from 'app/modules/landing/home/home.routing';
 import { QuizComponent } from 'app/modules/landing/home/Quiz/quiz.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ComparateurComponent } from './Comparateur/comparateur.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { ComparateurComponent } from './Comparateur/comparateur.component';
         MatSelectModule,
         MatStepperModule,
         MatDialogModule,
-        SharedModule
+        SharedModule,
+        MatAutocompleteModule
     ]
 })
 export class LandingHomeModule

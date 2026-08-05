@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular
 import { GlobalService, Etablissement, CompareRow } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
 import { comparer, criteresEtablissement, type ResultatComparaison } from 'app/shared/utils/comparateur.logique';
 import confetti from 'canvas-confetti'; 
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+// import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
 
 
 
@@ -23,6 +28,9 @@ export class ComparateurComponent implements OnInit {
     { key: 'tauxInsertion', label: 'Insertion Pro.' },
   ];
   private timerComparaison: any = null;          // le "ticket" pour clearTimeout et setTimeout
+  // etablissementControl = new FormControl("");
+  // filteredEtablissements$!: Observable<Etablissement[]>;
+
 
   constructor(public _globalService: GlobalService) { }
 
