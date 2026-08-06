@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-// import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 
 
@@ -28,16 +28,28 @@ export class ComparateurComponent implements OnInit {
     { key: 'tauxInsertion', label: 'Insertion Pro.' },
   ];
   private timerComparaison: any = null;          // le "ticket" pour clearTimeout et setTimeout
-  // etablissementControl = new FormControl("");
-  // filteredEtablissements$!: Observable<Etablissement[]>;
+  etablissementControl = new FormControl("");
+  filteredEtablissements$!: Observable<Etablissement[]>;
 
 
   constructor(public _globalService: GlobalService) { }
 
   get availableEtablissements(): Etablissement[] {
-    return this._globalService.etablissements.filter(
-      e => !this.selectedEtablissements.some(selected => selected.name === e.name)
-    );
+  return (this._globalService.etablissements || [])
+    .filter(e => e && e.name)   // S'assure que 'e' et 'e.name' existent !
+    .filter(e => !this.selectedEtablissements.some(selected => selected && selected.name === e.name));
+  }
+
+  // Filtre les établissements disponibles en fonction de la recherche
+  private _filter(recherche: string): Etablissement[] {
+  return this.availableEtablissements.filter(etab => 
+    etab && etab.name && etab.name.toLowerCase().includes(recherche.toLowerCase())
+  );
+  }
+
+  // affichage du nom de l'établissement dans le champ de saisie
+  displayFn(etab: Etablissement): string {
+    return etab && etab.name ? etab.name : '';
   }
 
   // Vérifie si la limite d'écoles à comparer est atteinte
@@ -47,8 +59,15 @@ export class ComparateurComponent implements OnInit {
 
   ngOnInit(): void {
     if (this._globalService.etablissements.length >= 2) {
-      this.selectedEtablissements = this._globalService.etablissements.slice(0, 2);
+      this.selectedEtablissements =  [];            // Initialisation avec un tableau vide pour permettre la sélection d'établissements.
     }
+    this.filteredEtablissements$ = this.etablissementControl.valueChanges.pipe(
+      startWith(''),
+      map(saisie =>{
+        const recherche = typeof saisie === "string" ? saisie : saisie?.name;
+        return recherche ? this._filter(recherche) : this.availableEtablissements.slice()
+    })
+    )
     this.recalculerComparaison(true);
   }
 
@@ -95,22 +114,19 @@ export class ComparateurComponent implements OnInit {
   }
 
   // Ajoute un établissement sélectionné depuis le dropdown
-  onAddEtablissement(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const name = selectElement.value;
-    if (!name) {return;}
-
-    const etablissement = this._globalService.etablissements.find(e => e.name === name);
-    if (etablissement && !this.isLimitReached) {
+  onOptionSelected(event: MatAutocompleteSelectedEvent): void {
+    const etab = event.option.value as Etablissement;
+    
+    if (etab && !this.isLimitReached) {
       const nombreAvant = this.selectedEtablissements.length;
-      this.selectedEtablissements.push(etablissement);
+      this.selectedEtablissements.push(etab);
       if (nombreAvant === 1){
         this.recalculerComparaison(false);
       } else{
         this.recalculerComparaison(true);
       }
     }
-    selectElement.value = '';
+    this.etablissementControl.setValue('');
 
   }
 
@@ -118,6 +134,7 @@ export class ComparateurComponent implements OnInit {
   onRemoveEtablissement(name: string): void {
     this.selectedEtablissements = this.selectedEtablissements.filter(e => e.name !== name);
     this.recalculerComparaison(true);
+    this.etablissementControl.setValue(this.etablissementControl.value);
   }
   
 

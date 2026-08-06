@@ -15,25 +15,33 @@
     <div class="w-full md:w-auto min-w-[250px]">
       <div *ngIf="isLimitReached; else selectDropdown"
         class="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-3 py-2.5 rounded-xl font-medium">
-        Limite de {{ maxCompare }} écoles atteinte. Retirez-en une pour en ajouter une autre.
+        Limite de {{ maxCompare }} établissements atteinte. Retirez-en un pour en ajouter un autre.
       </div>
+     <ng-template #selectDropdown>
+      <mat-form-field appearance="outline">
+        <mat-label>Ajouter un établissement</mat-label>
 
-      <ng-template #selectDropdown>
-        <div class="relative">
-          <select (change)="onAddEtablissement($event)"
-            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm font-semibold text-foreground bg-white border border-border rounded-xl cursor-pointer hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20">
-            <option value="" disabled selected hidden>
-              Ajouter un établissement
-            </option>
-            <option *ngFor="let etab of availableEtablissements" [value]="etab.name">
-              {{etab.name }} ({{etab.ville }})
-            </option>
-          </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground">
-            <mat-icon svgIcon="heroicons_solid:plus"></mat-icon>
-          </div>
-        </div>
-      </ng-template>
+        <!-- CHAMP DE SAISIE (<input>) -->
+        <input type="text" 
+               matInput [formControl]="etablissementControl" 
+               [matAutocomplete]="auto"
+               placeholder="Rechercher un établissement..." />
+
+        <!-- LISTE D'AUTOCOMPLÉTION (<mat-autocomplete>) -->
+        <mat-autocomplete #auto="matAutocomplete" 
+                          autoActiveFirstOption
+                          [displayWith]="displayFn" 
+                          (optionSelected)="onOptionSelected($event)">
+
+          <mat-option *ngFor ="let etab of filteredEtablissements$ | async; track $index" [value]="etab" class="!h-auto !py-3  whitespace-normal break-words">
+            <span class="leading-normal block border-b border-slate-100 last:border-b-0">
+            {{ etab?.name }} ({{ etab?.ville }})
+            </span>
+          </mat-option>
+      
+        </mat-autocomplete>
+      </mat-form-field>
+     </ng-template>
     </div>
   </div>
 
@@ -64,11 +72,11 @@
             <mat-icon svgIcon="heroicons_solid:trash"></mat-icon>
           </button>
 
-          <!-- Avatar de l'école -->
+          <!-- Avatar de l'établissement -->
           <img [src]="etab.image" [alt]="etab.name" class="w-14 h-14 rounded-2xl object-cover shadow-sm mt-2">
 
           <div class="text-center">
-            <p class="text-sm font-bold text-foreground line-clamp-2"
+            <p class="text-sm font-bold text-foreground whitespace-normal break-words"
               style="font-family: 'Plus Jakarta Sans', sans-serif">
               {{ etab.name }}
             </p>
@@ -135,9 +143,8 @@
 
         </div>
       </div>
-      
-      <div *ngIf="resultatComparaison" class="grid border-b border-border last:border-0"
-        [ngClass]="getGridColsClass()">
+
+      <div *ngIf="resultatComparaison" class="grid border-b border-border last:border-0" [ngClass]="getGridColsClass()">
 
         <!-- Label des scores -->
         <div class="p-4 flex items-center">
@@ -147,12 +154,12 @@
         <!-- Valeur pour chaque établissement -->
         <div *ngFor="let etab of selectedEtablissements"
           class="p-4 flex flex-col gap-2 justify-center border-l border-border text-center">
-           {{(resultatComparaison?.scores?.get(etab) ?? 0)| percent}}
-           <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-             <div class="h-2 bg-[#1a237e] rounded-full transition-all"
-                  [style.width.%]="(resultatComparaison?.scores?.get(etab) ?? 0)*100">
-             </div>
-           </div>
+          {{(resultatComparaison?.scores?.get(etab) ?? 0)| percent}}
+          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-2 bg-[#1a237e] rounded-full transition-all"
+              [style.width.%]="(resultatComparaison?.scores?.get(etab) ?? 0)*100">
+            </div>
+          </div>
         </div>
 
       </div>
