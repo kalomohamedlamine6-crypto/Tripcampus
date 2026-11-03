@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Serve Angular locally",
+			"type": "shell",
+			"command": "node.exe",
+			"args": [
+				"node_modules/@angular/cli/bin/ng.js",
+				"serve",
+				"--port",
+				"4200"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

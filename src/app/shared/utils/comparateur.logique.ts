@@ -1,34 +1,34 @@
-import type { Etablissement, CriterionKey } from 'app/modules/admin/serviceGlobal/serviceGlobal.service';
-
-// ============================================================
-//  LES CRITÈRES — description de "ce qu'on compare"
-// ============================================================
+import type { Etablissement, Propose } from 'app/core/models';
 
 export type SensCritere = 'PLUS_BAS_MIEUX' | 'PLUS_HAUT_MIEUX';
 
+export type ComparisonItem = Etablissement & Propose & {
+  name: string;
+  ville: string;
+  fraisAnnuels: number;
+  tauxReussiteExamens: number;
+};
+
+export type CriterionKey = 'fraisAnnuels' | 'noteMoyenne' | 'tauxReussiteExamens' | 'tauxInsertion';
+
 export interface CritereNumerique<T, K extends string = string> {
-  cle: K; // identifiant lisible, ex: "fraisAnnuels"
+  cle: K;
   label: string;
   poids: number;
   sens: SensCritere;
-  extraire: (item: T) => number; // fonction qui va chercher la valeur dans l'objet
+  extraire: (item: T) => number;
 }
-
-
-// ============================================================
-//  LE MOTEUR DE SCORING — la logique générique
-// ============================================================
-
-// Détail du score pour un seul critère
-
 
 export interface ResultatComparaison<T> {
-  scores: Map<T, number>;        //les scores de tous les items stockés dans une Map
-  gagnants: T[];               //la liste des gagnants en tableau pour des éventuelles égalités
+  scores: Map<T, number>;
+  gagnants: T[];
 }
 
-//FONCTION POUR IDENTIFIER LE GAGNANT DE LA COMPARAISON
 export const trouverGagnant = <T>(scores: Map<T, number>, items: T[]): T[] => {
+  if (!items.length) {
+    return [];
+  }
+
   let meilleurScore = scores.get(items[0]) ?? 0;
   let meilleursItems = [items[0]];
 
@@ -40,29 +40,29 @@ export const trouverGagnant = <T>(scores: Map<T, number>, items: T[]): T[] => {
       meilleursItems.push(item);
     }
   }
+
   return meilleursItems;
 };
 
-
-
 export const comparer = <T, K extends string>(
-  items: T[], // pour la comparaison entre au moins 2 établissements !
+  items: T[],
   criteres: CritereNumerique<T, K>[]
 ): ResultatComparaison<T> => {
-
+  if (!items.length) {
+    return { scores: new Map(), gagnants: [] };
+  }
 
   const scores = new Map<T, number>();
-  for (const critere of criteres) {
 
-    // calcul du total (part globale)
+  for (const critere of criteres) {
     let total = 0;
     for (const item of items) {
       total += critere.extraire(item);
     }
 
-    // valeurs transformées selon le sens (PLUS_BAS_MIEUX -> on inverse)
     const valeursTransformees = new Map<T, number>();
     let totalTransformee = 0;
+
     for (const item of items) {
       const raw = critere.extraire(item);
       const transformed = critere.sens === 'PLUS_BAS_MIEUX' ? total - raw : raw;
@@ -70,47 +70,44 @@ export const comparer = <T, K extends string>(
       totalTransformee += transformed;
     }
 
-    // ratio, pondération et calcul du score de chaque item
     for (const item of items) {
-      const ratio = (valeursTransformees.get(item) ?? 0)/totalTransformee;
-      const contribution = ratio*critere.poids;
+      const ratio = totalTransformee === 0 ? 0 : (valeursTransformees.get(item) ?? 0) / totalTransformee;
+      const contribution = ratio * critere.poids;
       const ancienScore = scores.get(item) ?? 0;
-      const nouveauScore = ancienScore + contribution;
-      scores.set(item, nouveauScore);
+      scores.set(item, ancienScore + contribution);
     }
   }
-  const gagnants = trouverGagnant(scores, items);
 
-  return {scores, gagnants};
+  return { scores, gagnants: trouverGagnant(scores, items) };
 };
 
-export const criteresEtablissement: CritereNumerique<Etablissement, CriterionKey>[]=[
+export const criteresEtablissement: CritereNumerique<ComparisonItem, CriterionKey>[] = [
   {
     cle: 'fraisAnnuels',
     label: 'Frais de scolarité',
-    poids: 0.2,
+    poids: 0.25,
     sens: 'PLUS_BAS_MIEUX',
-    extraire: etab => etab.fraisAnnuels,
+    extraire: item => item.fraisAnnuels,
   },
   {
     cle: 'noteMoyenne',
     label: 'Note moyenne',
-    poids: 0.3,
+    poids: 0.25,
     sens: 'PLUS_HAUT_MIEUX',
-    extraire: etab => typeof etab.noteMoyenne === 'number' ? etab.noteMoyenne : parseInt(etab.noteMoyenne, 10) || 0,
+    extraire: item => item.noteMoyenne,
   },
   {
     cle: 'tauxReussiteExamens',
     label: 'Taux de réussite Examens',
-    poids: 0.2,
+    poids: 0.25,
     sens: 'PLUS_HAUT_MIEUX',
-    extraire: etab => etab.tauxReussiteExamens,
+    extraire: item => item.tauxReussiteExamens,
   },
   {
     cle: 'tauxInsertion',
     label: 'Insertion Pro.',
-    poids: 0.2,
+    poids: 0.25,
     sens: 'PLUS_HAUT_MIEUX',
-    extraire: etab => etab.tauxInsertion,
+    extraire: item => item.tauxInsertion,
   },
 ];
