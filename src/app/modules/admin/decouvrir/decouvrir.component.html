@@ -1,13 +1,13 @@
-<main class="min-h-full bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
+<main class="w-full bg-gray-50">
+    <div class="tripcampus-page">
         <header class="mb-8">
             <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Découvrir</p>
             <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Les établissements</h1>
             <p class="mt-3 max-w-2xl text-base leading-7 text-gray-600">
                 Explorez les établissements et comparez leurs formations, leurs conditions d’admission et leurs frais.
             </p>
-            <p class="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-                Données fictives de démonstration : les établissements, frais et taux de réussite sont à vérifier et ne sont pas officiels.
+            <p class="mt-3 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-600">
+                Données de démonstration
             </p>
         </header>
 
@@ -33,7 +33,7 @@
                     <select name="ville" [(ngModel)]="villeSelectionnee"
                         class="w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 focus:border-[#1a237e] focus:outline-none focus:ring-2 focus:ring-indigo-100">
                         <option value="">Toutes les villes</option>
-                        <option *ngFor="let ville of villes" [value]="ville">{{ ville }}</option>
+                        <option *ngFor="let ville of villes; trackBy: trackByValue" [value]="ville">{{ ville }}</option>
                     </select>
                 </label>
 
@@ -52,7 +52,7 @@
                     <select name="fraisMaximum" [(ngModel)]="fraisMaximum"
                         class="w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 focus:border-[#1a237e] focus:outline-none focus:ring-2 focus:ring-indigo-100">
                         <option [ngValue]="null">Tous les budgets</option>
-                        <option *ngFor="let frais of filtresFrais" [ngValue]="frais.valeur">{{ frais.libelle }}</option>
+                        <option *ngFor="let frais of filtresFrais; trackBy: trackByFrais" [ngValue]="frais.valeur">{{ frais.libelle }}</option>
                     </select>
                 </label>
             </div>
@@ -91,7 +91,7 @@
 
             <div *ngIf="!isLoading && !loadError && etablissementsFiltres.length > 0"
                 class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-                <article *ngFor="let etablissement of etablissementsFiltres"
+                <article *ngFor="let etablissement of etablissementsFiltres; trackBy: trackById"
                     class="flex flex-col rounded-2xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
                     [ngClass]="etablissementSelectionne?.id === etablissement.id ? 'border-[#1a237e] ring-2 ring-indigo-100' : 'border-gray-200'">
                     <div class="flex items-start justify-between gap-3">
@@ -115,7 +115,7 @@
                         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">À partir de</p>
                         <p *ngIf="fraisMinimum(etablissement.id) as fraisMinimumFictifs; else fraisIndisponibles"
                             class="mt-1 font-bold text-[#1a237e]">
-                            FICTIF · {{ fraisMinimumFictifs | number:'1.0-0' }} FCFA/an
+                            {{ fraisMinimumFictifs | number:'1.0-0' }} FCFA/an
                         </p>
                         <ng-template #fraisIndisponibles>
                             <p class="mt-1 text-sm text-gray-500">Frais non renseignés</p>
@@ -153,7 +153,7 @@
 
                     <h3 class="mt-6 text-base font-semibold text-gray-900">Admission</h3>
                     <ul class="mt-2 space-y-2 text-sm text-gray-600">
-                        <li *ngFor="let condition of etablissement.conditionsAdmission" class="flex gap-2">
+                        <li *ngFor="let condition of etablissement.conditionsAdmission; trackBy: trackByValue" class="flex gap-2">
                             <mat-icon svgIcon="heroicons_solid:check" class="mt-0.5 icon-size-4 text-[#1a237e]"></mat-icon>
                             <span>{{ condition }}</span>
                         </li>
@@ -165,15 +165,15 @@
                     <p class="mt-1 text-xs text-gray-500">Chaque montant et taux ci-dessous est fictif.</p>
                     <div *ngIf="offresEtablissement(etablissement.id).length > 0; else noOffres"
                         class="mt-3 divide-y divide-gray-100 rounded-xl border border-gray-200">
-                        <div *ngFor="let offre of offresEtablissement(etablissement.id)" class="p-4">
+                        <div *ngFor="let offre of offresEtablissement(etablissement.id); trackBy: trackByOffre" class="p-4">
                             <p class="font-semibold text-gray-900">
                                 {{ formation(offre.formationId)?.nom || 'Formation non renseignée' }}
                                 <span *ngIf="formation(offre.formationId) as item"
                                     class="ml-1 text-xs font-medium text-gray-500">{{ item.niveau }}</span>
                             </p>
                             <div class="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-gray-600">
-                                <span>Frais : <strong class="text-gray-900">FICTIF · {{ offre.fraisScolariteAnnuelsFictifs | number:'1.0-0' }} FCFA/an</strong></span>
-                                <span>Réussite : <strong class="text-gray-900">FICTIF · {{ offre.tauxReussiteFictif }} %</strong></span>
+                                <span>Frais : <strong class="text-gray-900">{{ offre.fraisScolariteAnnuelsFictifs | number:'1.0-0' }} FCFA/an</strong></span>
+                                <span>Réussite : <strong class="text-gray-900">{{ offre.tauxReussiteFictif }} %</strong></span>
                             </div>
                         </div>
                     </div>

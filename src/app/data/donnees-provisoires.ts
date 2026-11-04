@@ -234,6 +234,12 @@ export const offresFormationEtablissement: OffreFormationEtablissement[] = [
         tauxReussiteFictif: 78 // FICTIF
     },
     {
+        etablissementId: 'ecole-demo-yopougon',
+        formationId: 'developpement-logiciel',
+        fraisScolariteAnnuelsFictifs: 350000, // FICTIF
+        tauxReussiteFictif: 71 // FICTIF
+    },
+    {
         etablissementId: 'institut-demo-treichville',
         formationId: 'comptabilite-gestion',
         fraisScolariteAnnuelsFictifs: 420000, // FICTIF
@@ -254,7 +260,7 @@ export const offresFormationEtablissement: OffreFormationEtablissement[] = [
 ];
 
 export const filtresFraisFictifs: FraisFilterOption[] = [
-    { valeur: 250000, libelle: 'FICTIF · Jusqu’à 250 000 FCFA/an' }, // FICTIF
-    { valeur: 400000, libelle: 'FICTIF · Jusqu’à 400 000 FCFA/an' }, // FICTIF
-    { valeur: 600000, libelle: 'FICTIF · Jusqu’à 600 000 FCFA/an' } // FICTIF
+    { valeur: 250000, libelle: 'Jusqu’à 250 000 FCFA/an' }, // FICTIF
+    { valeur: 400000, libelle: 'Jusqu’à 400 000 FCFA/an' }, // FICTIF
+    { valeur: 600000, libelle: 'Jusqu’à 600 000 FCFA/an' } // FICTIF
 ];

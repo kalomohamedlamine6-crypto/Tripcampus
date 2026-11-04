@@ -28,6 +28,11 @@
 // }
 
 /* Styles  */
+modern-layout main > router-outlet + * {
+    flex-direction: column;
+    min-width: 0;
+}
+
 fuse-horizontal-navigation.modern-horizontal-navigation {
     .fuse-horizontal-navigation-wrapper {
         /* Cible les éléments de menu directement */

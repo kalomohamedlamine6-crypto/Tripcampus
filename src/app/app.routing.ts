@@ -48,6 +48,8 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
+            {path: 'comparateur', loadChildren: () => import('app/modules/landing/home/Comparateur/comparateur.module').then(m => m.ComparateurModule)},
+            {path: 'quiz', loadChildren: () => import('app/modules/landing/home/Quiz/quiz.module').then(m => m.QuizModule)},
             {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
             {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
             {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},

@@ -1,15 +1,17 @@
-import type { Etablissement, Propose } from 'app/core/models';
-
 export type SensCritere = 'PLUS_BAS_MIEUX' | 'PLUS_HAUT_MIEUX';
 
-export type ComparisonItem = Etablissement & Propose & {
+export interface ComparisonItem
+{
+  id: string;
   name: string;
   ville: string;
+  statut: 'Public' | 'Privé';
+  niveau: string;
   fraisAnnuels: number;
   tauxReussiteExamens: number;
-};
+}
 
-export type CriterionKey = 'fraisAnnuels' | 'noteMoyenne' | 'tauxReussiteExamens' | 'tauxInsertion';
+export type CriterionKey = 'fraisAnnuels' | 'tauxReussiteExamens';
 
 export interface CritereNumerique<T, K extends string = string> {
   cle: K;
@@ -85,29 +87,15 @@ export const criteresEtablissement: CritereNumerique<ComparisonItem, CriterionKe
   {
     cle: 'fraisAnnuels',
     label: 'Frais de scolarité',
-    poids: 0.25,
+    poids: 0.5,
     sens: 'PLUS_BAS_MIEUX',
     extraire: item => item.fraisAnnuels,
   },
   {
-    cle: 'noteMoyenne',
-    label: 'Note moyenne',
-    poids: 0.25,
-    sens: 'PLUS_HAUT_MIEUX',
-    extraire: item => item.noteMoyenne,
-  },
-  {
     cle: 'tauxReussiteExamens',
-    label: 'Taux de réussite Examens',
-    poids: 0.25,
+    label: 'Taux de réussite',
+    poids: 0.5,
     sens: 'PLUS_HAUT_MIEUX',
     extraire: item => item.tauxReussiteExamens,
-  },
-  {
-    cle: 'tauxInsertion',
-    label: 'Insertion Pro.',
-    poids: 0.25,
-    sens: 'PLUS_HAUT_MIEUX',
-    extraire: item => item.tauxInsertion,
   },
 ];

@@ -1,8 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { atoutsAccueil, filieresPorteuses, statistiquesAccueil } from 'app/data/donnees-provisoires';
-import { ComparateurComponent } from './Comparateur/comparateur.component';
-import { QuizComponent } from './Quiz/quiz.component';
 
 @Component({
     selector: 'landing-home',
@@ -16,25 +13,13 @@ export class LandingHomeComponent
     readonly features = atoutsAccueil;
     readonly filieres = filieresPorteuses;
 
-    constructor(private _dialog: MatDialog)
+    trackByIndex(index: number): number
     {
+        return index;
     }
 
-    openQuiz(): void
+    trackById(index: number, item: { id: string }): string
     {
-        this._dialog.open(QuizComponent, {
-            width: '600px',
-            maxWidth: '95vw',
-            panelClass: 'quiz-modal-panel'
-        });
-    }
-
-    openComparateur(): void
-    {
-        this._dialog.open(ComparateurComponent, {
-            width: '600px',
-            maxWidth: '95vw',
-            panelClass: 'comparateur-modal-panel'
-        });
+        return item.id;
     }
 }

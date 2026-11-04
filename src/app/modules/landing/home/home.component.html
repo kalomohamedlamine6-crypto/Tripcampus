@@ -1,5 +1,6 @@
-<div class="flex flex-col min-w-0 min-h-full overflow-y-auto bg-white">
-    <main class="relative z-10 w-full text-center bg-gradient-to-b from-indigo-50 to-white">
+<div class="flex w-full min-w-0 flex-col bg-white">
+    <main class="tripcampus-page relative z-10 text-center bg-white">
+        <section class="bg-gradient-to-b from-indigo-50 to-white px-4 pb-8">
         <div
             class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-[#1a237e] text-xs font-semibold mt-8 mb-6 border border-[#1a237e]/10 shadow-sm">
             Orientation dans l’enseignement supérieur en Côte d’Ivoire
@@ -11,29 +12,34 @@
             Comparez les établissements, explorez les filières et faites le point sur vos envies grâce au quiz d’orientation.
         </p>
 
-        <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-12 px-4">
-            <button mat-stroked-button (click)="openComparateur()"
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-8 px-4">
+            <a mat-stroked-button routerLink="/comparateur"
                 class="w-full sm:w-auto px-8 py-6 rounded-full bg-white shadow-sm text-md font-bold cursor-pointer border-2 border-transparent hover:border-[#1a237e] hover:text-[#1a237e] hover:bg-[#1a237e]/5 transition-all duration-300 flex items-center justify-center gap-2">
                 <mat-icon svgIcon="heroicons_solid:adjustments" class="icon-size-5"></mat-icon>
                 Comparer
-            </button>
-            <button mat-stroked-button (click)="openQuiz()"
+            </a>
+            <a mat-stroked-button routerLink="/quiz"
                 class="w-full sm:w-auto px-8 py-6 rounded-full bg-[#1a237e] text-white shadow-lg text-md font-bold cursor-pointer hover:bg-indigo-800 transition-all duration-300 flex items-center justify-center gap-2">
                 <mat-icon svgIcon="heroicons_solid:question-mark-circle" class="icon-size-5"></mat-icon>
                 Quiz d’orientation
-            </button>
+            </a>
         </div>
 
-        <div class="relative z-10 mt-6 w-full max-w-3xl mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border rounded-3xl shadow-sm overflow-hidden mb-16">
-                <div *ngFor="let stat of stats" class="flex flex-col items-center justify-center py-6 sm:py-8 px-4 bg-white gap-1">
+        <p class="mx-auto mb-6 inline-flex rounded-full border border-indigo-100 bg-white px-4 py-2 text-sm text-gray-600">
+            Données de démonstration
+        </p>
+
+        <div class="relative z-10 mx-auto mt-2 w-full max-w-3xl px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border rounded-3xl shadow-sm overflow-hidden mb-12">
+                <div *ngFor="let stat of stats; trackBy: trackByIndex" class="flex flex-col items-center justify-center py-6 sm:py-8 px-4 bg-white gap-1">
                     <span class="text-2xl md:text-4xl font-black text-[#1a237e]">
-                        <span *ngIf="stat.estFictive">FICTIF · </span>{{ stat.valeur }}
+                        {{ stat.valeur }}
                     </span>
                     <span class="text-sm md:text-base text-muted-foreground font-medium">{{ stat.libelle }}</span>
                 </div>
             </div>
         </div>
+        </section>
 
         <section class="border-y border-border py-20 px-4 bg-gray-50/50">
             <div class="max-w-5xl mx-auto">
@@ -45,7 +51,7 @@
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <article *ngFor="let feature of features"
+                    <article *ngFor="let feature of features; trackBy: trackByIndex"
                         class="group p-6 bg-white border border-border rounded-3xl hover:border-[#1a237e]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-[#1a237e] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                             <mat-icon [svgIcon]="feature.icone" class="w-6 h-6"></mat-icon>
@@ -62,7 +68,6 @@
                 <div>
                     <h2 class="text-3xl font-bold text-foreground mb-2">Filières porteuses</h2>
                     <p class="text-lg text-muted-foreground">Des pistes à explorer selon vos intérêts et votre projet.</p>
-                    <p class="text-sm text-gray-500 mt-2">Exemples provisoires : ces données de démonstration sont fictives et restent à vérifier.</p>
                 </div>
                 <a [routerLink]="['/filieres']" class="inline-flex items-center gap-2 text-[#1a237e] font-bold hover:gap-3 transition-all duration-200">
                     Découvrir les filières
@@ -71,7 +76,7 @@
             </div>
 
             <div *ngIf="filieres.length > 0; else noFilieres" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                <article *ngFor="let filiere of filieres"
+                <article *ngFor="let filiere of filieres; trackBy: trackById"
                     class="group border border-border rounded-3xl bg-white p-6 hover:border-[#1a237e]/40 hover:shadow-lg transition-all duration-300 flex flex-col">
                     <div class="flex items-center justify-between gap-2 mb-4">
                         <div class="w-10 h-10 rounded-xl bg-indigo-100 text-[#1a237e] flex items-center justify-center">

@@ -103,6 +103,26 @@ export class DecouvrirComponent implements OnInit
         this.tri = 'nom';
     }
 
+    trackById(index: number, item: { id: string }): string
+    {
+        return item.id;
+    }
+
+    trackByValue(index: number, item: string): string
+    {
+        return item;
+    }
+
+    trackByFrais(index: number, item: { valeur: number }): number
+    {
+        return item.valeur;
+    }
+
+    trackByOffre(index: number, item: OffreFormationEtablissement): string
+    {
+        return `${item.etablissementId}:${item.formationId}`;
+    }
+
     private _normaliser(valeur: string): string
     {
         return valeur.trim().toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g, '');

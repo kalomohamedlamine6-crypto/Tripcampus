@@ -1,80 +1,115 @@
-<div class="flex items-center justify-between p-4 border-b bg-gray-50">
-    <h2 class="text-xl font-bold text-[#1a237e] m-0">❔ Quiz d'Or<span class="text-gray-500">ientation</span></h2>
-    <button mat-icon-button (click)="close()">
-        <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
-    </button>
-</div>
+<main class="w-full bg-gray-50">
+    <div class="tripcampus-page">
+    <div class="mx-auto max-w-4xl">
+        <header class="mb-8">
+            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Quiz d’orientation</p>
+            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Mieux connaître votre projet</h1>
+            <p class="mt-3 max-w-2xl text-base leading-7 text-gray-600">
+                Trois étapes pour préciser vos centres d’intérêt, vos compétences et vos préférences d’études.
+            </p>
+            <p class="mt-4 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600">
+                Données de démonstration — les pistes proposées sont indicatives et ne remplacent pas un conseil d’orientation.
+            </p>
+        </header>
 
-<mat-dialog-content class="p-6 max-h-[640px]">
-    <form [formGroup]="horizontalStepperForm">
-        <mat-horizontal-stepper [linear]="true" #horizontalStepper>
-            
-            <mat-step [formGroupName]="'step1'" [stepControl]="horizontalStepperForm.get('step1')" #horizontalStepperStep1>
-                <ng-template matStepLabel>Informations</ng-template>
-                <p class="my-4 font-medium text-secondary">Remplissez vos informations de base.</p>
-                
-                <div class="flex flex-col gap-2">
-                    <mat-form-field class="w-full">
-                        <mat-label>Adresse Email</mat-label>
-                        <input matInput formControlName="email" placeholder="Email Address" required>
-                        <mat-icon matPrefix class="icon-size-5 mr-2" [svgIcon]="'heroicons_solid:mail'"></mat-icon>
-                    </mat-form-field>
+        <section *ngIf="!afficherResultat; else resultats"
+            class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-8">
+            <form [formGroup]="quizForm">
+                <mat-horizontal-stepper [linear]="true">
+                    <mat-step formGroupName="centres" [stepControl]="quizForm.get('centres')">
+                        <ng-template matStepLabel>Centres d’intérêt</ng-template>
+                        <div class="py-5">
+                            <h2 class="text-lg font-semibold text-gray-900">Quels domaines vous attirent ?</h2>
+                            <p class="mt-1 text-sm text-gray-600">Choisissez les domaines qui vous intéressent.</p>
+                            <mat-form-field appearance="outline" class="mt-4 w-full">
+                                <mat-label>Centres d’intérêt</mat-label>
+                                <mat-select formControlName="interets" multiple>
+                                    <mat-option *ngFor="let interet of centresInteret; trackBy: trackByIndex"
+                                        [value]="interet">{{ interet }}</mat-option>
+                                </mat-select>
+                                <mat-error>Choisissez au moins un centre d’intérêt.</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="flex justify-end">
+                            <button mat-flat-button color="primary" type="button" matStepperNext>Suivant</button>
+                        </div>
+                    </mat-step>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <mat-form-field class="w-full">
-                            <mat-label>Pays</mat-label>
-                            <mat-select formControlName="country" required>
-                                <mat-option value="country-1">Country 1</mat-option>
-                                <mat-option value="country-2">Country 2</mat-option>
-                            </mat-select>
-                            <mat-icon matPrefix class="icon-size-5 mr-2" [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
-                        </mat-form-field>
+                    <mat-step formGroupName="competences" [stepControl]="quizForm.get('competences')">
+                        <ng-template matStepLabel>Compétences</ng-template>
+                        <div class="py-5">
+                            <h2 class="text-lg font-semibold text-gray-900">Quelles sont vos forces ?</h2>
+                            <p class="mt-1 text-sm text-gray-600">Sélectionnez les compétences que vous aimez mobiliser.</p>
+                            <mat-form-field appearance="outline" class="mt-4 w-full">
+                                <mat-label>Compétences</mat-label>
+                                <mat-select formControlName="pointsForts" multiple>
+                                    <mat-option *ngFor="let competence of competences; trackBy: trackByIndex"
+                                        [value]="competence">{{ competence }}</mat-option>
+                                </mat-select>
+                                <mat-error>Choisissez au moins une compétence.</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="flex justify-between">
+                            <button mat-button type="button" matStepperPrevious>Retour</button>
+                            <button mat-flat-button color="primary" type="button" matStepperNext>Suivant</button>
+                        </div>
+                    </mat-step>
 
-                        <mat-form-field class="w-full">
-                            <mat-label>Langue</mat-label>
-                            <mat-select formControlName="language" required>
-                                <mat-option value="language-1">Language 1</mat-option>
-                                <mat-option value="language-2">Language 2</mat-option>
-                            </mat-select>
-                            <mat-icon matPrefix class="icon-size-5 mr-2" [svgIcon]="'heroicons_solid:translate'"></mat-icon>
-                        </mat-form-field>
-                    </div>
-                </div>
+                    <mat-step formGroupName="preferences" [stepControl]="quizForm.get('preferences')">
+                        <ng-template matStepLabel>Préférences</ng-template>
+                        <div class="py-5">
+                            <h2 class="text-lg font-semibold text-gray-900">Quelles sont vos préférences d’études ?</h2>
+                            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Budget annuel</mat-label>
+                                    <mat-select formControlName="budget">
+                                        <mat-option value="public">Priorité aux établissements publics</mat-option>
+                                        <mat-option value="accessible">Budget maîtrisé</mat-option>
+                                        <mat-option value="flexible">Budget flexible</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Durée souhaitée</mat-label>
+                                    <mat-select formControlName="duree">
+                                        <mat-option value="courte">Parcours court</mat-option>
+                                        <mat-option value="moyenne">Parcours intermédiaire</mat-option>
+                                        <mat-option value="longue">Parcours long</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Type de filière</mat-label>
+                                    <mat-select formControlName="typeFiliere">
+                                        <mat-option value="industrielle">Industrielle</mat-option>
+                                        <mat-option value="tertiaire">Tertiaire</mat-option>
+                                        <mat-option value="mixte">Mixte</mat-option>
+                                        <mat-option value="indifferent">Sans préférence</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <button mat-button type="button" matStepperPrevious>Retour</button>
+                            <button mat-flat-button color="primary" type="button"
+                                [disabled]="quizForm.get('preferences')?.invalid" (click)="terminer()">
+                                Voir la suite
+                            </button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </form>
+        </section>
 
-                <div class="flex justify-end mt-6">
-                    <button mat-flat-button color="primary" [disabled]="horizontalStepperStep1.stepControl.invalid" type="button" matStepperNext>Suivant</button>
-                </div>
-            </mat-step>
-
-            <mat-step [formGroupName]="'step2'" [stepControl]="horizontalStepperForm.get('step2')" #horizontalStepperStep2>
-                <ng-template matStepLabel>Profil</ng-template>
-                <p class="my-4 font-medium text-secondary">Parlez-nous de vous.</p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
-                    <mat-form-field class="w-full">
-                        <input matInput formControlName="firstName" placeholder="Prénom" required>
-                    </mat-form-field>
-                    <mat-form-field class="w-full">
-                        <input matInput formControlName="lastName" placeholder="Nom" required>
-                    </mat-form-field>
-                </div>
-
-                <div class="flex justify-end mt-6 gap-2">
-                    <button mat-flat-button color="accent" type="button" matStepperPrevious>Retour</button>
-                    <button mat-flat-button color="primary" [disabled]="horizontalStepperStep2.stepControl.invalid" type="button" matStepperNext>Suivant</button>
-                </div>
-            </mat-step>
-
-            <mat-step [formGroupName]="'step3'">
-                <ng-template matStepLabel>Fin</ng-template>
-                <p class="my-4 font-medium">Merci d'avoir rempli le questionnaire !</p>
-                
-                <div class="flex justify-end mt-6 gap-2">
-                    <button mat-flat-button color="accent" type="button" matStepperPrevious>Retour</button>
-                    <button mat-flat-button class="bg-green-600 text-white" type="button" (click)="close()">Terminer</button>
-                </div>
-            </mat-step>
-
-        </mat-horizontal-stepper>
-    </form>
-</mat-dialog-content>
+        <ng-template #resultats>
+            <section class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+                <p class="text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Votre profil</p>
+                <h2 class="mt-2 text-2xl font-bold text-gray-900">Merci pour vos réponses</h2>
+                <p class="mt-3 text-sm leading-6 text-gray-600">
+                    Ce parcours de démonstration recueille vos préférences. Les suggestions de filières détaillées seront présentées dans les résultats du quiz.
+                    Toute orientation affichée restera indicative et non décisionnelle.
+                </p>
+                <button mat-stroked-button type="button" class="mt-6" (click)="recommencer()">Recommencer</button>
+            </section>
+        </ng-template>
+    </div>
+    </div>
+</main>

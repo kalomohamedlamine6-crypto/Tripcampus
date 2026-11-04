@@ -1,46 +1,68 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'Quiz',
-    templateUrl: './quiz.component.html',
-
+    templateUrl: './quiz.component.html'
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit
+{
+    quizForm!: FormGroup;
+    afficherResultat = false;
 
-    horizontalStepperForm: FormGroup;
+    readonly centresInteret = [
+        'Technologies et numérique',
+        'Gestion et entrepreneuriat',
+        'Agriculture et environnement',
+        'Industrie et énergie',
+        'Santé et accompagnement'
+    ];
 
-    constructor(
-        private _formBuilder: FormBuilder,
-        private _dialogRef: MatDialogRef<QuizComponent>
-    ) {}
+    readonly competences = [
+        'Résoudre des problèmes',
+        'Organiser et gérer',
+        'Créer et concevoir',
+        'Communiquer et accompagner',
+        'Analyser des informations'
+    ];
 
-    ngOnInit(): void {
-        this.horizontalStepperForm = this._formBuilder.group({
-            step1: this._formBuilder.group({
-                email: ['', [Validators.required, Validators.email]],
-                country: ['', Validators.required],
-                language: ['', Validators.required]
+    constructor(private _formBuilder: FormBuilder)
+    {
+    }
+
+    ngOnInit(): void
+    {
+        this.quizForm = this._formBuilder.group({
+            centres: this._formBuilder.group({
+                interets: [[], Validators.required]
             }),
-            step2: this._formBuilder.group({
-                firstName: ['', Validators.required],
-                lastName: ['', Validators.required],
-                userName: ['', Validators.required],
-                about: ['']
+            competences: this._formBuilder.group({
+                pointsForts: [[], Validators.required]
             }),
-            step3: this._formBuilder.group({
-                byEmail: this._formBuilder.group({
-                    companyNews: [false],
-                    featuredProducts: [false],
-                    messages: [false]
-                }),
-                pushNotifications: ['everything']
+            preferences: this._formBuilder.group({
+                budget: ['', Validators.required],
+                duree: ['', Validators.required],
+                typeFiliere: ['', Validators.required]
             })
         });
     }
 
-    close(): void {
-        this._dialogRef.close();
+    terminer(): void
+    {
+        if (this.quizForm.valid)
+        {
+            this.afficherResultat = true;
+        }
+    }
+
+    recommencer(): void
+    {
+        this.afficherResultat = false;
+        this.quizForm.reset();
+    }
+
+    trackByIndex(index: number, item: string): string
+    {
+        return item;
     }
 }

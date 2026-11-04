@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { FuseNavigationService, FuseVerticalNavigationComponent } from '@fuse/components/navigation';
@@ -16,6 +16,7 @@ import { NavigationService } from 'app/core/navigation/navigation.service';
 export class ModernLayoutComponent implements OnInit, OnDestroy {
     isScreenSmall: boolean = false;
     isHomeRoute: boolean = false;
+    mobileMenuOpen: boolean = false;
     navigation: Navigation;
     currentUrl: string = '';
     modules = [
@@ -57,6 +58,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
                     this.isHomeRoute = url === '/home' ||
                         url === '/' ||
                         url.startsWith('/home');
+                    this.mobileMenuOpen = false;
                 }
             });
 
@@ -79,6 +81,18 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
             (this.currentUrl === '/formation-filiere' || this.currentUrl.startsWith('/formation-filiere/'));
 
         return isCurrentRoute || isLegacyFilieresRoute;
+    }
+
+    toggleMobileMenu(): void {
+        this.mobileMenuOpen = !this.mobileMenuOpen;
+    }
+
+    closeMobileMenu(): void {
+        this.mobileMenuOpen = false;
+    }
+
+    trackByRoute(index: number, module: { route: string }): string {
+        return module.route;
     }
 
     toggleNavigation(name: string): void {
