@@ -68,14 +68,14 @@ export class AuthForgotPasswordComponent implements OnInit
         // Hide the alert
         this.showAlert = false;
 
-        // Forgot password
+                        message: 'Si cette adresse est associée à un compte, un e-mail de réinitialisation vous sera envoyé.'
         this._authService.forgotPassword(this.forgotPasswordForm.get('email').value)
             .pipe(
                 finalize(() => {
 
                     // Re-enable the form
                     this.forgotPasswordForm.enable();
-
+                        message: 'Aucun compte ne correspond à cette adresse e-mail.'
                     // Reset the form
                     this.forgotPasswordNgForm.resetForm();
 

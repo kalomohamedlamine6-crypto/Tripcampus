@@ -12,18 +12,10 @@ export const defaultNavigation: FuseNavigationItem[] = [
 
     {
         id: 'formation-filiere',
-        title: 'Formation-filiere',
+        title: 'Filières',
         type: 'basic',
         icon: 'heroicons_outline:collection',
         link: '/formation-filiere'
-    },
-
-    {
-        id: 'parcours',
-        title: 'Parcours',
-        type: 'basic',
-        icon: 'heroicons_outline:user-group',
-        link: '/parcours'
     },
 
     {
@@ -87,10 +79,10 @@ export const horizontalNavigation: FuseNavigationItem[] = [
 
     {
         id: 'formation-filiere',
-        title: 'Formationfiliere',
+        title: 'Filières',
         type: 'basic',
         icon: 'heroicons_outline:view-grid',
-        link: '/Formation-filiere'
+        link: '/formation-filiere'
     },
 
 

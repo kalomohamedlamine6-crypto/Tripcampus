@@ -118,7 +118,7 @@ export class AuthUnlockSessionComponent implements OnInit
                 // Set the alert
                 this.alert = {
                     type   : 'error',
-                    message: 'Invalid password'
+                    message: 'Mot de passe incorrect.'
                 };
 
                 // Show the alert

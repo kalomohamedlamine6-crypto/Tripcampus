@@ -74,14 +74,14 @@ export class AuthResetPasswordComponent implements OnInit
         // Hide the alert
         this.showAlert = false;
 
-        // Send the request to the server
+                        message: 'Votre mot de passe a été réinitialisé.'
         this._authService.resetPassword(this.resetPasswordForm.get('password').value)
             .pipe(
                 finalize(() => {
 
                     // Re-enable the form
                     this.resetPasswordForm.enable();
-
+                        message: 'Une erreur est survenue. Veuillez réessayer.'
                     // Reset the form
                     this.resetPasswordNgForm.resetForm();
 

@@ -7,12 +7,12 @@
             </div>
 
             <!-- Title -->
-            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Sign in </div>
+            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Connexion</div>
             <div class="flex items-baseline mt-0.5 font-medium">
-                <div>Don't have an account?</div>
+                <div>Vous n'avez pas de compte ?</div>
                 <a
                     class="ml-1 text-primary-500 hover:underline"
-                    [routerLink]="['/sign-up']">Sign up
+                    [routerLink]="['/sign-up']">S'inscrire
                 </a>
             </div>
 
@@ -35,22 +35,22 @@
 
                 <!-- Email field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Email address</mat-label>
+                    <mat-label>Adresse e-mail</mat-label>
                     <input
                         id="email"
                         matInput
                         [formControlName]="'email'">
                     <mat-error *ngIf="signInForm.get('email').hasError('required')">
-                        Email address is required
+                        L'adresse e-mail est obligatoire.
                     </mat-error>
                     <mat-error *ngIf="signInForm.get('email').hasError('email')">
-                        Please enter a valid email address
+                        Saisissez une adresse e-mail valide.
                     </mat-error>
                 </mat-form-field>
 
                 <!-- Password field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
+                    <mat-label>Mot de passe</mat-label>
                     <input
                         id="password"
                         matInput
@@ -72,7 +72,7 @@
                             [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
                     <mat-error>
-                        Password is required
+                        Le mot de passe est obligatoire.
                     </mat-error>
                 </mat-form-field>
 
@@ -81,11 +81,11 @@
                     <mat-checkbox
                         [color]="'primary'"
                         [formControlName]="'rememberMe'">
-                        Remember me
+                        Se souvenir de moi
                     </mat-checkbox>
                     <a
                         class="text-md font-medium text-primary-500 hover:underline"
-                        [routerLink]="['/forgot-password']">Forgot password?
+                        [routerLink]="['/forgot-password']">Mot de passe oublié ?
                     </a>
                 </div>
 
@@ -97,7 +97,7 @@
                     [disabled]="signInForm.disabled"
                     (click)="signIn()">
                     <span *ngIf="!signInForm.disabled">
-                        Sign in
+                        Se connecter
                     </span>
                     <mat-progress-spinner
                         *ngIf="signInForm.disabled"
@@ -106,39 +106,6 @@
                 </button>
 
                 <!-- Separator -->
-                <div class="flex items-center mt-8">
-                    <div class="flex-auto mt-px border-t"></div>
-                    <div class="mx-2 text-secondary">Or continue with</div>
-                    <div class="flex-auto mt-px border-t"></div>
-                </div>
-
-                <!-- Single sign-on buttons -->
-                <div class="flex items-center mt-8 space-x-4">
-                    <button
-                        class="flex-auto"
-                        type="button"
-                        mat-stroked-button>
-                        <mat-icon
-                            class="icon-size-5"
-                            [svgIcon]="'feather:facebook'"></mat-icon>
-                    </button>
-                    <button
-                        class="flex-auto"
-                        type="button"
-                        mat-stroked-button>
-                        <mat-icon
-                            class="icon-size-5"
-                            [svgIcon]="'feather:twitter'"></mat-icon>
-                    </button>
-                    <button
-                        class="flex-auto"
-                        type="button"
-                        mat-stroked-button>
-                        <mat-icon
-                            class="icon-size-5"
-                            [svgIcon]="'feather:github'"></mat-icon>
-                    </button>
-                </div>
             </form>
         </div>
     </div>
@@ -166,30 +133,13 @@
         <!-- Content -->
         <div class="z-10 relative w-full max-w-2xl">
             <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Welcome to</div>
-                <div>our community</div>
+                <div>Bienvenue sur</div>
+                <div>TripCampus</div>
             </div>
             <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
-                Fuse helps developers to build organized and well coded dashboards full of beautiful and rich modules.
-                Join us and start building your application today.
+                Explorez les formations et les établissements pour construire un projet d'orientation qui vous ressemble.
             </div>
-            <div class="flex items-center mt-8">
-                <div class="flex flex-0 items-center -space-x-1.5">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/female-18.jpg">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/female-11.jpg">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/male-09.jpg">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/male-16.jpg">
-                </div>
-                <div class="ml-4 font-medium tracking-tight text-gray-400">More than 17k people joined us, it's your turn</div>
-            </div>
+            <div class="mt-8 text-gray-400">Des informations claires pour avancer à votre rythme.</div>
         </div>
     </div>
 </div>

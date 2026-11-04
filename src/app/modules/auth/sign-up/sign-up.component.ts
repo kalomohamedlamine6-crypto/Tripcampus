@@ -93,7 +93,7 @@ export class AuthSignUpComponent implements OnInit
                     // Set the alert
                     this.alert = {
                         type   : 'error',
-                        message: 'Something went wrong, please try again.'
+                            message: 'Une erreur est survenue. Veuillez réessayer.'
                     };
 
                     // Show the alert

@@ -2,7 +2,6 @@ import { Route } from '@angular/router';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
-import { InitialDataResolver } from 'app/app.resolvers';
 
 
 // @formatter:off
@@ -40,7 +39,7 @@ export const appRoutes: Route[] = [
         ]
     },
 
-    // Landing routes
+    // Public routes
     {
         path: '',
         component  : LayoutComponent,
@@ -49,7 +48,7 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
-              {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
+            {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
             {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
             {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},
             {path: 'formation-filiere', loadChildren: () => import('app/modules/admin/formation-filiere/formation-filiere.module').then(m => m.FormationFiliereModule)},
@@ -76,20 +75,4 @@ export const appRoutes: Route[] = [
     // Alias route for Filières
     {path: 'filieres', pathMatch: 'full', redirectTo: 'formation-filiere'},
 
-    // Admin routes
-    {
-        path       : '',
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
-        resolve    : {
-            initialData: InitialDataResolver,
-        },
-        children   : [
-            {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
-            {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
-            {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},
-            {path: 'formation-filiere', loadChildren: () => import('app/modules/admin/formation-filiere/formation-filiere.module').then(m => m.FormationFiliereModule)},
-        ]
-    }
 ];
