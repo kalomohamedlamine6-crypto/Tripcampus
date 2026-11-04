@@ -1,176 +1,189 @@
-<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent">
+<main class="min-h-full bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+        <header class="mb-8">
+            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Découvrir</p>
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Les établissements</h1>
+            <p class="mt-3 max-w-2xl text-base leading-7 text-gray-600">
+                Explorez les établissements et comparez leurs formations, leurs conditions d’admission et leurs frais.
+            </p>
+            <p class="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                Données fictives de démonstration : les établissements, frais et taux de réussite sont à vérifier et ne sont pas officiels.
+            </p>
+        </header>
 
-    <!-- Header -->
-    <div
-        class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
-        <!-- Loader -->
-        <div class="absolute inset-x-0 bottom-0">
-            <!-- <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar> -->
-        </div>
-        <!-- Title -->
-        <div class="text-4xl font-extrabold tracking-tight">Catalogue des établissements</div>
-        <!-- Actions -->
-        <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
-            <!-- Search -->
-            <mat-form-field
-                class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded min-w-64 border border-border rounded-2xl hover:border-[#1a237e]">
-                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
-                <input matInput [autocomplete]="'on'" [placeholder]="'Rechercher un établissement'">
-            </mat-form-field>
-        </div>
+        <section class="mb-8 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6"
+            aria-label="Recherche et filtres">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                <label class="block lg:col-span-2">
+                    <span class="mb-1.5 block text-sm font-medium text-gray-700">Rechercher</span>
+                    <span class="flex items-center rounded-xl border border-gray-300 bg-white px-3 focus-within:border-[#1a237e] focus-within:ring-2 focus-within:ring-indigo-100">
+                        <mat-icon class="mr-2 icon-size-5 text-gray-400" svgIcon="heroicons_solid:search"></mat-icon>
+                        <input
+                            type="search"
+                            name="recherche"
+                            [(ngModel)]="recherche"
+                            autocomplete="off"
+                            placeholder="Nom, ville ou description"
+                            class="min-w-0 flex-1 border-0 bg-transparent py-3 text-sm text-gray-900 outline-none focus:ring-0">
+                    </span>
+                </label>
 
-    </div>
-    <!-- Main -->
-    <div class="flex flex-auto overflow-hidden">
+                <label class="block">
+                    <span class="mb-1.5 block text-sm font-medium text-gray-700">Ville</span>
+                    <select name="ville" [(ngModel)]="villeSelectionnee"
+                        class="w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 focus:border-[#1a237e] focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                        <option value="">Toutes les villes</option>
+                        <option *ngFor="let ville of villes" [value]="ville">{{ ville }}</option>
+                    </select>
+                </label>
 
-        <!-- school list -->
-        <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
+                <label class="block">
+                    <span class="mb-1.5 block text-sm font-medium text-gray-700">Statut</span>
+                    <select name="statut" [(ngModel)]="statutSelectionne"
+                        class="w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 focus:border-[#1a237e] focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                        <option value="">Public et privé</option>
+                        <option value="public">Public</option>
+                        <option value="privé">Privé</option>
+                    </select>
+                </label>
 
-            <div class="grid">
-                <!-- Header -->
-                <div class="inventory-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5 grid-cols-[56px_120px_minmax(0,2fr)_140px_140px_64px_72px]"
-                    matSort matSortDisableClear>
-                    <div></div>
-                    <div class="hidden md:block" [mat-sort-header]="'statut'">
-                        Statut
-                    </div>
-                    <div class="hidden sm:block">Name</div>
-                    <div class="hidden sm:block" [mat-sort-header]="'noteMoyenne'">
-                        noteMoyenne
-                    </div>
-                    <div class="hidden lg:block">Ville / Commune</div>
-
-                    <div class="hidden sm:block">Details</div>
-                </div>
-
-                <!-- Rows -->
-                <div *ngFor="let item of etablissements"
-                    class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5 grid-cols-[56px_120px_minmax(0,2fr)_140px_140px_64px_72px]">
-                    <div class="flex items-center">
-                        <div
-                            class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border bg-indigo-50 text-indigo-700 font-semibold">
-                            {{ item.name.charAt(0) }}
-                        </div>
-                    </div>
-
-                    <div class="hidden md:block truncate">
-                        {{ item.statut }}
-                    </div>
-
-                    <div class="truncate">
-                        {{ item.name }}
-                    </div>
-
-                    <div class="hidden sm:flex items-center gap-1 text-amber-500">
-                        <ng-container *ngFor="let star of [].constructor(5); let i = index">
-                            <mat-icon class="icon-size-5"
-                                [svgIcon]="i < item.noteMoyenne ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
-                        </ng-container>
-                    </div>
-
-                    <div class="hidden lg:flex items-center">
-                        <div class="min-w-4">{{ item.ville }}</div>
-                    </div>
-
-                    <div>
-                        <button class="min-w-10 min-h-7 h-7 px-2 leading-6" mat-stroked-button
-                            (click)="openDetails(item)">
-                            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye'"></mat-icon>
-                        </button>
-                    </div>
-                </div>
+                <label class="block">
+                    <span class="mb-1.5 block text-sm font-medium text-gray-700">Frais annuels maximum</span>
+                    <select name="fraisMaximum" [(ngModel)]="fraisMaximum"
+                        class="w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 focus:border-[#1a237e] focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                        <option [ngValue]="null">Tous les budgets</option>
+                        <option *ngFor="let frais of filtresFrais" [ngValue]="frais.valeur">{{ frais.libelle }}</option>
+                    </select>
+                </label>
             </div>
-        </div>
 
-        <!--fiche établissement-->
-        <aside *ngIf="sidebarOpened"
-            class="w-full sm:w-[420px] border-l border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-950 overflow-hidden">
-            <div class="flex flex-col h-full">
-                <div class="flex items-center justify-between py-6 px-6 border-b border-gray-200 dark:border-gray-800">
-                    <div>
-                        <div class="text-lg font-semibold">Fiche établissement</div>
-                        <div class="text-sm text-gray-500">Détails</div>
+            <div class="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <label class="flex items-center gap-3 text-sm text-gray-700">
+                    <span class="font-medium">Trier par</span>
+                    <select name="tri" [(ngModel)]="tri"
+                        class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-[#1a237e] focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                        <option value="nom">Nom (A à Z)</option>
+                        <option value="frais">Frais les plus bas (FICTIF)</option>
+                    </select>
+                </label>
+                <button type="button" (click)="effacerFiltres()"
+                    class="self-start rounded-lg px-3 py-2 text-sm font-semibold text-[#1a237e] hover:bg-indigo-50 sm:self-auto">
+                    Effacer les filtres
+                </button>
+            </div>
+        </section>
+
+        <section aria-label="Résultats du catalogue">
+            <div *ngIf="isLoading" class="rounded-2xl border border-gray-200 bg-white px-6 py-12 text-center text-gray-600">
+                Chargement des établissements…
+            </div>
+
+            <div *ngIf="!isLoading && loadError" role="alert"
+                class="rounded-2xl border border-red-200 bg-red-50 px-6 py-8 text-center text-red-800">
+                {{ loadError }}
+            </div>
+
+            <div *ngIf="!isLoading && !loadError && etablissementsFiltres.length === 0"
+                class="rounded-2xl border border-gray-200 bg-white px-6 py-12 text-center">
+                <h2 class="text-lg font-semibold text-gray-900">Aucun établissement trouvé</h2>
+                <p class="mt-2 text-sm text-gray-600">Modifiez votre recherche ou effacez les filtres.</p>
+            </div>
+
+            <div *ngIf="!isLoading && !loadError && etablissementsFiltres.length > 0"
+                class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+                <article *ngFor="let etablissement of etablissementsFiltres"
+                    class="flex flex-col rounded-2xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                    [ngClass]="etablissementSelectionne?.id === etablissement.id ? 'border-[#1a237e] ring-2 ring-indigo-100' : 'border-gray-200'">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-[#1a237e]">
+                            <mat-icon svgIcon="heroicons_solid:office-building" class="icon-size-6"></mat-icon>
+                        </div>
+                        <span class="rounded-full px-3 py-1 text-xs font-semibold"
+                            [ngClass]="etablissement.statut === 'public' ? 'bg-indigo-50 text-indigo-800' : 'bg-gray-100 text-gray-700'">
+                            {{ etablissement.statut | titlecase }}
+                        </span>
                     </div>
-                    <button mat-icon-button (click)="closeSidebar()">
-                        <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
+
+                    <h2 class="mt-4 text-lg font-bold leading-snug text-gray-900">{{ etablissement.nom }}</h2>
+                    <p class="mt-1 flex items-center gap-1.5 text-sm text-gray-600">
+                        <mat-icon svgIcon="heroicons_solid:location-marker" class="icon-size-4"></mat-icon>
+                        {{ etablissement.ville }}
+                    </p>
+                    <p class="mt-4 flex-1 text-sm leading-6 text-gray-600">{{ etablissement.description }}</p>
+
+                    <div class="mt-5 border-t border-gray-100 pt-4">
+                        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">À partir de</p>
+                        <p *ngIf="fraisMinimum(etablissement.id) as fraisMinimumFictifs; else fraisIndisponibles"
+                            class="mt-1 font-bold text-[#1a237e]">
+                            FICTIF · {{ fraisMinimumFictifs | number:'1.0-0' }} FCFA/an
+                        </p>
+                        <ng-template #fraisIndisponibles>
+                            <p class="mt-1 text-sm text-gray-500">Frais non renseignés</p>
+                        </ng-template>
+                    </div>
+
+                    <button type="button" (click)="afficherDetails(etablissement)"
+                        class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1a237e] px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2">
+                        Voir la fiche
+                        <mat-icon svgIcon="heroicons_solid:arrow-right" class="icon-size-4"></mat-icon>
                     </button>
+                </article>
+            </div>
+        </section>
+
+        <section *ngIf="etablissementSelectionne as etablissement"
+            class="mt-10 scroll-mt-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8"
+            aria-label="Fiche détaillée de l’établissement">
+            <div class="flex flex-col gap-4 border-b border-gray-100 pb-6 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                    <p class="text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Fiche établissement</p>
+                    <h2 class="mt-2 text-2xl font-bold text-gray-900">{{ etablissement.nom }}</h2>
+                    <p class="mt-2 text-sm text-gray-600">{{ etablissement.localisation }} · {{ etablissement.statut | titlecase }}</p>
+                </div>
+                <button type="button" (click)="etablissementSelectionne = null"
+                    class="self-start rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
+                    Fermer la fiche
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 py-6 lg:grid-cols-2">
+                <div>
+                    <h3 class="text-base font-semibold text-gray-900">À propos</h3>
+                    <p class="mt-2 text-sm leading-6 text-gray-600">{{ etablissement.description }}</p>
+
+                    <h3 class="mt-6 text-base font-semibold text-gray-900">Admission</h3>
+                    <ul class="mt-2 space-y-2 text-sm text-gray-600">
+                        <li *ngFor="let condition of etablissement.conditionsAdmission" class="flex gap-2">
+                            <mat-icon svgIcon="heroicons_solid:check" class="mt-0.5 icon-size-4 text-[#1a237e]"></mat-icon>
+                            <span>{{ condition }}</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <form class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto" [formGroup]="taskForm">
-
-                    <div class="grid gap-6 sm:grid-cols-[160px_minmax(0,1fr)] mb-8 items-start">
-                        <!-- Image -->
-                        <div
-                            class="rounded-3xl overflow-hidden border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-900">
-                            <img class="w-full h-44 sm:h-full object-cover"
-                                [src]="selectedEtablissement?.image || 'assets/images/avatars'"
-                                alt="Photo de l'établissement">
-                        </div>
-                        <!-- Nom et Note -->
-                        <div class="space-y-4">
-                            <div>
-                                <div class="text-2xl font-semibold leading-tight">{{ selectedEtablissement?.name }}
-                                </div>
-                                <div
-                                    class="flex flex-wrap items-center gap-2 mt-3 text-sm text-gray-600 dark:text-gray-400">
-                                    <div class="flex items-center gap-1">
-                                        <ng-container *ngFor="let star of [].constructor(5); let i = index">
-                                            <mat-icon class="icon-size-5 text-amber-500"
-                                                [svgIcon]="i < selectedEtablissement?.noteMoyenne ? 'heroicons_solid:star' : 'heroicons_outline:star'"></mat-icon>
-                                        </ng-container>
-                                    </div>
-                                    <span class="font-medium">{{ selectedEtablissement?.noteMoyenne }} / 5</span>
-                                </div>
+                <div>
+                    <h3 class="text-base font-semibold text-gray-900">Tarifs et réussite par formation</h3>
+                    <p class="mt-1 text-xs text-gray-500">Chaque montant et taux ci-dessous est fictif.</p>
+                    <div *ngIf="offresEtablissement(etablissement.id).length > 0; else noOffres"
+                        class="mt-3 divide-y divide-gray-100 rounded-xl border border-gray-200">
+                        <div *ngFor="let offre of offresEtablissement(etablissement.id)" class="p-4">
+                            <p class="font-semibold text-gray-900">
+                                {{ formation(offre.formationId)?.nom || 'Formation non renseignée' }}
+                                <span *ngIf="formation(offre.formationId) as item"
+                                    class="ml-1 text-xs font-medium text-gray-500">{{ item.niveau }}</span>
+                            </p>
+                            <div class="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-gray-600">
+                                <span>Frais : <strong class="text-gray-900">FICTIF · {{ offre.fraisScolariteAnnuelsFictifs | number:'1.0-0' }} FCFA/an</strong></span>
+                                <span>Réussite : <strong class="text-gray-900">FICTIF · {{ offre.tauxReussiteFictif }} %</strong></span>
                             </div>
                         </div>
-                    </div>    
-                        <!-- Détails -->
-                        <div class="mt-6 space-y-5">
-                            <div class="grid gap-3 sm:grid-cols-2">
-                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
-                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Statut</div>
-                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.statut }}</div>
-                                </div>
-                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
-                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Localisation</div>
-                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.ville }}</div>
-                                </div>
-                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
-                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Type</div>
-                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.type }}</div>
-                                </div>
-                                <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
-                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-500">Fondé en</div>
-                                    <div class="mt-2 font-semibold">{{ selectedEtablissement?.founded }}</div>
-                                </div>
-                            </div>
-                            <div class="rounded-2xl bg-gray-100 p-4 dark:bg-gray-800">
-                                <div class="text-xs uppercase tracking-[0.2em] text-gray-500">À propos</div>
-                                <p class="mt-2 text-sm leading-7 text-secondary">{{ selectedEtablissement?.description }}</p>
-                            </div>
-
-                            <div class="grid gap-2 grid-cols-1 sm:grid-cols-2">
-                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
-                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Adresse</div>
-                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.address }}</div>
-                                </div>
-                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
-                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Téléphone</div>
-                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.phone }}</div>
-                                </div>
-                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
-                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Site web</div>
-                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.website }}</div>
-                                </div>
-                                <div class="w-full min-w-0 rounded-2xl bg-gray-100 p-4 dark:bg-gray-900">
-                                    <div class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Email</div>
-                                    <div class="mt-2 break-words text-sm font-semibold">{{ selectedEtablissement?.email }}</div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                </form>
+                    </div>
+                    <ng-template #noOffres>
+                        <p class="mt-3 rounded-xl bg-gray-50 p-4 text-sm text-gray-600">
+                            Aucune formation n’est encore renseignée pour cet établissement.
+                        </p>
+                    </ng-template>
+                </div>
             </div>
-        </aside>
+        </section>
     </div>
+</main>

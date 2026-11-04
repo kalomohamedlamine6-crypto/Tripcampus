@@ -20,9 +20,9 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
     currentUrl: string = '';
     modules = [
         { label: 'Accueil', route: '/home' },
-        { label: 'Actualités', route: '/actualites' },
         { label: 'Découvrir', route: '/decouvrir' },
-        { label: 'Formation-Filières', route: '/formation-filiere' }
+        { label: 'Filières', route: '/filieres' },
+        { label: 'Actualités', route: '/actualites' }
     ];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -74,7 +74,11 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
     }
 
     isActiveModule(route: string): boolean {
-        return this.currentUrl === route || this.currentUrl.startsWith(route + '/');
+        const isCurrentRoute = this.currentUrl === route || this.currentUrl.startsWith(route + '/');
+        const isLegacyFilieresRoute = route === '/filieres' &&
+            (this.currentUrl === '/formation-filiere' || this.currentUrl.startsWith('/formation-filiere/'));
+
+        return isCurrentRoute || isLegacyFilieresRoute;
     }
 
     toggleNavigation(name: string): void {

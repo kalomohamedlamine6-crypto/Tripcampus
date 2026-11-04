@@ -1,158 +1,110 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { GlobalService } from '../serviceGlobal/serviceGlobal.service';
+import {
+    Etablissement,
+    Formation,
+    OffreFormationEtablissement,
+    StatutEtablissement,
+    etablissementsProvisoires,
+    filtresFraisFictifs,
+    formationsProvisoires,
+    offresFormationEtablissement
+} from 'app/data/donnees-provisoires';
+
+type TriEtablissements = 'nom' | 'frais';
 
 @Component({
     selector: 'decouvrir',
     templateUrl: './decouvrir.component.html',
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None
 })
-export class DecouvrirComponent implements OnInit {
-    selectedEtablissement: any = null;
-    sidebarOpened = false;
-    taskForm: FormGroup;
-    etablissements: any;
+export class DecouvrirComponent implements OnInit
+{
+    readonly filtresFrais = filtresFraisFictifs;
+    etablissements: Etablissement[] = [];
+    recherche = '';
+    villeSelectionnee = '';
+    statutSelectionne: StatutEtablissement | '' = '';
+    fraisMaximum: number | null = null;
+    tri: TriEtablissements = 'nom';
+    etablissementSelectionne: Etablissement | null = null;
+    isLoading = true;
+    loadError: string | null = null;
 
-
-    // etablissements: {statut: string;
-    //     name: string;
-    //     note: number | string;
-    //     ville: string;
-    //     completed: boolean;
-    //     priority?: number;
-    //     dueDate?: string | null;
-    //     notes?: string;
-    //     tags?: string[];
-    //     type: string;
-    //     category: string;
-    //     image: string;
-    //     address: string;
-    //     phone: string;
-    //     website: string;
-    //     email: string;
-    //     description: string;
-    //     founded: string;
-    //     tauxInsertion?: string;
-    //     fraisAnnuels?: string;
-    //     tauxReussiteExamens?: number;} = [
-    //     {
-    //         statut: 'Public',
-    //         name: 'Université Virtuelle de Côte d’Ivoire',
-    //         note: 4,
-    //         ville: 'Abidjan-Cocody',
-    //         completed: false,
-    //         priority: 1,
-    //         dueDate: null,
-    //         notes: '',
-    //         tags: [],
-    //         type: 'Universitaire',
-    //         category: 'Université',
-    //         image: 'assets/images/avatars/avg-stiftung-nicole-berkovych-projektleiterin-721x1024.jpeg',
-    //         address: '01 BP 000 Abidjan',
-    //         phone: '+225 21 23 45 67',
-    //         website: 'www.uvi.ci',
-    //         email: 'contact@uvi.ci',
-    //         description: 'Université spécialisée dans l’enseignement et la recherche à distance.',
-    //         founded: '2012',
-    //         tauxInsertion: 'Très bonne',
-    //         fraisAnnuels: '250 000 FCFA',
-    //         tauxReussiteExamens: 1,
-    //     },
-    //     {
-    //         statut: 'Privé',
-    //         name: 'Institut Supérieur de Management',
-    //         note: 3,
-    //         ville: 'Abidjan-Cocody',
-    //         completed: false,
-    //         priority: 1,
-    //         dueDate: null,
-    //         notes: '',
-    //         tags: [],
-    //         type: 'Grande école',
-    //         category: 'École de Management',
-    //         image: 'assets/images/avatars/brian-hughes.jpg',
-    //         address: '02 BP 001 Abidjan',
-    //         phone: '+225 21 24 56 78',
-    //         website: 'www.ism.ci',
-    //         email: 'info@ism.ci',
-    //         description: 'Institut de formation en gestion et commerce.',
-    //         founded: '1998',
-    //         tauxInsertion: 'Bonne',
-    //         fraisAnnuels: '300 000 FCFA',
-    //         tauxReussiteExamens: 1,
-    //     },
-    //     {
-    //         statut: 'Public',
-    //         name: 'ESATIC',
-    //         note: 5,
-    //         ville: 'Abidjan-Treichville',
-    //         completed: false,
-    //         priority: 1,
-    //         dueDate: null,
-    //         notes: '',
-    //         tags: [],
-    //         type: 'École spécialisée',
-    //         category: 'Technologie et communication',
-    //         image: 'assets/images/avatars/female-14.jpg',
-    //         address: '04 BP 003 Abidjan',
-    //         phone: '+225 21 26 78 90',
-    //         website: 'www.esatic.ci',
-    //         email: 'admissions@esatic.ci',
-    //         description: 'École supérieure axée sur les technologies de l’information.',
-    //         founded: '1985',
-    //         tauxInsertion: 'Excellente',
-    //         fraisAnnuels: '180 000 FCFA',
-    //         tauxReussiteExamens: 1,
-    //     },
-    // ];
-    constructor(
-        private _formBuilder: FormBuilder,
-        private globalServive: GlobalService
-    ) {
-
+    ngOnInit(): void
+    {
+        this.etablissements = etablissementsProvisoires;
+        this.isLoading = false;
     }
-    ngOnInit(): void {
-        this.etablissements = this.globalServive.etablissements;
 
+    get villes(): string[]
+    {
+        return Array.from(new Set(this.etablissements.map(etablissement => etablissement.ville)))
+            .sort((a, b) => a.localeCompare(b, 'fr'));
+    }
 
-        this.taskForm = this._formBuilder.group({
-            title: [''],
-            completed: [false],
-            dueDate: [null],
-            tauxInsertion: ['']
+    get etablissementsFiltres(): Etablissement[]
+    {
+        const rechercheNormalisee = this._normaliser(this.recherche);
+        const resultats = this.etablissements.filter(etablissement => {
+            const texteEtablissement = this._normaliser(
+                `${etablissement.nom} ${etablissement.ville} ${etablissement.description}`
+            );
+            const correspondRecherche = !rechercheNormalisee || texteEtablissement.includes(rechercheNormalisee);
+            const correspondVille = !this.villeSelectionnee || etablissement.ville === this.villeSelectionnee;
+            const correspondStatut = !this.statutSelectionne || etablissement.statut === this.statutSelectionne;
+            const fraisMaximum = this.fraisMaximum;
+            const correspondFrais = fraisMaximum === null ||
+                this.offresEtablissement(etablissement.id)
+                    .some(offre => offre.fraisScolariteAnnuelsFictifs <= fraisMaximum);
+
+            return correspondRecherche && correspondVille && correspondStatut && correspondFrais;
         });
-    }
-    openDetails(item: any): void {
-        this.selectedEtablissement = item;
-        this.sidebarOpened = true;
-        this.taskForm.patchValue({
-            title: item.name,
-            completed: item.completed,
-            dueDate: item.dueDate,
-            tauxInsertion: item.tauxInsertion
+
+        return resultats.sort((a, b) => {
+            if (this.tri === 'frais')
+            {
+                return (this.fraisMinimum(a.id) ?? Number.POSITIVE_INFINITY) -
+                    (this.fraisMinimum(b.id) ?? Number.POSITIVE_INFINITY);
+            }
+
+            return a.nom.localeCompare(b.nom, 'fr');
         });
     }
 
-    closeSidebar(): void {
-        this.sidebarOpened = false;
+    offresEtablissement(etablissementId: string): OffreFormationEtablissement[]
+    {
+        return offresFormationEtablissement.filter(offre => offre.etablissementId === etablissementId);
     }
 
-    // toggleCompleted(): void {
-    //     const completed = !this.taskForm.get('completed').value;
-    //     this.taskForm.get('completed').setValue(completed);
-    //     if (this.selectedEtablissement) {
-    //         this.selectedEtablissement.completed = completed;
-    //     }
-    // }
+    formation(formationId: string): Formation | undefined
+    {
+        return formationsProvisoires.find(item => item.id === formationId);
+    }
 
-    // saveForm(): void {
-    //     if (this.selectedEtablissement) {
-    //         this.selectedEtablissement.name = this.taskForm.get('title').value;
-    //         this.selectedEtablissement.completed = this.taskForm.get('completed').value;
-    //         this.selectedEtablissement.dueDate = this.taskForm.get('dueDate').value;
-    //         this.selectedEtablissement.tauxInsertion = this.taskForm.get('tauxInsertion').value;
-    //         this.sidebarOpened = false;
-    //     }
-    // }
+    fraisMinimum(etablissementId: string): number | null
+    {
+        const frais = this.offresEtablissement(etablissementId)
+            .map(offre => offre.fraisScolariteAnnuelsFictifs);
+
+        return frais.length ? Math.min(...frais) : null;
+    }
+
+    afficherDetails(etablissement: Etablissement): void
+    {
+        this.etablissementSelectionne = etablissement;
+    }
+
+    effacerFiltres(): void
+    {
+        this.recherche = '';
+        this.villeSelectionnee = '';
+        this.statutSelectionne = '';
+        this.fraisMaximum = null;
+        this.tri = 'nom';
+    }
+
+    private _normaliser(valeur: string): string
+    {
+        return valeur.trim().toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
 }
-
