@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { 
-    Ville, Etablissement, Filiere, NiveauDiplome, 
-    Formation, Propose, Actualite, QuestionQuiz, OptionReponse 
-} from '../../../core/models';
+import { Ville, Etablissement, Filiere, NiveauDiplome, Formation, Propose, Actualite, QuestionQuiz, OptionReponse } from '../../../core/models';
 
 @Injectable({
     providedIn: 'root'

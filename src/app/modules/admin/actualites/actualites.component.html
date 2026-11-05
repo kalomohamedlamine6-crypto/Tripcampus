@@ -1,97 +1,83 @@
-<div class="w-full bg-gray-50">
-  <div class="tripcampus-page">
-    <mat-drawer-container class="flex-auto min-h-[calc(100vh-12rem)]">
-
-      <mat-drawer class="w-90 dark:bg-gray-900 border-r" [autoFocus]="false" [mode]="drawerMode" [opened]="drawerOpened"
-        #matDrawer>
-
-        <div class="p-6 border-b bg-card">
-          <div class="flex items-center justify-between">
-            <div class="text-xl text-[#1a237e] font-extrabold leading-tight">A LA UNE</div>
-            <span
-              class="text-xs text-[#1a237e] font-semibold bg-blue-100 px-2 py-0.5 rounded-full items-center justify-center flex">
-              <mat-icon class="icon-size-4 mr-1" [svgIcon]="'heroicons_outline:bell'"></mat-icon>
-              <span>{{ newsList.length }} actualités</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="flex flex-col p-4 gap-4 overflow-y-auto">
-          <ng-container *ngFor="let news of newsList; let i = index; trackBy: trackByFn">
-
-            <div class="flex items-start gap-4 p-3 rounded-xl cursor-pointer transition-all duration-200 border"
-              [ngClass]="{
-                        'bg-blue-100 border-[#1a237e] shadow-sm': currentNewsIndex === i,
-                        'bg-white dark:bg-gray-800 border-transparent hover:bg-gray-50 dark:hover:bg-gray-700': currentNewsIndex !== i
-                    }" (click)="selectNews(i)">
-
-              <div
-                class="flex flex-col items-center text-white rounded-lg px-3 py-1 min-w-12 text-center transition-colors"
-                [ngClass]="currentNewsIndex === i ? 'bg-[#1a237e]' : 'bg-gray-400'">
-                <span class="text-xs font-bold">{{ news.dateMonth }}</span>
-                <span class="text-xl font-extrabold leading-none">{{ news.dateDay }}</span>
-              </div>
-
-              <div class="flex-auto min-w-0">
-                <div class="font-bold text-sm truncate">{{ news.icon }} {{ news.title }}</div>
-                <div class="text-secondary text-xs font-medium line-clamp-2 mt-0.5">{{ news.summary }}</div>
-              </div>
-            </div>
-
-          </ng-container>
-        </div>
-      </mat-drawer>
-
-      <mat-drawer-content class="flex flex-col bg-gray-50 dark:bg-gray-900">
-
-        <div class="lg:hidden flex flex-0 items-center py-3 px-4 border-b bg-card">
-          <button mat-icon-button (click)="matDrawer.toggle()">
-            <mat-icon [svgIcon]="'heroicons_outline:view-list'"></mat-icon>
-          </button>
-          <h2 class="ml-2.5 text-md font-bold text-[#1a237e] truncate">
-            {{ newsList[currentNewsIndex]?.title }}
-          </h2>
-        </div>
-
-        <div class="flex-auto p-6 sm:p-10" cdkScrollable>
-          <div class="prose prose-sm max-w-3xl mx-auto p-6 sm:p-10 rounded-2xl shadow-sm border bg-card">
-
-            <div class="text-xs font-semibold text-secondary mb-2">
-              Publié le {{ newsList[currentNewsIndex]?.dateDay }} {{ newsList[currentNewsIndex]?.dateMonthFull }}
-            </div>
-
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#1a237e] mb-4">
-              {{ newsList[currentNewsIndex]?.icon }} {{ newsList[currentNewsIndex]?.title }}
+<main class="w-full bg-gray-50">
+    <div class="tripcampus-page">
+        <header class="mb-8">
+            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Actualités</p>
+            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Repères et informations
             </h1>
+            <p class="mt-3 max-w-3xl text-base leading-7 text-gray-600">
+                Retrouvez des contenus autour des études, de l’orientation et de la vie étudiante.
+            </p>
+            <p class="mt-4 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-600">
+                Données de démonstration — ces articles ne sont pas des annonces officielles.
+            </p>
+        </header>
 
-            <hr class="my-4 border-gray-200">
-
-            <div class="mt-6 text-md leading-relaxed text-slate-700 dark:text-slate-300"
-              [innerHTML]="newsList[currentNewsIndex]?.content">
-            </div>
-          </div>
-        </div>
-
-        <div class="z-10 sticky flex p-4 bottom-4 justify-center">
-          <div class="flex items-center p-1.5 rounded-full shadow-lg bg-[#1a237e] text-white gap-2">
-            <button mat-flat-button class="!bg-transparent !text-white" [disabled]="currentNewsIndex === 0"
-              (click)="prevNews()">
-              ← Précédent
+        <nav class="mb-7 flex flex-wrap gap-2" aria-label="Filtrer les actualités par catégorie">
+            <button type="button" (click)="filtreSelectionne = 'Toutes'"
+                [attr.aria-pressed]="filtreSelectionne === 'Toutes'"
+                class="inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold"
+                [ngClass]="filtreSelectionne === 'Toutes'
+                    ? 'border-[#1a237e] bg-[#1a237e] text-white'
+                    : 'border-gray-300 bg-white text-gray-700 hover:border-indigo-300'">
+                Toutes
+                <span class="rounded-full px-2 py-0.5 text-xs"
+                    [ngClass]="filtreSelectionne === 'Toutes' ? 'bg-white/20' : 'bg-gray-100'">
+                    {{ compterActualites('Toutes') }}
+                </span>
             </button>
-            <span class="text-sm font-medium px-2">{{ currentNewsIndex + 1 }} / {{ newsList.length }}</span>
-            <button mat-flat-button class="!bg-transparent !text-white"
-              [disabled]="currentNewsIndex === newsList.length - 1" (click)="nextNews()">
-              Suivant →
+            <button *ngFor="let categorie of categories; trackBy: trackByCategorie"
+                type="button" (click)="filtreSelectionne = categorie"
+                [attr.aria-pressed]="filtreSelectionne === categorie"
+                class="inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors"
+                [ngClass]="filtreSelectionne === categorie
+                    ? 'border-[#1a237e] bg-[#1a237e] text-white'
+                    : 'border-gray-300 bg-white text-gray-700 hover:border-indigo-300'">
+                {{ categorie }}
+                <span class="rounded-full px-2 py-0.5 text-xs"
+                    [ngClass]="filtreSelectionne === categorie ? 'bg-white/20' : 'bg-gray-100'">
+                    {{ compterActualites(categorie) }}
+                </span>
             </button>
-          </div>
-        </div>
+        </nav>
 
-      </mat-drawer-content>
-    </mat-drawer-container>
+        <section *ngIf="isLoading"
+            class="rounded-2xl border border-gray-200 bg-white p-8 text-center text-gray-600">
+            Chargement des actualités…
+        </section>
 
+        <section *ngIf="!isLoading && loadError" role="alert"
+            class="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-800">
+            {{ loadError }}
+        </section>
 
+        <section *ngIf="!isLoading && !loadError && actualitesFiltrees.length === 0"
+            class="rounded-2xl border border-gray-200 bg-white p-8 text-center">
+            <h2 class="text-lg font-semibold text-gray-900">Aucune actualité dans cette catégorie</h2>
+            <p class="mt-2 text-sm text-gray-600">Choisissez une autre catégorie pour afficher les articles.</p>
+        </section>
 
-
-
-  </div>
-</div>
+        <section *ngIf="!isLoading && !loadError && actualitesFiltrees.length > 0"
+            class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
+            aria-label="Liste des actualités">
+            <article *ngFor="let actualite of actualitesFiltrees; trackBy: trackByActualite"
+                class="flex flex-col rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md sm:p-6">
+                <div class="flex items-start justify-between gap-3">
+                    <span class="rounded-full px-3 py-1 text-xs font-semibold"
+                        [ngClass]="classeBadge(actualite.categorie)">
+                        {{ actualite.categorie }}
+                    </span>
+                    <time class="shrink-0 text-xs font-medium text-gray-500" [attr.datetime]="actualite.date">
+                        {{ formatDate(actualite.date) }}
+                    </time>
+                </div>
+                <h2 class="mt-4 text-lg font-bold leading-6 text-gray-900">{{ actualite.titre }}</h2>
+                <p class="mt-2 flex-grow text-sm leading-6 text-gray-600">{{ actualite.resume }}</p>
+                <a [routerLink]="['/actualites', actualite.id]"
+                    class="mt-5 inline-flex w-fit items-center justify-center rounded-lg bg-[#1a237e] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2">
+                    Lire
+                </a>
+            </article>
+        </section>
+    </div>
+</main>

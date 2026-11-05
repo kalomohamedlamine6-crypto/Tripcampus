@@ -1,115 +1,200 @@
 <main class="w-full bg-gray-50">
     <div class="tripcampus-page">
-    <div class="mx-auto max-w-4xl">
-        <header class="mb-8">
-            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Quiz d’orientation</p>
-            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Mieux connaître votre projet</h1>
-            <p class="mt-3 max-w-2xl text-base leading-7 text-gray-600">
-                Trois étapes pour préciser vos centres d’intérêt, vos compétences et vos préférences d’études.
-            </p>
-            <p class="mt-4 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600">
-                Données de démonstration — les pistes proposées sont indicatives et ne remplacent pas un conseil d’orientation.
-            </p>
-        </header>
+        <div class="mx-auto max-w-4xl">
+            <header class="mb-8">
+                <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Quiz d’orientation</p>
+                <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Mieux connaître votre projet
+                </h1>
+                <p class="mt-3 max-w-2xl text-base leading-7 text-gray-600">
+                    Répondez à neuf questions sur vos intérêts, vos compétences et vos préférences pour découvrir des pistes à explorer.
+                </p>
+                <p class="mt-4 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600">
+                    Données de démonstration — frais et indicateurs fictifs; les suggestions sont indicatives et non décisionnelles.
+                </p>
+            </header>
 
-        <section *ngIf="!afficherResultat; else resultats"
-            class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-8">
-            <form [formGroup]="quizForm">
-                <mat-horizontal-stepper [linear]="true">
-                    <mat-step formGroupName="centres" [stepControl]="quizForm.get('centres')">
-                        <ng-template matStepLabel>Centres d’intérêt</ng-template>
-                        <div class="py-5">
-                            <h2 class="text-lg font-semibold text-gray-900">Quels domaines vous attirent ?</h2>
-                            <p class="mt-1 text-sm text-gray-600">Choisissez les domaines qui vous intéressent.</p>
-                            <mat-form-field appearance="outline" class="mt-4 w-full">
-                                <mat-label>Centres d’intérêt</mat-label>
-                                <mat-select formControlName="interets" multiple>
-                                    <mat-option *ngFor="let interet of centresInteret; trackBy: trackByIndex"
-                                        [value]="interet">{{ interet }}</mat-option>
-                                </mat-select>
-                                <mat-error>Choisissez au moins un centre d’intérêt.</mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="flex justify-end">
-                            <button mat-flat-button color="primary" type="button" matStepperNext>Suivant</button>
-                        </div>
-                    </mat-step>
-
-                    <mat-step formGroupName="competences" [stepControl]="quizForm.get('competences')">
-                        <ng-template matStepLabel>Compétences</ng-template>
-                        <div class="py-5">
-                            <h2 class="text-lg font-semibold text-gray-900">Quelles sont vos forces ?</h2>
-                            <p class="mt-1 text-sm text-gray-600">Sélectionnez les compétences que vous aimez mobiliser.</p>
-                            <mat-form-field appearance="outline" class="mt-4 w-full">
-                                <mat-label>Compétences</mat-label>
-                                <mat-select formControlName="pointsForts" multiple>
-                                    <mat-option *ngFor="let competence of competences; trackBy: trackByIndex"
-                                        [value]="competence">{{ competence }}</mat-option>
-                                </mat-select>
-                                <mat-error>Choisissez au moins une compétence.</mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="flex justify-between">
-                            <button mat-button type="button" matStepperPrevious>Retour</button>
-                            <button mat-flat-button color="primary" type="button" matStepperNext>Suivant</button>
-                        </div>
-                    </mat-step>
-
-                    <mat-step formGroupName="preferences" [stepControl]="quizForm.get('preferences')">
-                        <ng-template matStepLabel>Préférences</ng-template>
-                        <div class="py-5">
-                            <h2 class="text-lg font-semibold text-gray-900">Quelles sont vos préférences d’études ?</h2>
-                            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Budget annuel</mat-label>
-                                    <mat-select formControlName="budget">
-                                        <mat-option value="public">Priorité aux établissements publics</mat-option>
-                                        <mat-option value="accessible">Budget maîtrisé</mat-option>
-                                        <mat-option value="flexible">Budget flexible</mat-option>
+            <section *ngIf="!afficherResultat; else resultats"
+                class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-8">
+                <div class="mb-5" aria-label="Progression du quiz">
+                    <div class="mb-2 flex justify-between text-xs font-semibold text-gray-600">
+                        <span>Étape {{ etapeCourante + 1 }} sur 3</span>
+                        <span>{{ ((etapeCourante + 1) / 3) * 100 }} %</span>
+                    </div>
+                    <mat-progress-bar mode="determinate" [value]="((etapeCourante + 1) / 3) * 100">
+                    </mat-progress-bar>
+                </div>
+                <form [formGroup]="quizForm">
+                    <mat-horizontal-stepper [linear]="true"
+                        (selectionChange)="onEtapeChange($event.selectedIndex)">
+                        <mat-step [stepControl]="quizForm.get('centres')">
+                            <ng-template matStepLabel>Centres d’intérêt</ng-template>
+                            <div formGroupName="centres" class="space-y-5 py-5">
+                                <h2 class="text-lg font-semibold text-gray-900">Ce qui vous attire</h2>
+                                <mat-form-field *ngFor="let question of questionsCentres; trackBy: trackByQuestion"
+                                    appearance="outline" class="w-full">
+                                    <mat-label>{{ question.question }}</mat-label>
+                                    <mat-select [formControlName]="question.id">
+                                        <mat-option *ngFor="let option of question.options; trackBy: trackByOption"
+                                            [value]="option.valeur">{{ option.libelle }}</mat-option>
                                     </mat-select>
-                                </mat-form-field>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Durée souhaitée</mat-label>
-                                    <mat-select formControlName="duree">
-                                        <mat-option value="courte">Parcours court</mat-option>
-                                        <mat-option value="moyenne">Parcours intermédiaire</mat-option>
-                                        <mat-option value="longue">Parcours long</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Type de filière</mat-label>
-                                    <mat-select formControlName="typeFiliere">
-                                        <mat-option value="industrielle">Industrielle</mat-option>
-                                        <mat-option value="tertiaire">Tertiaire</mat-option>
-                                        <mat-option value="mixte">Mixte</mat-option>
-                                        <mat-option value="indifferent">Sans préférence</mat-option>
-                                    </mat-select>
+                                    <mat-error>Choisissez une réponse pour continuer.</mat-error>
                                 </mat-form-field>
                             </div>
-                        </div>
-                        <div class="flex justify-between">
-                            <button mat-button type="button" matStepperPrevious>Retour</button>
-                            <button mat-flat-button color="primary" type="button"
-                                [disabled]="quizForm.get('preferences')?.invalid" (click)="terminer()">
-                                Voir la suite
-                            </button>
-                        </div>
-                    </mat-step>
-                </mat-horizontal-stepper>
-            </form>
-        </section>
+                            <div class="flex justify-end">
+                                <button mat-flat-button color="primary" type="button" matStepperNext>Suivant</button>
+                            </div>
+                        </mat-step>
 
-        <ng-template #resultats>
-            <section class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-                <p class="text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Votre profil</p>
-                <h2 class="mt-2 text-2xl font-bold text-gray-900">Merci pour vos réponses</h2>
-                <p class="mt-3 text-sm leading-6 text-gray-600">
-                    Ce parcours de démonstration recueille vos préférences. Les suggestions de filières détaillées seront présentées dans les résultats du quiz.
-                    Toute orientation affichée restera indicative et non décisionnelle.
-                </p>
-                <button mat-stroked-button type="button" class="mt-6" (click)="recommencer()">Recommencer</button>
+                        <mat-step [stepControl]="quizForm.get('competences')">
+                            <ng-template matStepLabel>Compétences</ng-template>
+                            <div formGroupName="competences" class="space-y-5 py-5">
+                                <h2 class="text-lg font-semibold text-gray-900">Vos points forts</h2>
+                                <mat-form-field *ngFor="let question of questionsCompetences; trackBy: trackByQuestion"
+                                    appearance="outline" class="w-full">
+                                    <mat-label>{{ question.question }}</mat-label>
+                                    <mat-select [formControlName]="question.id">
+                                        <mat-option *ngFor="let option of question.options; trackBy: trackByOption"
+                                            [value]="option.valeur">{{ option.libelle }}</mat-option>
+                                    </mat-select>
+                                    <mat-error>Choisissez une réponse pour continuer.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="flex justify-between">
+                                <button mat-button type="button" matStepperPrevious>Retour</button>
+                                <button mat-flat-button color="primary" type="button" matStepperNext>Suivant</button>
+                            </div>
+                        </mat-step>
+
+                        <mat-step [stepControl]="quizForm.get('preferences')">
+                            <ng-template matStepLabel>Préférences</ng-template>
+                            <div formGroupName="preferences" class="space-y-5 py-5">
+                                <h2 class="text-lg font-semibold text-gray-900">Vos préférences d’études</h2>
+                                <mat-form-field *ngFor="let question of questionsPreferences; trackBy: trackByQuestion"
+                                    appearance="outline" class="w-full">
+                                    <mat-label>{{ question.question }}</mat-label>
+                                    <mat-select [formControlName]="question.id">
+                                        <mat-option *ngFor="let option of question.options; trackBy: trackByOption"
+                                            [value]="option.valeur">{{ option.libelle }}</mat-option>
+                                    </mat-select>
+                                    <mat-error>Choisissez une réponse pour continuer.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="flex justify-between">
+                                <button mat-button type="button" matStepperPrevious>Retour</button>
+                                <button mat-flat-button color="primary" type="button"
+                                    [disabled]="quizForm.get('preferences')?.invalid" (click)="terminer()">
+                                    Découvrir mes pistes
+                                </button>
+                            </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </form>
             </section>
-        </ng-template>
-    </div>
+
+            <ng-template #resultats>
+                <section class="space-y-5" aria-labelledby="resultats-titre">
+                    <header class="rounded-2xl border border-indigo-100 bg-indigo-50 p-5 sm:p-6">
+                        <p class="text-sm font-semibold uppercase tracking-wide text-[#1a237e]">Résultats indicatifs</p>
+                        <h2 id="resultats-titre" class="mt-2 text-2xl font-bold text-gray-900">
+                            Trois pistes à explorer
+                        </h2>
+                        <p class="mt-2 text-sm leading-6 text-gray-700">
+                            Ces suggestions sont calculées à partir de vos réponses et de pondérations illustratives.
+                            Elles ne constituent ni une décision d’orientation ni une garantie d’admission ou d’emploi.
+                        </p>
+                    </header>
+
+                    <article *ngFor="let suggestion of suggestions; let index = index; trackBy: trackBySuggestion"
+                        class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                        <div class="border-b border-gray-100 p-5 sm:p-6">
+                            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-[#1a237e]">
+                                        Piste {{ index + 1 }} · {{ suggestion.filiere.type === 'universitaire' ? 'Universitaire (UFR)' : suggestion.filiere.type }}
+                                    </p>
+                                    <h3 class="mt-1 text-xl font-bold text-gray-900">{{ suggestion.filiere.nom }}</h3>
+                                    <p *ngIf="suggestion.filiere.ufr" class="mt-1 text-sm font-medium text-gray-600">
+                                        {{ suggestion.filiere.ufr }}
+                                    </p>
+                                </div>
+                                <div class="w-full sm:w-44">
+                                    <div class="flex justify-between text-xs font-semibold text-gray-600">
+                                        <span>Correspondance indicative</span>
+                                        <span>{{ suggestion.pourcentage }} %</span>
+                                    </div>
+                                    <div class="mt-2 h-2 overflow-hidden rounded-full bg-gray-100">
+                                        <div class="h-full rounded-full bg-[#1a237e]"
+                                            [style.width.%]="suggestion.pourcentage"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mt-4 text-sm leading-6 text-gray-600">{{ suggestion.filiere.description }}</p>
+                            <div class="mt-4 rounded-xl bg-gray-50 p-4">
+                                <h4 class="text-sm font-semibold text-gray-900">Pourquoi cette suggestion ?</h4>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    Cette piste est rapprochée de vos réponses :
+                                    {{ suggestion.explication.join(' · ') }}.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5 p-5 sm:p-6">
+                            <h4 class="font-semibold text-gray-900">Formations et établissements proposés</h4>
+                            <section *ngFor="let groupe of suggestion.niveaux; trackBy: trackByNiveau">
+                                <h5 class="mb-3 text-sm font-bold text-[#1a237e]">{{ groupe.niveau }}</h5>
+                                <div class="space-y-3">
+                                    <article *ngFor="let resultat of groupe.formations; trackBy: trackByFormation"
+                                        class="rounded-xl border border-gray-100 p-4">
+                                        <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                                            <div>
+                                                <h6 class="font-semibold text-gray-900">{{ resultat.formation.nom }}</h6>
+                                                <p class="mt-1 text-sm text-gray-600">
+                                                    Durée illustrative : {{ resultat.formation.dureeMoisFictive / 12 }} ans.
+                                                    Prérequis : {{ resultat.formation.prerequis.join(', ') }}.
+                                                </p>
+                                                <p class="mt-2 text-sm text-gray-600">
+                                                    Débouchés possibles : {{ resultat.formation.debouches.join(' · ') }}.
+                                                </p>
+                                            </div>
+                                            <a [routerLink]="['/filieres', 'formation', resultat.formation.id]"
+                                                class="shrink-0 text-sm font-semibold text-[#1a237e] hover:underline">
+                                                Voir la fiche
+                                            </a>
+                                        </div>
+
+                                        <div *ngIf="resultat.offres.length; else aucuneOffre"
+                                            class="mt-4 grid gap-2 sm:grid-cols-2">
+                                            <div *ngFor="let item of resultat.offres; trackBy: trackByOffre"
+                                                class="rounded-lg bg-gray-50 p-3 text-sm">
+                                                <p class="font-semibold text-gray-900">{{ item.etablissement.nom }}</p>
+                                                <p class="mt-1 text-gray-600">
+                                                    {{ item.etablissement.ville }} · {{ item.etablissement.statut | titlecase }}
+                                                </p>
+                                                <p class="mt-1 text-gray-700">
+                                                    {{ item.offre.fraisScolariteAnnuelsFictifs | number:'1.0-0' }} FCFA/an
+                                                    · Réussite illustrative : {{ item.offre.tauxReussiteFictif }} %
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <ng-template #aucuneOffre>
+                                            <p class="mt-3 text-sm text-gray-500">
+                                                Aucune offre correspondante n’est recensée dans ce jeu de démonstration pour cette formation et ce budget.
+                                            </p>
+                                        </ng-template>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+
+                    <p *ngIf="suggestions.length === 0" class="rounded-xl border border-gray-200 bg-white p-5 text-gray-600">
+                        Aucune suggestion n’est disponible pour le moment. Vous pouvez recommencer le quiz.
+                    </p>
+                    <button mat-stroked-button type="button" (click)="recommencer()">Recommencer le quiz</button>
+                </section>
+            </ng-template>
+        </div>
     </div>
 </main>

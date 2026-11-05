@@ -11,11 +11,11 @@ export const defaultNavigation: FuseNavigationItem[] = [
 
 
     {
-        id: 'formation-filiere',
+        id: 'filieres',
         title: 'Filières',
         type: 'basic',
         icon: 'heroicons_outline:collection',
-        link: '/formation-filiere'
+        link: '/filieres'
     },
 
     {
@@ -78,11 +78,11 @@ export const horizontalNavigation: FuseNavigationItem[] = [
 
 
     {
-        id: 'formation-filiere',
+        id: 'filieres',
         title: 'Filières',
         type: 'basic',
         icon: 'heroicons_outline:view-grid',
-        link: '/formation-filiere'
+        link: '/filieres'
     },
 
 

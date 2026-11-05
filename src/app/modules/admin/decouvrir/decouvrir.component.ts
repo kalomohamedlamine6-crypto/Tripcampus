@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
 import {
     Etablissement,
     Formation,
@@ -30,9 +32,17 @@ export class DecouvrirComponent implements OnInit
     isLoading = true;
     loadError: string | null = null;
 
+    constructor(private _route: ActivatedRoute)
+    {
+    }
+
     ngOnInit(): void
     {
         this.etablissements = etablissementsProvisoires;
+        this._route.queryParamMap.pipe(take(1)).subscribe(params => {
+            const etablissementId = params.get('etablissement');
+            this.etablissementSelectionne = this.etablissements.find(item => item.id === etablissementId) || null;
+        });
         this.isLoading = false;
     }
 

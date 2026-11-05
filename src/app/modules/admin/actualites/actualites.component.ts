@@ -1,119 +1,82 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
+import {
+    Actualite,
+    CategorieActualite,
+    actualitesProvisoires
+} from 'app/data/donnees-provisoires';
 
-interface NewsArticle {
-    id: string;
-    icon: string;
-    dateMonth: string;
-    dateMonthFull: string;
-    dateDay: string;
-    title: string;
-    summary: string;
-    content: string;
-}
+type FiltreActualite = CategorieActualite | 'Toutes';
 
 @Component({
     selector: 'actualites',
-    templateUrl: './actualites.component.html',
-    encapsulation: ViewEncapsulation.None,
+    templateUrl: './actualites.component.html'
 })
-export class ActualitesComponent implements OnInit {
-
-    drawerMode: 'over' | 'side' = 'side';
-    drawerOpened: boolean = true;
-    currentNewsIndex: number = 0;
-
-
-    newsList: NewsArticle[] = [
-        {
-            id: '1',
-            icon: '📢',
-            dateMonth: 'JUN',
-            dateMonthFull: 'Juin',
-            dateDay: '05',
-            title: 'Inscriptions ouvertes à l\'ESATIC',
-            summary: 'Les candidatures pour le cycle ingénieur sont ouvertes jusqu\'au 15 juillet.',
-            content: `
-                <p>Nous informons l'ensemble des candidats que les inscriptions pour le concours d'entrée au
-                <strong>cycle ingénieur de l'ESATIC</strong> sont officiellement lancées.</p>
-                <p>Les dossiers de candidature doivent être déposés complets avant la date limite fixée au
-                <strong>15 juillet</strong>. Ne ratez pas cette opportunité d'intégrer une école d'excellence dans le
-                domaine du numérique.</p>
-            `
-        },
-        {
-            id: '2',
-            icon: '🎓',
-            dateMonth: 'JUN',
-            dateMonthFull: 'Juin',
-            dateDay: '12',
-            title: 'Nouvelle formation en Data Science',
-            summary: 'Une nouvelle licence est désormais proposée au sein de l\'établissement.',
-            content: `
-                <p>Face aux nouveaux défis de l'intelligence artificielle, l'ESATIC ouvre sa toute nouvelle
-                <strong>Licence en Data Science</strong>.</p>
-                <p>Ce programme permettra aux étudiants d'acquérir de solides compétences en manipulation de données,
-                statistiques avancées et Big Data.</p>
-            `
-        },
-        {
-            id: '3',
-            icon: '💰',
-            dateMonth: 'JUN',
-            dateMonthFull: 'Juin',
-            dateDay: '20',
-            title: '20 bourses disponibles',
-            summary: 'Programme d\'accompagnement destiné aux nouveaux bacheliers.',
-            content: '<p>Grâce à nos partenaires du secteur privé, 20 bourses d\'études complètes seront allouées aux bacheliers les plus méritants ayant postulé cette année.</p>'
-        },
-        {
-            id: '4',
-            icon: '🏫',
-            dateMonth: 'JUL',
-            dateMonthFull: 'Juillet',
-            dateDay: '14&15',
-            title: 'Le salon de l\'orientation',
-            summary: 'Rencontrez les responsables pédagogiques et découvrez nos locaux.',
-            content: '<p>Venez nous rencontrer lors des journées portes ouvertes et du salon de l\'orientation qui se ' +
-                'tiendront les 14 et 15 juillet dans l\'enceinte de l\'école.</p>'
-        }
+export class ActualitesComponent implements OnInit
+{
+    readonly categories: CategorieActualite[] = [
+        'Opportunités et concours',
+        'Calendrier officiel',
+        'Événements d’orientation',
+        'Vie étudiante',
+        'Annonces des établissements'
     ];
+    filtreSelectionne: FiltreActualite = 'Toutes';
+    actualites: Actualite[] = [];
+    isLoading = true;
+    loadError: string | null = null;
 
-    ngOnInit(): void {
-        this._checkScreenSize();
+    ngOnInit(): void
+    {
+        this.actualites = actualitesProvisoires
+            .slice()
+            .sort((a, b) => b.date.localeCompare(a.date));
+        this.isLoading = false;
     }
 
-    // Ferme le menu sur mobile après sélection
-    selectNews(index: number): void {
-        this.currentNewsIndex = index;
-        if (this.drawerMode === 'over') {
-            this.drawerOpened = false;
-        }
+    get actualitesFiltrees(): Actualite[]
+    {
+        return this.filtreSelectionne === 'Toutes'
+            ? this.actualites
+            : this.actualites.filter(actualite => actualite.categorie === this.filtreSelectionne);
     }
 
-    nextNews(): void {
-        if (this.currentNewsIndex < this.newsList.length - 1) {
-            this.currentNewsIndex++;
-        }
+    compterActualites(categorie: FiltreActualite): number
+    {
+        return categorie === 'Toutes'
+            ? this.actualites.length
+            : this.actualites.filter(actualite => actualite.categorie === categorie).length;
     }
 
-    prevNews(): void {
-        if (this.currentNewsIndex > 0) {
-            this.currentNewsIndex--;
-        }
+    formatDate(dateIso: string): string
+    {
+        return new Intl.DateTimeFormat('fr-FR', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            timeZone: 'UTC'
+        }).format(new Date(`${dateIso}T00:00:00Z`));
     }
 
-    trackByFn(index: number, item: NewsArticle): string {
-        return item.id;
+    trackByCategorie(index: number, categorie: CategorieActualite): string
+    {
+        return categorie;
     }
 
-    private _checkScreenSize(): void {
-        if (window.innerWidth < 1024) {
-            this.drawerMode = 'over';
-            this.drawerOpened = false;
-        } else {
-            this.drawerMode = 'side';
-            this.drawerOpened = true;
-        }
+    trackByActualite(index: number, actualite: Actualite): string
+    {
+        return actualite.id;
+    }
+
+    classeBadge(categorie: CategorieActualite): string
+    {
+        const classes: Record<CategorieActualite, string> = {
+            'Opportunités et concours': 'bg-amber-100 text-amber-900',
+            'Calendrier officiel': 'bg-blue-100 text-blue-900',
+            'Événements d’orientation': 'bg-violet-100 text-violet-900',
+            'Vie étudiante': 'bg-emerald-100 text-emerald-900',
+            'Annonces des établissements': 'bg-rose-100 text-rose-900'
+        };
+
+        return classes[categorie];
     }
 }

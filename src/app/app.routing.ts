@@ -53,7 +53,7 @@ export const appRoutes: Route[] = [
             {path: 'accueil', loadChildren: () => import('app/modules/admin/accueil/accueil.module').then(m => m.AccueilModule)},
             {path: 'actualites', loadChildren: () => import('app/modules/admin/actualites/actualites.module').then(m => m.ActualitesModule)},
             {path: 'decouvrir', loadChildren: () => import('app/modules/admin/decouvrir/decouvrir.module').then(m => m.DecouvrirModule )},
-            {path: 'formation-filiere', loadChildren: () => import('app/modules/admin/formation-filiere/formation-filiere.module').then(m => m.FormationFiliereModule)},
+            {path: 'filieres', loadChildren: () => import('app/modules/admin/filieres/filieres.module').then(m => m.FilieresModule)},
         ]
     },
 
@@ -71,10 +71,5 @@ export const appRoutes: Route[] = [
             {path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.module').then(m => m.AuthUnlockSessionModule)}
         ]
     },
-
-
-
-    // Alias route for Filières
-    {path: 'filieres', pathMatch: 'full', redirectTo: 'formation-filiere'},
 
 ];

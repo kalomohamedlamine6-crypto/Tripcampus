@@ -1,0 +1,66 @@
+<main class="w-full bg-gray-50">
+    <div class="tripcampus-page">
+        <div *ngIf="isLoading" class="rounded-2xl border border-gray-200 bg-white p-8 text-center text-gray-600">
+            Chargement de l’actualité…
+        </div>
+
+        <section *ngIf="!isLoading && loadError" role="alert"
+            class="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-800">
+            {{ loadError }}
+        </section>
+
+        <section *ngIf="!isLoading && !loadError && !actualite"
+            class="rounded-2xl border border-gray-200 bg-white p-8 text-center">
+            <h1 class="text-2xl font-bold text-gray-900">Actualité introuvable</h1>
+            <p class="mt-2 text-gray-600">Cet article n’existe pas dans les données de démonstration.</p>
+            <a routerLink="/actualites"
+                class="mt-5 inline-flex rounded-lg bg-[#1a237e] px-4 py-2.5 text-sm font-semibold text-white">
+                Retour aux actualités
+            </a>
+        </section>
+
+        <article *ngIf="!isLoading && !loadError && actualite"
+            class="mx-auto max-w-4xl rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
+            <a routerLink="/actualites"
+                class="inline-flex items-center text-sm font-semibold text-[#1a237e] hover:underline">
+                ← Retour aux actualités
+            </a>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+                <span class="rounded-full px-3 py-1 text-xs font-semibold"
+                    [ngClass]="classeBadge(actualite.categorie)">
+                    {{ actualite.categorie }}
+                </span>
+                <time class="text-sm text-gray-500" [attr.datetime]="actualite.date">
+                    {{ formatDate(actualite.date) }}
+                </time>
+            </div>
+            <h1 class="mt-4 text-3xl font-extrabold leading-tight text-gray-900">
+                {{ actualite.titre }}
+            </h1>
+            <p class="mt-4 text-lg leading-7 text-gray-600">{{ actualite.resume }}</p>
+
+            <div class="mt-8 space-y-5 border-t border-gray-100 pt-7">
+                <p *ngFor="let paragraphe of actualite.contenu; trackBy: trackByParagraphe"
+                    class="leading-7 text-gray-700">
+                    {{ paragraphe }}
+                </p>
+            </div>
+
+            <aside *ngIf="actualite.etablissementId"
+                class="mt-8 rounded-xl border border-indigo-100 bg-indigo-50 p-4 sm:p-5">
+                <p class="text-sm text-gray-700">
+                    Établissement associé à cet exemple : {{ etablissement?.nom || 'établissement non renseigné' }}.
+                </p>
+                <a [routerLink]="['/decouvrir']"
+                    [queryParams]="{ etablissement: actualite.etablissementId }"
+                    class="mt-3 inline-flex font-semibold text-[#1a237e] hover:underline">
+                    Voir sa fiche dans Découvrir
+                </a>
+            </aside>
+
+            <p class="mt-8 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
+                Données de démonstration — contenu illustratif, sans valeur d’annonce officielle.
+            </p>
+        </article>
+    </div>
+</main>

@@ -76,11 +76,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy {
     }
 
     isActiveModule(route: string): boolean {
-        const isCurrentRoute = this.currentUrl === route || this.currentUrl.startsWith(route + '/');
-        const isLegacyFilieresRoute = route === '/filieres' &&
-            (this.currentUrl === '/formation-filiere' || this.currentUrl.startsWith('/formation-filiere/'));
-
-        return isCurrentRoute || isLegacyFilieresRoute;
+        return this.currentUrl === route || this.currentUrl.startsWith(route + '/');
     }
 
     toggleMobileMenu(): void {

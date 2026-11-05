@@ -1,30 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { Route, RouterModule } from '@angular/router';
 import { ActualitesComponent } from './actualites.component';
+import { ActualiteDetailsComponent } from './actualite-details.component';
 
 const actualitesRoutes: Route[] = [
     {
-        path     : '',
+        path: ':id',
+        component: ActualiteDetailsComponent
+    },
+    {
+        path: '',
+        pathMatch: 'full',
         component: ActualitesComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        ActualitesComponent
+        ActualitesComponent,
+        ActualiteDetailsComponent
     ],
-    imports     : [
+    imports: [
         CommonModule,
         RouterModule.forChild(actualitesRoutes),
-        MatButtonModule,
-        MatIconModule,
-        MatSidenavModule,
-        ScrollingModule
     ]
 })
 export class ActualitesModule
